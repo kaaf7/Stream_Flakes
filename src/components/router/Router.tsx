@@ -11,15 +11,16 @@ const routes = (isLoggedIn: boolean) => [
     path: MAIN,
     element: <ProtectedRoute isLoggedIn={isLoggedIn} />,
     children: [
-        {
-          path: "",
-          element: <></>,
-        },
-     ],
+      {
+        path: "",
+        element: <></>,
+      },
+    ],
   },
 ];
 
 export const Router = (isLoggedIn: boolean) => {
   const loggedInRoutes = createBrowserRouter(routes(isLoggedIn));
+
   <RouterProvider router={loggedInRoutes} />;
 };
