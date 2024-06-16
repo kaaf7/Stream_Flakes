@@ -1,6 +1,6 @@
 import { MAIN } from "@/constants/constants";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "./routes/routes/MainLayout";
+import ProtectedRoute from "./routes/routes/LoggedInMainLayout";
 
 const routes = (isLoggedIn: boolean) => [
   {
