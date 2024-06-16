@@ -1,11 +1,13 @@
-import { createTheme } from '@mui/material';
-import { darkTheme, lightTheme } from './themes';
+import { createTheme } from "@mui/material"
+import { darkTheme, lightTheme } from "./themes"
 
 const defineTheme = (isDarkModOn: boolean) => {
   if (isDarkModOn) {
-    return darkTheme;
+    return darkTheme
   }
-  return lightTheme;
-};
+  return lightTheme
+}
 
-export const themeCreator = (isDarkMode: boolean) => createTheme(defineTheme(isDarkMode));
+export const themeCreator = (isDarkModOn: boolean) => {
+  return createTheme(defineTheme(isDarkModOn))
+}
