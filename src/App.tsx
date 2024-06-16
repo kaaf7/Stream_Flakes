@@ -1,16 +1,15 @@
 import { ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
-import { themeCreator } from "./utils/theme/themeCreator";
+import { Router } from "./components/router/Router";
+import { themeCreator } from "./utils/theme-creator/themeCreator";
 
 function App() {
-  const [isDarkMode, setDarkMode] = useState<boolean>(false);
-  const theme = themeCreator(isDarkMode)
+  const [isDarkModOn, setDarkModeOn] = useState<boolean>(false);
+  const theme = themeCreator(isDarkModOn)
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        APP
-      </div>
+      <Router isLoggedIn={true} />  
     </ThemeProvider>
   );
 }
