@@ -1,4 +1,4 @@
-import { MAIN } from "@/constants/constants";
+import { LOGIN_PATH, MAIN_PATH } from "@/constants/constants";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./routes/routes/LoggedInMainLayout";
 
@@ -8,7 +8,7 @@ const routes = (isLoggedIn: boolean) => [
     element: <></>,
   },
   {
-    path: MAIN,
+    path: MAIN_PATH,
     element: <ProtectedRoute isLoggedIn={isLoggedIn} />,
     children: [
       {
@@ -17,10 +17,16 @@ const routes = (isLoggedIn: boolean) => [
       },
     ],
   },
+  {
+    path: LOGIN_PATH,
+    element: <></>,
+  },
 ];
-
-export const Router = (isLoggedIn: boolean) => {
+interface RouterProps {
+  isLoggedIn: boolean;
+}
+export const Router = ({ isLoggedIn }: RouterProps) => {
   const loggedInRoutes = createBrowserRouter(routes(isLoggedIn));
 
-  <RouterProvider router={loggedInRoutes} />;
+  return <RouterProvider router={loggedInRoutes} />;
 };
