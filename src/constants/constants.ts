@@ -1,3 +1,5 @@
-export const MAIN_PATH = "/";
+export const MAIN_PATH = "/"
 
-export const SHOWS_PATH = "/shows";
+export const LOGIN_PATH = "/login"
+
+export const SHOWS_PATH = "/shows"
