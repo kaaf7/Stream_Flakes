@@ -1,36 +1,43 @@
 import { Favorite } from "@mui/icons-material"
-import { Button, CardActionArea, CardMedia } from "@mui/material"
+import { Box, Button, CardActionArea, CardMedia } from "@mui/material"
 import Card from "@mui/material/Card"
 import CardActions from "@mui/material/CardActions"
-import CardContent from "@mui/material/CardContent"
-import Typography from "@mui/material/Typography"
 
-export const MovieCard = () => {
+interface MovieCardProps {
+  title: string
+  imageUrl: string
+  description: string
+}
+
+export const MovieCard = ({ title, imageUrl, description }: MovieCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          onError={(event) => {}}
-          height="200"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div" color="inherit">
-            Title
-          </Typography>
-          <Typography variant="body2" color="inherit">
-            Text
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions style={{ justifyContent: "space-between" }}>
-        <Button size="small" color="inherit" variant="text">
-          Share
-        </Button>
-        <Favorite />
-      </CardActions>
+    <Card sx={{ width: 250, height: 250 }}>
+      <Box sx={{ position: "relative", height: "100%" }}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            loading="lazy"
+            image="https://images.fandango.com/ImageRenderer/0/0/redesign/static/img/default_poster.png/0/images/masterrepository/other/ant_man_ver5.jpg"
+            alt={title}
+          />
+        </CardActionArea>
+        <CardActions
+          sx={{
+            display: "flex",
+            position: "absolute",
+            width: "100%",
+            justifyContent: "space-between",
+            bottom: 0,
+            left: 0,
+            color: "white",
+            backgroundColor: "rgba(0, 0, 0, 0.2)"
+          }}>
+          <Button size="small" color="inherit" variant="text">
+            Share
+          </Button>
+          <Favorite />
+        </CardActions>
+      </Box>
     </Card>
   )
 }
