@@ -1,6 +1,6 @@
 import { LOGIN_PATH, MAIN_PATH } from "@/constants/constants"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import { MainLayout } from "../custom-components/main-layout"
+import { MainLayout } from "../ui/main-layout"
 
 const routes = (isLoggedIn: boolean) => [
   {
