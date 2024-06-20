@@ -3,13 +3,12 @@ import { Box, Button, CardActionArea, CardMedia } from "@mui/material"
 import Card from "@mui/material/Card"
 import CardActions from "@mui/material/CardActions"
 
-interface MovieCardProps {
+interface MediaCardProps {
   title: string
   imageUrl: string
-  description: string
 }
 
-export const MovieCard = ({ title, imageUrl, description }: MovieCardProps) => {
+export const MediaCard = ({ title, imageUrl }: MediaCardProps) => {
   return (
     <Card sx={{ width: 250, height: 250 }}>
       <Box sx={{ position: "relative", height: "100%" }}>
@@ -17,8 +16,12 @@ export const MovieCard = ({ title, imageUrl, description }: MovieCardProps) => {
           <CardMedia
             component="img"
             loading="lazy"
-            image="https://images.fandango.com/ImageRenderer/0/0/redesign/static/img/default_poster.png/0/images/masterrepository/other/ant_man_ver5.jpg"
+            src={imageUrl}
+            image={imageUrl}
             alt={title}
+            onError={(e) => {
+              e.currentTarget.src = ""
+            }}
           />
         </CardActionArea>
         <CardActions
