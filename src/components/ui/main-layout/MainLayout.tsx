@@ -7,8 +7,5 @@ interface MainLayoutProps {
 }
 
 export function MainLayout({ isLoggedIn }: MainLayoutProps) {
-  if (!isLoggedIn) {
-    ;<Navigate to={LOGIN_PATH} />
-  }
-  return <Outlet />
+  return isLoggedIn ? <Outlet /> : <Navigate to={LOGIN_PATH} />
 }
