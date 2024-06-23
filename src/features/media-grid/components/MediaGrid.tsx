@@ -2,7 +2,11 @@ import { MediaCard } from "@/components/ui/movie-card"
 import { Media } from "@/interfaces/Media"
 import { Grid } from "@mui/material"
 
-export const MediaGrid = (medias: Media[]) => {
+interface MediaGridProps {
+  medias: Media[]
+}
+
+export const MediaGrid = ({ medias }: MediaGridProps) => {
   return (
     <Grid container spacing={2}>
       {medias.map((media: Media) => (
