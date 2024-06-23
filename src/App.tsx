@@ -1,6 +1,8 @@
-import { CssBaseline, ThemeProvider } from "@mui/material"
-import { useState } from "react"
 import "./App.css"
+
+import { CssBaseline, ThemeProvider } from "@mui/material"
+
+import { useState } from "react"
 import { Router } from "./components/router/Router"
 import { defineTheme } from "./utils/theme-creator/themeCreator"
 
