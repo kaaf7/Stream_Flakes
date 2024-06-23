@@ -1,43 +1,30 @@
+import { IconButton, ImageListItem, ImageListItemBar } from "@mui/material"
+
 import { Media } from "@/interfaces/Media"
 import { Favorite } from "@mui/icons-material"
-import { Box, Button, CardActionArea, CardMedia, Grid } from "@mui/material"
-import Card from "@mui/material/Card"
-import CardActions from "@mui/material/CardActions"
+import { useState } from "react"
 
-export const MediaCard = ({ title, imageUrl }: Media) => {
+export const MediaCard = ({ imageUrl }: Media) => {
+  const [hover, setHover] = useState<boolean>(false)
   return (
-    <Grid item>
-      <Card sx={{ width: 250, height: 250 }}>
-        <Box sx={{ position: "relative", height: "100%" }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              loading="lazy"
-              image={imageUrl}
-              alt={title}
-              onError={(e) => {
-                e.currentTarget.src = ""
-              }}
-            />
-          </CardActionArea>
-          <CardActions
-            sx={{
-              display: "flex",
-              position: "absolute",
-              width: "100%",
-              justifyContent: "space-between",
-              bottom: 0,
-              left: 0,
-              color: "white",
-              backgroundColor: "rgba(0, 0, 0, 0.2)"
-            }}>
-            <Button size="small" color="inherit" variant="text">
-              Share
-            </Button>
+    <ImageListItem onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
+      <img
+        src={imageUrl}
+        alt={imageUrl}
+        loading="lazy"
+        style={{
+          opacity: hover ? 0.5 : 1,
+          cursor: hover ? "pointer" : "default",
+          transition: ".5s ease-in-out"
+        }}
+      />
+      <ImageListItemBar
+        sx={{ background: "none" }}
+        actionIcon={
+          <IconButton sx={{ color: "rgba(255, 255, 255, 0.54)" }} aria-label={`info about`}>
             <Favorite />
-          </CardActions>
-        </Box>
-      </Card>
-    </Grid>
+          </IconButton>
+        }></ImageListItemBar>
+    </ImageListItem>
   )
 }
