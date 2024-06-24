@@ -15,17 +15,16 @@ const protectedRoutes = [
 
 const routes = (isLoggedIn: boolean) => [
   {
-    path: "*",
-    element: <Navigate to={MAIN_PATH} />,
-        
+    path: LOGIN_PATH,
+    element: <></>
   },
   {
     path: MEDIAS_PATH,
     element: <MediasOverview />
   },
   {
-    path: LOGIN_PATH,
-    element: <></>
+    path: "*",
+    element: <Navigate to={MAIN_PATH} />
   },
   {
     path: MAIN_PATH,
@@ -38,6 +37,6 @@ interface RouterProps {
   isLoggedIn: boolean
 }
 export const Router = ({ isLoggedIn }: RouterProps) => {
-  const  router= createBrowserRouter(routes(isLoggedIn))
+  const router = createBrowserRouter(routes(isLoggedIn))
   return <RouterProvider router={router} />
 }
