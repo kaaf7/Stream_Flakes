@@ -11,7 +11,7 @@ export const darkPalette: PaletteOptions = {
     contrastText: "#fff"
   },
   background: {
-    default: "#212121",
+    default: "#0d0d0d",
     paper: "#242424"
   },
   success: {

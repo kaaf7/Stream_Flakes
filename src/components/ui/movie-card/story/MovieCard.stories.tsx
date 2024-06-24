@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react"
-import { MovieCard, MovieCardProps } from "../MovieCard"
+import { MovieCard, MovieCardProps } from "../MediaCard"
 
 const meta: Meta<typeof MovieCard> = {
   title: "example/components/custom/MovieCard",
