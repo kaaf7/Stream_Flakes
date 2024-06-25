@@ -5,17 +5,33 @@ export const SearchBar = () => {
     <Container>
       <TextField
         id="search-bar"
-        label="Search Films"
-        variant="outlined"
+        placeholder="Search Films"
+        variant="standard"
         sx={{
           width: "30rem",
-          transition: "width 0.5s ease-in-out",
+          background: "inherit",
+          transition: "width 0.3s ease-in-out",
           "&:focus-within": {
-            width: "40rem" 
+            width: "45rem"
+          },
+          "& .MuiInput-underline:before": {
+            borderBottom: ".01rem solid", // Default border thickness
+            transition: "border-bottom-width 0.2s"
+          },
+          "&:hover .MuiInput-underline:before": {
+            borderBottom: ".01rem solid" // Hover border thickness
+          },
+          "& .MuiInput-underline:after": {
+            borderBottom: ".01rem solid" // Thicker border on focus
           },
           "& .MuiOutlinedInput-root": {
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "none",
+              borderWidth: "0"
+            },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderWidth: ".05px"
+              borderColor: "none",
+              borderWidth: "0"
             },
             borderRadius: ".5rem",
             height: "2rem"
@@ -26,7 +42,7 @@ export const SearchBar = () => {
             width: "100%"
           },
           "& .MuiInputLabel-shrink": {
-            transform: "translate(14px, -6px) scale(0.75)" 
+            transform: "translate(14px, -6px) scale(0.75)"
           }
         }}
       />
