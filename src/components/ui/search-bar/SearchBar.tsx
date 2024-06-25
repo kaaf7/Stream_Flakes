@@ -15,14 +15,14 @@ export const SearchBar = () => {
             width: "45rem"
           },
           "& .MuiInput-underline:before": {
-            borderBottom: ".01rem solid", // Default border thickness
+            borderBottom: ".01rem solid", 
             transition: "border-bottom-width 0.2s"
           },
           "&:hover .MuiInput-underline:before": {
-            borderBottom: ".01rem solid" // Hover border thickness
+            borderBottom: ".01rem solid" 
           },
           "& .MuiInput-underline:after": {
-            borderBottom: ".01rem solid" // Thicker border on focus
+            borderBottom: ".01rem solid"
           },
           "& .MuiOutlinedInput-root": {
             "&:hover .MuiOutlinedInput-notchedOutline": {
