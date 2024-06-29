@@ -1,15 +1,22 @@
 import { AppBar, AppBarProps, Toolbar } from "@mui/material"
 
-import { ReactNode } from "react"
-
-interface AppBarPropsContainerProps extends AppBarProps {
-  children: ReactNode
-}
-
-export const AppBarContainer = ({ children, ...props }: AppBarPropsContainerProps) => {
+export const AppBarContainer = ({ children }: AppBarProps) => {
   return (
-    <AppBar position="static" sx={{ boxShadow: 0 }} {...props}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>{children}</Toolbar>
+    <AppBar
+      sx={{
+        display: "flex",
+        direction: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
+        position: "fixed",
+        boxShadow: 0,
+        background:"inhit",
+        width:"100%"
+      }}>
+      <Toolbar sx={{ width: "1400px", display: "flex", justifyContent: "center" }}>
+        {children}
+      </Toolbar>  
     </AppBar>
   )
 }
