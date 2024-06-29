@@ -6,17 +6,25 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
       sx={{
         display: "flex",
         direction: "column",
-        justifyContent: "center",
-        alignItems: "center",
         alignContent: "center",
+        alignItems: "center",
         position: "fixed",
         boxShadow: 0,
-        background:"inhit",
-        width:"100%"
+        width: "100%"
       }}>
-      <Toolbar sx={{ width: "1400px", display: "flex", justifyContent: "center" }}>
+      <Toolbar
+        sx={{
+          width: "90%",
+          display: "flex",
+          direction: "column",
+          position: "fixed",
+          alignContent:"center",
+          alignItems:"center",
+          gap: 1,
+          margin: 0
+        }}>
         {children}
-      </Toolbar>  
+      </Toolbar>
     </AppBar>
   )
 }
