@@ -1,4 +1,15 @@
 import { Button, ButtonProps } from "@mui/material"
-export const CustomButton = ({ children, title, ...props }: ButtonProps) => {
-  return <Button {...props}>{title ?? children}</Button>
+
+import { Link } from "react-router-dom"
+
+interface CustomButtonProps extends ButtonProps {
+  to?: string
+}
+
+export const CustomButton = ({ to, children, ...props }: CustomButtonProps) => {
+  return (
+    <Button component={to ? Link : "button"} {...props}>
+      {children}
+    </Button>
+  )
 }
