@@ -1,4 +1,4 @@
-import { Container, InputAdornment, TextField, useTheme } from "@mui/material"
+import { Box, InputAdornment, TextField, useTheme } from "@mui/material"
 import { ChangeEvent, useEffect, useState } from "react"
 
 import { SearchResultsDisplay } from "@/components/ui/search-results-display"
@@ -25,12 +25,16 @@ export const SearchBar = () => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown)
-    return () => {document.removeEventListener("keydown", handleKeyDown)
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
 
   return (
-    <Container sx={{ position: "relative" }}>
+    <Box
+      sx={{
+        position: "relative"
+      }}>
       <TextField
         id="search-bar"
         name="search"
@@ -81,10 +85,11 @@ export const SearchBar = () => {
           },
           "& .MuiInputLabel-shrink": {
             transform: "translate(14px, -6px) scale(0.75)"
-          }
+          },
+          zIndex: 1000
         }}
       />
       <SearchResultsDisplay resultBoxVisible={resultBoxVisible} />
-    </Container>
+    </Box>
   )
 }
