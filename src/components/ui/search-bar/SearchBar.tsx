@@ -1,9 +1,12 @@
-import { Container, TextField } from "@mui/material"
-import { ChangeEvent, useState } from "react"
+import { Container, InputAdornment, TextField, useTheme } from "@mui/material"
+import { ChangeEvent, useEffect, useState } from "react"
 
 import { SearchResultsDisplay } from "@/components/ui/search-results-display"
+import { Search } from "@mui/icons-material"
 
 export const SearchBar = () => {
+  const theme = useTheme()
+
   const [search, setSearch] = useState<string | null>(null)
 
   const [resultBoxVisible, setResultBoxVisible] = useState<boolean>(false)
@@ -14,6 +17,17 @@ export const SearchBar = () => {
   const handleBlur = () => {
     setTimeout(() => setResultBoxVisible(false), 300)
   }
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      setResultBoxVisible(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
 
   return (
     <Container sx={{ position: "relative" }}>
@@ -23,12 +37,19 @@ export const SearchBar = () => {
         variant="outlined"
         onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
         value={search}
-        placeholder="Search Films"
+        placeholder={"Search"}
         onFocus={handleFocus}
         onBlur={handleBlur}
         autoComplete="off"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search sx={{ color: theme.palette.primary.main }} />
+            </InputAdornment>
+          )
+        }}
         sx={{
-          width: "750px",
+          width: "650px",
           background: "inherit",
           transition: "width 0.3s ease-in-out",
           "&:focus-within": {},
