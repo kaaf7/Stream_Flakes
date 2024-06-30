@@ -9,7 +9,7 @@ export const SearchResultsDisplay = ({ resultBoxVisible }: SearchResultDisplayPr
   return (
     <Card
       sx={{
-        width: "750px",
+        width: "650px",
         height: "500px",
         justifyContent: "center",
         background: theme.palette.background.default,
