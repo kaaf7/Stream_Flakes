@@ -3,7 +3,7 @@ import type { PaletteOptions } from "@mui/material/styles"
 export const darkPalette: PaletteOptions = {
   mode: "dark",
   primary: {
-    main: "#67be23",
+    main: "#bcbcbc",
     contrastText: "#fff"
   },
   secondary: {
@@ -11,8 +11,8 @@ export const darkPalette: PaletteOptions = {
     contrastText: "#fff"
   },
   background: {
-    default: "#0d0d0d",
-    paper: "#242424"
+    default: "#212121",
+        paper: "#242424"
   },
   success: {
     main: "#67be23",

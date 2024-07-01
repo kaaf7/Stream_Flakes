@@ -1,15 +1,16 @@
-import { LOGIN_PATH, MAIN_PATH, MEDIAS_PATH, USER_PATH } from "@/constants/constants"
+import { LOGIN_PATH, MAIN_PATH, MEDIAS_PATH } from "@/constants/constants"
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import { lazy } from "react"
 import { MainLayout } from "../ui/main-layout"
 
-const MediasOverview = lazy(() => import("../../pages/medias/MediasOverview"))
+const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
+const Home = lazy(() => import("@/pages/home/Home"))
 
 const protectedRoutes = [
   {
-    path: USER_PATH,
-    element: <></>
+    path: MAIN_PATH,
+    element: <Home />
   }
 ]
 
@@ -37,6 +38,6 @@ interface RouterProps {
   isLoggedIn: boolean
 }
 export const Router = ({ isLoggedIn }: RouterProps) => {
-  const router = createBrowserRouter(routes(isLoggedIn))
+  const router = createBrowserRouter(routes(true))
   return <RouterProvider router={router} />
 }
