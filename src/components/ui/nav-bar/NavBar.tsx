@@ -1,4 +1,4 @@
-import { AppBarContainer } from "@/components/ui/app-bar-container/"
+import { AppBarContainer } from "@/components/ui/app-bar-container"
 import { RightNavBarItems } from "@/components/ui/right-navbar-items"
 import { SearchBar } from "@/components/ui/search-bar"
 import Typography from "@mui/material/Typography"
@@ -16,10 +16,6 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
   )
 }
 
-function Logo({}) {
-  return (
-    <Typography variant="h6">
-      MOVIEFLAKES
-    </Typography>
-  )
+function Logo() {
+  return <Typography variant="h4">StreamFlakes</Typography>
 }
