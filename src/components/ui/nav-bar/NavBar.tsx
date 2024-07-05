@@ -9,7 +9,7 @@ interface NavbarProps {
 export const NavBar = ({ isLoggedIn }: NavbarProps) => {
   return (
     <AppBarContainer>
-      <Logo/>
+      <Logo />
       <SearchBar />
       <RightNavBarItems isLoggedIn={isLoggedIn} />
     </AppBarContainer>
@@ -17,5 +17,9 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
 }
 
 function Logo() {
-  return <Typography variant="h4">StreamFlakes</Typography>
+  return (
+    <Typography variant="h4" sx={{ color: "orange" }}>
+      StreamFlakes
+    </Typography>
+  )
 }
