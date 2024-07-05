@@ -1,8 +1,7 @@
 import { AppBarContainer } from "@/components/ui/app-bar-container"
 import { RightNavBarItems } from "@/components/ui/right-navbar-items"
 import { SearchBar } from "@/components/ui/search-bar"
-import Typography from "@mui/material/Typography"
-
+import { Typography } from "@mui/material"
 interface NavbarProps {
   isLoggedIn: boolean
 }
