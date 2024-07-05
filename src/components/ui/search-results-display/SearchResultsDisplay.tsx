@@ -11,6 +11,7 @@ export const SearchResultsDisplay = ({ resultBoxVisible }: SearchResultDisplayPr
       sx={{
         width: "650px",
         height: "500px",
+        display:"flex",
         justifyContent: "center",
         background: theme.palette.background.default,
         position: "absolute",
