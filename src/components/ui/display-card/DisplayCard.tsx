@@ -4,28 +4,59 @@ interface DisplayCardProps {
   title: string
   description: string
   image: string
+  direction?: string
 }
 
-export const DisplayCard = ({ title, description, image }: DisplayCardProps) => {
+export const DisplayCard = ({ title, description, image, direction }: DisplayCardProps) => {
   const theme = useTheme()
+
   return (
     <Card
       sx={{
-        height: "100%",
-        flex: 1,
-        padding: 1,
-        background: theme.palette.background.default,
-        backgroundImage:
-          "linear-gradient(to top,rgba(155,155,155,.1), theme.palette.background.default)"
+        height: "500px",
+        width: "400px",
+        position: "relative",
+        background: theme.palette.background.paper,
+        backgroundImage: "linear-gradient(to top, rgba(0,0,0,.3), rgba(0,0,0,0))"
+
       }}>
       <CardMedia
         sx={{
-          height: "70%"
+          height: "350px",
+          borderRadius: 1,
+          position: "relative", 
+          zIndex: 1
         }}
         component="img"
         alt="movie"
         image={image}
       />
+      {direction == "left" ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100px",
+            height: "100%",
+            zIndex: 2,
+            background: "linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,0))"
+          }}
+        />
+      ) : direction === "right" ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "100px",
+            height: "100%",
+            zIndex: 2,
+            background: "linear-gradient(to left, rgba(0,0,0,.5), rgba(0,0,0,0))"
+          }}
+        />
+      ) : null}
+
       <CardContent
         sx={{
           display: "flex",
@@ -33,7 +64,9 @@ export const DisplayCard = ({ title, description, image }: DisplayCardProps) => 
           justifyContent: "center",
           textAlign: "center",
           alignItems: "center",
-          alignContent: "center"
+          alignContent: "center",
+          position: "relative", // Ensure CardContent has relative positioning
+          zIndex: 3 // Set a higher z-index to ensure it's above gradient divs and CardMedia
         }}>
         <Typography gutterBottom variant="h5" component="div">
           {title}
