@@ -7,7 +7,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 200)
+      setScrolled(window.scrollY > 20)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -29,7 +29,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
         width: "100%",
         height: 70,
         backgroundColor: scrolled ? theme.palette.background.default : "transparent",
-        transition: "background-color 0.1s ease-in-out"
+        transition: "background-color 0.3s ease-in-out"
       }}>
       <Toolbar
         sx={{
