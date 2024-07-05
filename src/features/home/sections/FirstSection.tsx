@@ -123,7 +123,7 @@ export const FirstSection = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundImage: "linear-gradient(to top, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0.1))",
+          backgroundImage: "linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.2))",
           zIndex: 1
         }}
       />
