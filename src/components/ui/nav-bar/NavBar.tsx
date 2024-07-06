@@ -17,7 +17,7 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
 
 function Logo() {
   return (
-    <Typography variant="h4" sx={{ color: "orange" }}>
+    <Typography variant="h4" sx={{ color: "orange", fontWeight: "bold" }}>
       StreamFlakes
     </Typography>
   )
