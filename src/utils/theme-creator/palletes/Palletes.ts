@@ -11,8 +11,8 @@ export const darkPalette: PaletteOptions = {
     contrastText: "#fff"
   },
   background: {
-    default: "#212121",
-        paper: "#242424"
+    default: "#000000",
+    paper: "#242424"
   },
   success: {
     main: "#67be23",
@@ -30,7 +30,7 @@ export const darkPalette: PaletteOptions = {
     main: "#1890ff",
     contrastText: "#fff"
   },
-  divider: "rgba(0,0,0,0)",
+  divider: "#bcbcbc",
   text: {
     primary: "#fff",
     secondary: "rgba(255,255,255,0.7)",
