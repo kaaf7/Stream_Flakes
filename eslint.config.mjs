@@ -53,7 +53,7 @@ export default [
       "no-unused-vars": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
       "react/react-in-jsx-scope": "off",
-      "import/no-unresolved": "warn",
+      "import/no-unresolved": "off",
       "import/named": "warn",
       "no-undef": "off",
       "import/namespace": "warn",

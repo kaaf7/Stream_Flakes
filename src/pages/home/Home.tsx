@@ -1,10 +1,11 @@
-import { FirstSection, SecondSection, ThirdSection } from "@/features/home"
+import { FirstSection, Footer, SecondSection, ThirdSection } from "@/features/home"
 export default function Home() {
   return (
     <>
       <FirstSection />
       <SecondSection />
-      <ThirdSection/>
+      <ThirdSection />
+      <Footer />
     </>
   )
 }
