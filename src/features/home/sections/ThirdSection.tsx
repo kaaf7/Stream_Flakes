@@ -7,14 +7,13 @@ export const ThirdSection = () => {
   return (
     <main
       style={{
-        background: "black",
         width: "100%",
         height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        gap: 25,
-        alignItems: "center"
+        gap: 30,
+        alignItems: "center",
       }}>
       <Divider
         sx={{
