@@ -8,7 +8,7 @@ interface CustomButtonProps extends ButtonProps {
 
 export const CustomButton = ({ to, children, ...props }: CustomButtonProps) => {
   return (
-    <Button component={to ? Link : "button"} {...props}>
+    <Button to={to} component={Link}  {...props}>
       {children}
     </Button>
   )
