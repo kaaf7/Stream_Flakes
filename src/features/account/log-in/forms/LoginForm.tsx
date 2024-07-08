@@ -1,10 +1,10 @@
 import { Box, Container, TextField, Typography, useTheme } from "@mui/material"
 import { ChangeEvent, useState } from "react"
-import { MAIN_PATH, SIGN_UP } from "@/constants/constants"
 
-import { CustomButton } from "@/components/buttons/custom-button"
-import { loginFormValues } from "@/features/account"
 import movies from "@/assets/images/movies.jpg"
+import { CustomButton } from "@/components/buttons/custom-button"
+import { MAIN_PATH } from "@/constants/constants"
+import { loginFormValues } from "@/features/account"
 
 export const LoginForm = () => {
   const theme = useTheme()
@@ -88,7 +88,7 @@ export const LoginForm = () => {
             </Typography>
           </Box>
           <CustomButton variant="outlined" sx={{ zIndex: 5, width: "90%" }}>
-            Submit
+            Login
           </CustomButton>
         </Box>
         <Box
@@ -107,7 +107,7 @@ export const LoginForm = () => {
             gap: 2
           }}>
           <Typography variant="body2">
-            New to StreamFlakes? <a style={{color:"#5069C8"}} href={SIGN_UP}>Sign-Up</a>
+            New to StreamFlakes? <a style={{color:"#5069C8"}} href={MAIN_PATH}>Sign-Up</a>
           </Typography>
         </Box>
       </Container>
