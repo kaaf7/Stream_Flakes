@@ -23,11 +23,12 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
         display: "flex",
         direction: "column",
         alignContent: "center",
+        justifyItems:"center",
         alignItems: "center",
         position: "fixed",
         boxShadow: 0,
         width: "100%",
-        height: 70,
+        height: "4rem",
         backgroundColor: scrolled ? theme.palette.background.default : "transparent",
         transition: "background-color 0.3s ease-in-out"
       }}>

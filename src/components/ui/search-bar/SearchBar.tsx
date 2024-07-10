@@ -15,7 +15,7 @@ export const SearchBar = () => {
     setResultBoxVisible(true)
   }
   const handleBlur = () => {
-    setTimeout(() => setResultBoxVisible(false), 300)
+    setTimeout(() => setResultBoxVisible(false), 100)
   }
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === "Escape") {

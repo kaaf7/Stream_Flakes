@@ -1,10 +1,10 @@
-import { LOGIN_PATH, MAIN_PATH, MEDIAS_PATH, SIGN_UP_PATH } from "@/constants/constants"
+import { MAIN_PATH, SHOWS_PATH, SIGN_UP_PATH } from "@/constants/constants"
 import { Suspense, lazy } from "react"
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import { MainLayout } from "../ui/main-layout"
 
-const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
+const ShowsOverview = lazy(() => import("@/pages/shows/ShowsOverview"))
 
 const Login = lazy(() => import("@/pages/login/Login"))
 
@@ -24,6 +24,14 @@ const protectedRoutes = [
         <SignUp />
       </Suspense>
     )
+  },
+  {
+    path: SHOWS_PATH,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ShowsOverview />
+      </Suspense>
+    )
   }
 ]
 
@@ -36,18 +44,7 @@ const routes = (isLoggedIn: boolean) => [
       </Suspense>
     )
   },
-  {
-    path: LOGIN_PATH,
-    element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <Login />
-      </Suspense>
-    )
-  },
-  {
-    path: MEDIAS_PATH,
-    element: <MediasOverview />
-  },
+
   {
     path: "*",
     element: <Navigate to={MAIN_PATH} />
