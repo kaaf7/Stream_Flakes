@@ -8,13 +8,9 @@ interface FilterListProps {
   onFilterDeleteAll(event: SyntheticEvent): void
 }
 
-export const FilterArray = ({
-  filter,
-  onFilterDelete,
-  onFilterDeleteAll,
-}: FilterListProps) => {
-  const validFilterEntries = Object.entries(filter).filter(([k, v]) =>
-    ["string", "number", "boolean"].includes(typeof v)
+export const FilterArray = ({ filter, onFilterDelete, onFilterDeleteAll }: FilterListProps) => {
+  const validFilterEntries = Object.entries(filter).filter(
+    ([_, v]) => ["string", "number", "boolean"].includes(typeof v) && v !== ""
   )
   return (
     <Box
