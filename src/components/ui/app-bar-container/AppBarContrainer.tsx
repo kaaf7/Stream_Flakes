@@ -22,26 +22,26 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
       sx={{
         display: "flex",
         direction: "column",
+        justifyContent: "space-between",
         alignContent: "center",
-        justifyItems:"center",
+        justifyItems: "center",
         alignItems: "center",
         position: "fixed",
         boxShadow: 0,
-        width: "100%",
         height: "4rem",
         backgroundColor: scrolled ? theme.palette.background.default : "transparent",
         transition: "background-color 0.3s ease-in-out"
       }}>
       <Toolbar
         sx={{
-          width: "90%",
           display: "flex",
           direction: "column",
           position: "fixed",
           alignContent: "center",
           alignItems: "center",
           gap: 3,
-          margin: 0
+          margin: 0,
+          width: "85vw"
         }}>
         {children}
       </Toolbar>
