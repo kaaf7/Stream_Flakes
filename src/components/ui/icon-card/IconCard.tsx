@@ -1,19 +1,22 @@
 import { Grid } from "@mui/material"
 import { MediaCard } from "../movie-card"
-interface IconCardProps {brandIcon:string}
-export const  IconCard =({ brandIcon }:IconCardProps) =>{
-    return (
-      <Grid key={brandIcon} sm={1} item>
-        <MediaCard
-          sx={{
-            width: "64px",
-            height: "64px"
-          }}
-          key={brandIcon}
-          imageUrl={brandIcon as string}
-          title={brandIcon as string}
-          id={brandIcon as string}
-        />
-      </Grid>
-    )
-  }
+interface IconCardProps {
+  icon: string
+}
+export const IconCard = ({ icon }: IconCardProps) => {
+  return (
+    <Grid key={icon} sm={1} item>
+      <MediaCard
+        id={icon}
+        key={icon}
+        aria-label={icon}
+        imageUrl={icon}
+        title={icon}
+        sx={{
+          width: "64px",
+          height: "64px"
+        }}
+      />
+    </Grid>
+  )
+}
