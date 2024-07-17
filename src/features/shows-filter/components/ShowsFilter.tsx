@@ -1,9 +1,13 @@
+import {
+  SHOWS_FILTER_BY_GENRE,
+  SHOWS_FILTER_BY_NAME,
+  SHOWS_FILTER_BY_YEAR
+} from "@/constants/constants"
 import { Container, Drawer } from "@mui/material"
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
 import { CustomButton } from "@/components/buttons/custom-button"
-import { SHOWS_FILTER_BY_NAME } from "@/constants/constants"
 import { ShowsFilterInterface } from "@/features/shows-filter"
 import { createFormFields } from "@/utils/form-creator/createFormFields"
 import { useTranslation } from "react-i18next"
@@ -14,19 +18,22 @@ interface ShowsFilterProps {
 }
 
 export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) => {
+  const { t } = useTranslation(["common"])
+  const [isSubmitted, setSubmit] = useState<boolean>(false)
+
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [filter, setFilter] = useState<ShowsFilterInterface>({
-    name: searchParams.get(SHOWS_FILTER_BY_NAME)
+    name: searchParams.get(SHOWS_FILTER_BY_NAME),
+    genre: searchParams.get(SHOWS_FILTER_BY_GENRE),
+    year: searchParams.get(SHOWS_FILTER_BY_YEAR)
   })
 
-  const [filterState, setFilterState] = useState<ShowsFilterInterface>(filter)
+  const [filterState, setFilterState] = useState<ShowsFilterInterface>({})
 
   const onFilterDeleteAll = () => {
     updateFilter({})
   }
-
-  const { t } = useTranslation(["common"])
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -38,8 +45,9 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
       Object.entries(formValues).filter(([_, v]) => v !== null && v !== "" && v !== undefined)
     )
     setFilter(filterEmptyValues)
-    setSearchParams(filterEmptyValues as URLSearchParamsInit)
     setFilterState(filterEmptyValues)
+
+    setSearchParams(filterEmptyValues as URLSearchParamsInit)
   }
 
   const onSubmit = (filter: ShowsFilterInterface) => {
@@ -47,12 +55,14 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     setFilterOpen((prevState) => !prevState)
   }
 
-
-
-  const onFilterDelete = (key: string) => {
-    const updaetdFilter = Object.fromEntries(Object.entries(Object).filter(([_, v]) => k !== key))
-    updateFilter(updaetdFilter)
+  const onFilterDelete = (key: keyof ShowsFilterInterface) => {
+   /*  updateFilter({
+      ...filter,
+      [key]: null
+    }) */
+     updateFilter( Object.fromEntries(Object.entries(filter).filter(([k]) => k !== key)))
   }
+
 
   const FORM_FIELDS = [
     {
@@ -122,6 +132,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     filter: filter,
     onFilterDelete: onFilterDelete,
     onFilterDeleteAll: onFilterDeleteAll,
-    onSubmit: onSubmit
+    onSubmit: onSubmit,
+    isSubmitted: isSubmitted
   }
 }
