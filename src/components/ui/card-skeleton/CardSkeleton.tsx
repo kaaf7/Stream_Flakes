@@ -20,7 +20,7 @@ export const CardSkeleton = ({
         sx={{ bgcolor: "grey.900", borderRadius: borderRadius ?? 2, marginRight, marginLeft }}
         variant="rectangular"
         width={cardSkeletonWidth}
-        height={cardSkeletonHeight ?? "20rem"}
+        height={cardSkeletonHeight}
       />
     </ImageListItem>
   )
