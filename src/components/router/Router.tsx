@@ -12,6 +12,24 @@ const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 
 const Home = lazy(() => import("@/pages/home/Home"))
 
+
+export const PageSuspense = () => {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display:"flex",
+        flexDirection:"column",
+        justifyContent: "center",
+        justifyItems:"center",
+        alignItems: "center",
+        textAlign: "center",
+      }}>
+    </div>
+  )
+}
+
 const protectedRoutes = [
   {
     path: MAIN_PATH,
@@ -20,7 +38,7 @@ const protectedRoutes = [
   {
     path: SIGN_UP_PATH,
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageSuspense />}>
         <SignUp />
       </Suspense>
     )
@@ -28,18 +46,20 @@ const protectedRoutes = [
   {
     path: SHOWS_PATH,
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageSuspense />}>
         <ShowsOverview />
       </Suspense>
     )
   }
 ]
 
+
+
 const routes = (isLoggedIn: boolean) => [
   {
     path: SIGN_UP_PATH,
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageSuspense />}>
         <SignUp />
       </Suspense>
     )
@@ -52,7 +72,7 @@ const routes = (isLoggedIn: boolean) => [
   {
     path: MAIN_PATH,
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageSuspense />}>
         <MainLayout isLoggedIn={isLoggedIn} />
       </Suspense>
     ),
