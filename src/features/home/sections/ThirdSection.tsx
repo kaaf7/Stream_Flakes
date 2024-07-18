@@ -1,9 +1,16 @@
 import { Divider, useTheme } from "@mui/material"
 
-import { Slider } from "@/components/ui/multi-slider/Slider"
+import { MoviesApiConnector } from "../api/MoviesApiConnector"
+import { SeriesApiConnector } from "../api/SeriesApiConnector"
+import { SportsApiConnector } from "../api/SportsApiConnector"
+import { TrendingShowsApiConnector } from "../api/TrendingShowsApiConnector"
 
-export const ThirdSection = () => {
+interface ThirdSectionProps {
+  isLoading: boolean
+}
+export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
   const theme = useTheme()
+
   return (
     <main
       style={{
@@ -13,7 +20,7 @@ export const ThirdSection = () => {
         flexDirection: "column",
         justifyContent: "center",
         gap: 30,
-        alignItems: "center",
+        alignItems: "center"
       }}>
       <Divider
         sx={{
@@ -22,7 +29,7 @@ export const ThirdSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
-      <Slider needsTitle={false} deskTopDisplayItems={12} />
+      <MoviesApiConnector />
       <Divider
         sx={{
           width: "85%",
@@ -30,26 +37,24 @@ export const ThirdSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
-      <Slider needsTitle={false} deskTopDisplayItems={4} />
-      <Divider
-        sx={{
-          width: "85%",
-          marginX: 0.1,
-          borderBottom: `1px solid ${theme.palette.background.paper}`
-        }}
-      />
-      <Slider needsTitle={true} deskTopDisplayItems={9} />
-      <Divider
-        sx={{
-          width: "85%",
-          marginX: 0.1,
-          borderBottom: `1px solid ${theme.palette.background.paper}`
-        }}
-      />
-      <Slider needsTitle={true} deskTopDisplayItems={6} />
 
-   
-   
+      <SeriesApiConnector />
+      <Divider
+        sx={{
+          width: "85%",
+          marginX: 0.1,
+          borderBottom: `1px solid ${theme.palette.background.paper}`
+        }}
+      />
+      <TrendingShowsApiConnector />
+      <Divider
+        sx={{
+          width: "85%",
+          marginX: 0.1,
+          borderBottom: `1px solid ${theme.palette.background.paper}`
+        }}
+      />
+      <SportsApiConnector />
     </main>
   )
 }
