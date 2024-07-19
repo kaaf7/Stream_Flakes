@@ -60,12 +60,12 @@ export const SignUpForm = () => {
             gap: 2
           }}>
           <TextField
-            id="email"
-            name="email"
-            label="email"
+            id="username"
+            name="username"
+            label="Username"
             type="text"
             size="small"
-            aria-label="email"
+            aria-label="username"
             aria-required="true"
             variant="outlined"
             autoComplete="off"
@@ -73,12 +73,12 @@ export const SignUpForm = () => {
             sx={{ width: "90%", background: theme.palette.background.default }}
           />
           <TextField
-            id="username"
-            name="username"
-            label="Username"
+            id="email"
+            name="email"
+            label="Email"
             type="text"
             size="small"
-            aria-label="username"
+            aria-label="email"
             aria-required="true"
             variant="outlined"
             autoComplete="off"

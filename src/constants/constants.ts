@@ -15,3 +15,9 @@ export const SPORTS_PATH = "/sports"
 export const FAVORITES_PATH = "/favorites"
 
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
+
+/** SHOWS FILTERS **/
+
+export const SHOWS_FILTER_BY_NAME = "name"
+export const SHOWS_FILTER_BY_YEAR = "year"
+export const SHOWS_FILTER_BY_GENRE = "genre"

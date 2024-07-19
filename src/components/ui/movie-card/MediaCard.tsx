@@ -1,17 +1,44 @@
 import { IconButton, ImageListItem, ImageListItemBar } from "@mui/material"
+import { useEffect, useRef, useState } from "react"
 
 import { MediaCardProps } from "@/interfaces/Media"
 import { Favorite } from "@mui/icons-material"
-import { useState } from "react"
 
 export const MediaCard = ({ id, imageUrl, needsMediaCardBar, ...rest }: MediaCardProps) => {
   const [hover, setHover] = useState<boolean>(false)
+
+  const divRef = useRef(null)
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const div = entry.target
+          const src = div.getAttribute("data-src")
+          div.classList.add("fade")
+          observer.disconnect()
+        }
+      })
+    })
+
+    if (divRef.current) {
+      observer.observe(divRef.current)
+    }
+
+    return () => {
+      if (divRef.current) {
+        observer.unobserve(divRef.current)
+      }
+    }
+  }, [])
   return (
     <ImageListItem {...rest} onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
       <img
         id={id}
         src={imageUrl}
-        alt={imageUrl}
+        data-src={imageUrl}
+        alt={"shows-images"}
+        aria-label={"shows-images"}
+        loading={"lazy"}
         style={{
           opacity: hover ? 0.5 : 1,
           cursor: hover ? "pointer" : "default",

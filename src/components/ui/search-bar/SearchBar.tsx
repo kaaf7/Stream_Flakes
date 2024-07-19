@@ -32,9 +32,12 @@ export const SearchBar = () => {
 
   return (
     <Box
-      sx={{
-        position: "relative"
-      }}>
+    sx={{
+      position: "relative",
+      width:"200px",
+      justifyContent:"center",
+      flex:1
+    }}>
       <TextField
         id="search-bar"
         name="search"
@@ -52,8 +55,8 @@ export const SearchBar = () => {
             </InputAdornment>
           )
         }}
-        sx={{
-          width: "650px",
+        sx={{          
+          width: "100%",
           background: "inherit",
           transition: "width 0.3s ease-in-out",
           "&:focus-within": {},

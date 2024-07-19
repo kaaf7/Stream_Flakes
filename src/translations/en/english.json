@@ -1,0 +1,9 @@
+{"filter":"name",
+  "main": {
+    "filter": {
+      "name": "Name",
+      "year": "Year",
+      "genre": "Genre"
+    }
+  }
+}

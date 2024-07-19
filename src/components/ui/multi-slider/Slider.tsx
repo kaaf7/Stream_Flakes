@@ -1,6 +1,6 @@
 import "react-multi-carousel/lib/styles.css"
 
-import { Box, Grid } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { CardSkeleton, CardSkeletonProps } from "../card-skeleton/CardSkeleton"
 
 import { MediaCard } from "@/components/ui/movie-card/"
@@ -112,18 +112,22 @@ const dummyMedia = [
 
 interface SliderProps extends CardSkeletonProps {
   needsTitle?: boolean
+  title?: string
   deskTopDisplayItems?: number
   tabletDisplayItems?: number
   mobileDisplayItems?: number
   isLoading?: boolean
+  autoPlay?: boolean
 }
 
 export const Slider = ({
   needsTitle,
+  title,
   deskTopDisplayItems,
   tabletDisplayItems,
   mobileDisplayItems,
   isLoading,
+  autoPlay,
   ...cardSkeletonProps
 }: SliderProps) => {
   const skeletonCards = Array.from({ length: deskTopDisplayItems as number }, (_, index) => (
@@ -153,7 +157,9 @@ export const Slider = ({
       {needsTitle && (
         <Grid item xs={2}>
           <Box sx={{ height: "100%" }}>
-            <div style={{ height: "100%" }}>First Part</div>
+            <Typography variant="body1" sx={{ height: "100%", color: "grey" }}>
+              {title}
+            </Typography>
           </Box>
         </Grid>
       )}
@@ -167,7 +173,7 @@ export const Slider = ({
           }}>
           <Carousel
             responsive={responsive}
-            autoPlay={!isLoading}
+            autoPlay={autoPlay}
             swipeable={!isLoading}
             draggable={!isLoading}
             showDots={false}

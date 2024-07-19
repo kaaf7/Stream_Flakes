@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useTheme } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 
 import apple_app_store from "@/assets/images/apple_app_store.svg"
 import google_app_store from "@/assets/images/google_app_store.svg"
@@ -12,7 +12,6 @@ import { Add } from "@mui/icons-material"
 import { Link } from "react-router-dom"
 
 export const LandingSection = () => {
-  const theme = useTheme()
   return (
     <main
       style={{
@@ -102,6 +101,7 @@ export const LandingSection = () => {
       <img
         src={movies}
         alt="Movies"
+        data-src={movies}
         loading="lazy"
         style={{
           width: "100%",

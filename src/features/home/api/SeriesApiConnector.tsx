@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Movies } from "../sections/Movies"
-export const MoviesApiConnector = () => {
+import { Series } from "../sections/Series"
+
+export const SeriesApiConnector = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   setTimeout(() => {
     setIsLoading(false)
-  }, 1300)
+  }, 1600)
 
-  return <Movies isLoading={isLoading} />
+  return <Series isLoading={isLoading} />
 }

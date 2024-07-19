@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, Typography, useTheme } from "@mui/material"
+import { Box, Grid, Typography, useTheme } from "@mui/material"
 
 import { FooterLinkSection } from "@/components/ui/footer-link"
 
@@ -44,14 +44,6 @@ export const Footer = () => {
         background: "inherit"
       }}>
       <Box sx={{ width: "85%", height: "100%", position: "relative" }}>
-        <Divider
-          sx={{
-            width: "85%",
-            marginX: 0.1,
-            marginTop: 5,
-            borderBottom: `1px solid ${theme.palette.background.paper}`
-          }}
-        />
         <Grid
           container
           justifyContent={"space-between"}
@@ -60,7 +52,7 @@ export const Footer = () => {
             height: "100%",
             alignContent: "center",
             textAlign: "start",
-            alignItems: "center",
+            alignItems: "center"
           }}>
           <FooterLinkSection links={CONTACT_AND_LEGAL_INFORMATION} />
           <span
