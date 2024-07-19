@@ -20,7 +20,7 @@ const RIGHT_SIDE_ITEMS: Item[] = [
 const USER_RIGHT_SIDE_ITEMS: Item[] = [
   { title: "Signup", variant: "outlined", size: "small", to: SIGN_UP_PATH, isProtected: true },
   { title: "Login", variant: "outlined", size: "small", to: LOGIN_PATH, isProtected: true },
-  { title: "Account",variant: "text", size: "small", to: LOGIN_PATH, isProtected: false },
+  { title: "Account",variant: "outlined", size: "small", to: LOGIN_PATH, isProtected: false },
   { title: "Logout", variant: "outlined", size: "small", to: LOGIN_PATH, isProtected: false },
 
 ]
@@ -34,11 +34,11 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        gap:1,
+        position:"relative",
         alignItems: "center",
-        justifyContent: "flex-end",
-        width: "100%",
-        gap: 2
+        justifyContent: "space-between",
+     
       }}>
       {RIGHT_SIDE_ITEMS.map((item) => (
         <CustomButton sx={{ height: "2rem" }} variant={item.variant} size={item.size} to={item.to}>
