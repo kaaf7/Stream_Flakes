@@ -14,7 +14,6 @@ export const MediaCard = ({ id, imageUrl, needsMediaCardBar, ...rest }: MediaCar
         if (entry.isIntersecting) {
           const div = entry.target
           const src = div.getAttribute("data-src")
-          div.style.backgroundImage = `url(${src})`
           div.classList.add("fade")
           observer.disconnect()
         }
@@ -37,10 +36,10 @@ export const MediaCard = ({ id, imageUrl, needsMediaCardBar, ...rest }: MediaCar
         id={id}
         src={imageUrl}
         data-src={imageUrl}
-        alt={"show-imag"}
+        alt={"shows-images"}
+        aria-label={"shows-images"}
         loading={"lazy"}
         style={{
-          backgroundImage: `url(${hover ? imageUrl : ""})`,
           opacity: hover ? 0.5 : 1,
           cursor: hover ? "pointer" : "default",
           transition: ".5s ease-in-out",
