@@ -20,7 +20,7 @@ export const SkeletonGrid = ({
   gap
 }: SkeletonGridProps) => {
   const cardSkeletons = Array.from({ length: gridLength }, (_, index) => (
-    <CardSkeleton {...cardSkeletonProp} key={index} />
+    <CardSkeleton cardSkeletonHeight="20rem" {...cardSkeletonProp} key={index} />
   ))
   return (
     <ImageList
