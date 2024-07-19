@@ -9,8 +9,9 @@ export const SearchResultsDisplay = ({ resultBoxVisible }: SearchResultDisplayPr
   return (
     <Card
       sx={{
-        width: "650px",
-        height: "500px",
+        height: "25rem",
+        width:"100%",
+        flex:1,
         display:"flex",
         justifyContent: "center",
         background: theme.palette.background.default,
