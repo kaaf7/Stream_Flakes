@@ -10,7 +10,7 @@ interface MediaGridProps {
 
 export const ShowsGrid = ({ medias, isLoading }: MediaGridProps) => {
   if (isLoading) {
-    return <SkeletonGrid gridLength={28} minmax={"13.5rem"}/>
+    return <SkeletonGrid gridLength={28} minmax={"12.5rem"}/>
   }
   return (
     <ImageList
