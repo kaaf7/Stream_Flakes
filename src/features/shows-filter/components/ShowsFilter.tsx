@@ -72,6 +72,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
       label: t("main.filter.name"),
       placeholder: t("main.filter.name"),
       ariaPlaceHolder: t("main.filter.name"),
+      autoComplete:"off",
       onChange
     },
     {
@@ -81,6 +82,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
       label: t("main.filter.genre"),
       placeholder: t("main.filter.genre"),
       ariaPlaceHolder: t("main.filter.genre"),
+      autoComplete:"off",
       onChange
     },
     {
@@ -90,6 +92,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
       label: t("main.filter.year"),
       placeholder: t("main.filter.year"),
       ariaPlaceHolder: t("main.filter.year"),
+      autoComplete:"off",
       onChange
     }
   ]
