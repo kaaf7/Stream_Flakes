@@ -15,7 +15,7 @@ export const useScrollPagination = () => {
     const handleScroll = () => checkIfBottomReached()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [ ])
+  }, [])
   
   return { currentPage }
 }
