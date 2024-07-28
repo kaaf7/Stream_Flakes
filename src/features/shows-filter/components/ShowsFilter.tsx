@@ -3,7 +3,7 @@ import {
   SHOWS_FILTER_BY_NAME,
   SHOWS_FILTER_BY_YEAR
 } from "@/constants/constants"
-import { Box, Container, Drawer } from "@mui/material"
+import { Box, Container, SwipeableDrawer } from "@mui/material"
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
@@ -63,7 +63,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     updateFilter(Object.fromEntries(Object.entries(filter).filter(([k]) => k !== key)))
   }
 
-  const FORM_FIELDS = [
+  const FILTER_FORM_FIELDS_ITEMS = [
     {
       id: t("form.filter.name"),
       name: "name",
@@ -96,34 +96,35 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     }
   ]
 
-  const FilterFormFileds = createFormFields(FORM_FIELDS)
+  const FilterFormFileds = createFormFields(FILTER_FORM_FIELDS_ITEMS)
 
   return {
     FilterDrawer: (
-      <Drawer
+      <SwipeableDrawer
         sx={{
-          width: "40rem",
+          height:"100%",
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: "400px"
+            width: "350px"
           }
         }}
         anchor="right"
         open={isFilterOPen}
+        onOpen={()=>setFilterOpen(true)}
         onClose={() => setFilterOpen(false)}>
         <Container
           sx={{
             height: "100%",
-            padding: "1rem 1rem 1rem 1rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "center",
+            padding: "1rem 1rem 1rem 1rem",
             gap: 5
           }}>
           <Box sx={{
-            height: "100%",
             width:"100%",
+            height: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
@@ -134,11 +135,11 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
               variant="outlined"
               size="small"
               onClick={(e) => onSubmit(filterState)}
-              sx={{ width: "100%", height: "3rem" }}>
+              sx={{ width: "100%"}}>
               submit
             </CustomButton>
         </Container>
-      </Drawer>
+      </SwipeableDrawer>
     ),
     filter: filter,
     onFilterDelete: onFilterDelete,
