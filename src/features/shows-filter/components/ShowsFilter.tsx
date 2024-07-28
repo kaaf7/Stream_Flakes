@@ -3,7 +3,7 @@ import {
   SHOWS_FILTER_BY_NAME,
   SHOWS_FILTER_BY_YEAR
 } from "@/constants/constants"
-import { Container, Drawer } from "@mui/material"
+import { Box, Container, Drawer } from "@mui/material"
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
@@ -56,43 +56,42 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
   }
 
   const onFilterDelete = (key: keyof ShowsFilterInterface) => {
-   /*  updateFilter({
+    /*  updateFilter({
       ...filter,
       [key]: null
     }) */
-     updateFilter( Object.fromEntries(Object.entries(filter).filter(([k]) => k !== key)))
+    updateFilter(Object.fromEntries(Object.entries(filter).filter(([k]) => k !== key)))
   }
-
 
   const FORM_FIELDS = [
     {
-      id: t("main.filter.name"),
+      id: t("form.filter.name"),
       name: "name",
       value: filterState.name ?? "",
-      label: t("main.filter.name"),
-      placeholder: t("main.filter.name"),
-      ariaPlaceHolder: t("main.filter.name"),
-      autoComplete:"off",
+      label: t("form.filter.name"),
+      placeholder: t("form.filter.name"),
+      autoComplete: "off",
+      sx: { width: "100%" },
       onChange
     },
     {
-      id: t("main.filter.genre"),
+      id: t("form.filter.genre"),
       name: "genre",
       value: filterState.genre ?? "",
-      label: t("main.filter.genre"),
-      placeholder: t("main.filter.genre"),
-      ariaPlaceHolder: t("main.filter.genre"),
-      autoComplete:"off",
+      label: t("form.filter.genre"),
+      placeholder: t("form.filter.genre"),
+      autoComplete: "off",
+      sx: { width: "100%" },
       onChange
     },
     {
-      id: t("main.filter.year"),
+      id: t("form.filter.year"),
       name: "year",
       value: filterState.year ?? "",
-      label: t("main.filter.year"),
-      placeholder: t("main.filter.year"),
-      ariaPlaceHolder: t("main.filter.year"),
-      autoComplete:"off",
+      label: t("form.filter.year"),
+      placeholder: t("form.filter.year"),
+      autoComplete: "off",
+      sx: { width: "100%" },
       onChange
     }
   ]
@@ -122,13 +121,22 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
             alignItems: "center",
             gap: 5
           }}>
-          {FilterFormFileds}
-          <CustomButton
-            variant="outlined"
-            onClick={(e) => onSubmit(filterState)}
-            sx={{ width: "100%", height: "3rem" }}>
-            submit
-          </CustomButton>
+          <Box sx={{
+            height: "100%",
+            width:"100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            gap: 5
+          }}>{FilterFormFileds}</Box>
+            <CustomButton
+              variant="outlined"
+              size="small"
+              onClick={(e) => onSubmit(filterState)}
+              sx={{ width: "100%", height: "3rem" }}>
+              submit
+            </CustomButton>
         </Container>
       </Drawer>
     ),
