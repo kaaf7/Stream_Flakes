@@ -1,27 +1,53 @@
-import { MediaCard } from "@/components/ui/movie-card"
-import { SkeletonGrid } from "@/components/ui/skeleton-grid"
-import Media from "@/interfaces/Media"
-import { ImageList } from "@mui/material"
+import { ImageList, Skeleton } from "@mui/material";
+
+import { MediaCardUpdated } from "@/components/ui/media-card-updated/MediaCardUpdated";
+import { useResponsive } from "@/hooks/responsive/useResponsive";
+import Media from "@/interfaces/Media";
+import { useMemo } from "react";
 
 interface FavoritesGridProps {
-  medias: Media[]
-  isLoading: boolean
+  medias: Media[];
+  currentPage: number;
+  isLoading: boolean;
 }
 
-export const FavoritesGrid = ({ medias, isLoading }: FavoritesGridProps) => {
-  if (isLoading) {
-    return <SkeletonGrid gridLength={28} minmax={"12.5rem"} />
-  }
+export const FavoritesGrid = ({ medias, currentPage, isLoading }: FavoritesGridProps) => {
+  const { mobile } = useResponsive();
+
+  const gridStyles = {
+    gridTemplateColumns: mobile ? "repeat(2, 1fr) !important" : "repeat(6, 1fr) !important",
+    width: "100%",
+    height: "100%",
+  };
+
+  const skeletons = useMemo(() => {
+    return Array.from({ length: 12 }, (_, index) => (
+      <Skeleton
+        key={index}
+        variant="rectangular"
+        sx={{
+          width: "100%",
+          //TODO change later
+          height: mobile ? "25vh" : "40vh",
+          borderRadius: "1rem",
+        }}
+      />
+    ));
+  }, [mobile]);
+
   return (
-    <ImageList
-      gap={20}
-      sx={{
-        gridTemplateColumns: "repeat(auto-fill, minmax(12.5rem, 1fr)) !important",
-        width: "100%"
-      }}>
-      {medias.map((media: Media) => (
-        <MediaCard key={media.id} id={media.id} imageUrl={media.imageUrl} title={media.title} />
-      ))}
+    <ImageList gap={15} sx={gridStyles}>
+      {isLoading && currentPage === 0
+        ? skeletons
+        : medias.map((media: Media,index:number) => (
+            <MediaCardUpdated
+              borderRadius={"1rem"}
+              key={index}
+              id={media.id}
+              imageUrl={media.imageUrl}
+            />
+          ))}
+      {isLoading && currentPage > 0 && skeletons}
     </ImageList>
-  )
-}
+  );
+};
