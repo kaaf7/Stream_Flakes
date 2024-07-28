@@ -1,5 +1,12 @@
-{"filter":"name",
-  "main": {
+{
+  "filter": "Filter",
+  "account": "Account",
+  "signUp": "signup",
+  "login": "Login",
+  "logout":"Logout",
+  "shows":"Shows",
+  "favorites": "Favorites",
+  "form": {
     "filter": {
       "name": "Name",
       "year": "Year",
