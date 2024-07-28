@@ -16,6 +16,19 @@ export const typography: TypographyVariantsOptions = {
     '"Segoe UI Symbol"'
   ].join(",")
 }
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    xs: false
+    sm: false
+    md: false
+    lg: false
+    xl: false
+    mobile: true 
+    tablet: true
+    laptop: true
+    desktop: true
+  }
+}
 
 const commonThemeProperties: ThemeOptions = {
   shape: {
@@ -56,6 +69,14 @@ export const lightTheme = createTheme({
 })
 
 export const darkTheme = createTheme({
+  breakpoints: {
+    values: {
+      mobile: 0,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1200
+    }
+  },
   ...commonThemeProperties,
   palette: darkPalette,
   components: {

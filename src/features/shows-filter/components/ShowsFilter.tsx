@@ -3,7 +3,7 @@ import {
   SHOWS_FILTER_BY_NAME,
   SHOWS_FILTER_BY_YEAR
 } from "@/constants/constants"
-import { Container, Drawer } from "@mui/material"
+import { Box, Container, SwipeableDrawer } from "@mui/material"
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
@@ -56,78 +56,90 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
   }
 
   const onFilterDelete = (key: keyof ShowsFilterInterface) => {
-   /*  updateFilter({
+    /*  updateFilter({
       ...filter,
       [key]: null
     }) */
-     updateFilter( Object.fromEntries(Object.entries(filter).filter(([k]) => k !== key)))
+    updateFilter(Object.fromEntries(Object.entries(filter).filter(([k]) => k !== key)))
   }
 
-
-  const FORM_FIELDS = [
+  const FILTER_FORM_FIELDS_ITEMS = [
     {
-      id: t("main.filter.name"),
+      id: t("form.filter.name"),
       name: "name",
       value: filterState.name ?? "",
-      label: t("main.filter.name"),
-      placeholder: t("main.filter.name"),
-      ariaPlaceHolder: t("main.filter.name"),
+      label: t("form.filter.name"),
+      placeholder: t("form.filter.name"),
+      autoComplete: "off",
+      sx: { width: "100%" },
       onChange
     },
     {
-      id: t("main.filter.genre"),
+      id: t("form.filter.genre"),
       name: "genre",
       value: filterState.genre ?? "",
-      label: t("main.filter.genre"),
-      placeholder: t("main.filter.genre"),
-      ariaPlaceHolder: t("main.filter.genre"),
+      label: t("form.filter.genre"),
+      placeholder: t("form.filter.genre"),
+      autoComplete: "off",
+      sx: { width: "100%" },
       onChange
     },
     {
-      id: t("main.filter.year"),
+      id: t("form.filter.year"),
       name: "year",
       value: filterState.year ?? "",
-      label: t("main.filter.year"),
-      placeholder: t("main.filter.year"),
-      ariaPlaceHolder: t("main.filter.year"),
+      label: t("form.filter.year"),
+      placeholder: t("form.filter.year"),
+      autoComplete: "off",
+      sx: { width: "100%" },
       onChange
     }
   ]
 
-  const FilterFormFileds = createFormFields(FORM_FIELDS)
+  const FilterFormFileds = createFormFields(FILTER_FORM_FIELDS_ITEMS)
 
   return {
     FilterDrawer: (
-      <Drawer
+      <SwipeableDrawer
         sx={{
-          width: "40rem",
+          height:"100%",
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: "400px"
+            width: "350px"
           }
         }}
         anchor="right"
         open={isFilterOPen}
+        onOpen={()=>setFilterOpen(true)}
         onClose={() => setFilterOpen(false)}>
         <Container
           sx={{
             height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
             padding: "1rem 1rem 1rem 1rem",
+            gap: 5
+          }}>
+          <Box sx={{
+            width:"100%",
+            height: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "center",
             gap: 5
-          }}>
-          {FilterFormFileds}
-          <CustomButton
-            variant="outlined"
-            onClick={(e) => onSubmit(filterState)}
-            sx={{ width: "100%", height: "3rem" }}>
-            submit
-          </CustomButton>
+          }}>{FilterFormFileds}</Box>
+            <CustomButton
+              variant="outlined"
+              size="small"
+              onClick={(e) => onSubmit(filterState)}
+              sx={{ width: "100%"}}>
+              submit
+            </CustomButton>
         </Container>
-      </Drawer>
+      </SwipeableDrawer>
     ),
     filter: filter,
     onFilterDelete: onFilterDelete,

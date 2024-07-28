@@ -1,10 +1,24 @@
-import { IconButton, IconButtonProps } from "@mui/material"
+import { IconButton, IconButtonProps, Tooltip, TooltipProps } from "@mui/material"
+
 import { ReactNode } from "react"
 
+interface CustomTooltipProps extends Omit<TooltipProps, "children"> {}
+
 interface CustomIconButtonProps extends IconButtonProps {
+  toolTipProps: CustomTooltipProps
   children: ReactNode
 }
 
-export const CustomIconButton = ({ children, ...props }: CustomIconButtonProps) => {
-  return <IconButton {...props}>{children}</IconButton>
+export const CustomIconButton = ({
+  toolTipProps,
+  children,
+  ...iconButtonProps
+}: CustomIconButtonProps) => {
+  return (
+    <Tooltip {...toolTipProps} title={toolTipProps.title}>
+      <span>
+        <IconButton {...iconButtonProps}>{children}</IconButton>
+      </span>
+    </Tooltip>
+  )
 }

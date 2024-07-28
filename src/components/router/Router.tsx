@@ -1,4 +1,4 @@
-import { LOGIN_PATH, MAIN_PATH, SHOWS_PATH, SIGN_UP_PATH } from "@/constants/constants"
+import { FAVORITES_PATH, LOGIN_PATH, MAIN_PATH, SHOWS_PATH, SIGN_UP_PATH } from "@/constants/constants"
 import { Suspense, lazy } from "react"
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 
@@ -11,6 +11,9 @@ const Login = lazy(() => import("@/pages/login/Login"))
 const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 
 const Home = lazy(() => import("@/pages/home/Home"))
+
+const FavoritesOverview = lazy(() => import("@/pages/favorites/FavoritesOverview"))
+
 
 export const PageSuspense = () => {
   return (
@@ -38,6 +41,13 @@ const protectedRoutes = [
     element: (
       <Suspense fallback={<PageSuspense />}>
         <ShowsOverview />
+      </Suspense>
+    )
+  }, {
+    path: FAVORITES_PATH,
+    element: (
+      <Suspense fallback={<PageSuspense />}>
+        <FavoritesOverview />
       </Suspense>
     )
   }
