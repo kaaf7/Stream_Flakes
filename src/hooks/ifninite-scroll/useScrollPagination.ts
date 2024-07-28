@@ -5,7 +5,7 @@ export const useScrollPagination = () => {
 
   const checkIfBottomReached = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      window.innerHeight + document.documentElement.scrollTop +1 >=
       document.documentElement.scrollHeight
     ) {
       setCurrentPage((prev) => prev + 1)
@@ -15,7 +15,7 @@ export const useScrollPagination = () => {
     const handleScroll = () => checkIfBottomReached()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [ ])
   
   return { currentPage }
 }
