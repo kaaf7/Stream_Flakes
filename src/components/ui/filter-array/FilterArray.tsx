@@ -20,19 +20,20 @@ const FilterArrayStyle = {
 }
 
 export const FilterArray = ({ filter, onFilterDelete, onFilterDeleteAll }: FilterListProps) => {
-  const {t} = useTranslation(["common"])
+  const { t } = useTranslation(["common"])
 
   const validFilterEntries = Object.entries(filter).filter(
     ([_, v]) => ["string", "number", "boolean"].includes(typeof v) && v !== ""
   )
   return (
     <Box sx={FilterArrayStyle}>
-      {validFilterEntries.map(([k, v]) => (
+      {validFilterEntries.map(([key, value]) => (
         <Chip
+          key={key}
           variant={ChipVariant.OUTLINED}
           size={ChipSize.SMALL}
-          label={`${t(`form.filter.${k}`)}: ${v}`}
-          onDelete={() => onFilterDelete(k)}
+          label={`${t(`form.filter.${key}`)}: ${value}`}
+          onDelete={() => onFilterDelete(key)}
         />
       ))}
       {validFilterEntries.length > 0 && (
