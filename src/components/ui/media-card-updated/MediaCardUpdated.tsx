@@ -50,7 +50,7 @@ export const MediaCardUpdated = ({
           sx={{ background: "none" }}
           actionIcon={
             <IconButton aria-label="favorite">
-              <Favorite color={isFavorite ? MainColor.WARNING : MainColor.PRIMARY} />
+              <Favorite color={MainColor.WARNING} />
             </IconButton>
           }
         />
