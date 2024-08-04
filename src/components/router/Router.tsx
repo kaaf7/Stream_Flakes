@@ -39,35 +39,28 @@ const protectedRoutes = [
   {
     path: SHOWS_PATH,
     element: (
-      <Suspense fallback={<PageSuspense />}>
         <ShowsOverview />
-      </Suspense>
     )
   }, {
     path: FAVORITES_PATH,
     element: (
-      <Suspense fallback={<PageSuspense />}>
         <FavoritesOverview />
-      </Suspense>
     )
   }
 ]
+
 
 const routes = (isLoggedIn: boolean) => [
   {
     path: SIGN_UP_PATH,
     element: (
-      <Suspense fallback={<PageSuspense />}>
         <SignUp />
-      </Suspense>
     )
   },
   {
     path: LOGIN_PATH,
     element: (
-      <Suspense fallback={<PageSuspense />}>
         <Login />
-      </Suspense>
     )
   },
 
@@ -78,9 +71,7 @@ const routes = (isLoggedIn: boolean) => [
   {
     path: MAIN_PATH,
     element: (
-      <Suspense fallback={<PageSuspense />}>
         <MainLayout isLoggedIn={isLoggedIn} />
-      </Suspense>
     ),
     children: protectedRoutes
   }
@@ -90,6 +81,11 @@ interface RouterProps {
   isLoggedIn: boolean
 }
 export const Router = ({ isLoggedIn }: RouterProps) => {
-  const router = createBrowserRouter(routes(true))
-  return <RouterProvider router={router} />
+  const router = createBrowserRouter(routes(isLoggedIn))
+
+  return (
+    <Suspense fallback={<PageSuspense />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  )
 }
