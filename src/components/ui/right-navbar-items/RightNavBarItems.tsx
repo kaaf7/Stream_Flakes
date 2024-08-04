@@ -1,6 +1,7 @@
 import {
   LOGIN_PATH,
   MainColor,
+  SHOWS_PATH,
   SIGN_UP_PATH,
   ToolTipPlacement,
   createFavoriteShowsPath,
@@ -43,7 +44,9 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
     {
       isProtected: false,
       component: (
-        <CustomIconButton toolTipProps={{ title: t("shows"), placement: ToolTipPlacement.BOTTOM }}>
+        <CustomIconButton
+          toolTipProps={{ title: t("favorites"), placement: ToolTipPlacement.BOTTOM }}
+          onClick={() => navigate(SHOWS_PATH)}>
           <LocalMoviesOutlined color={MainColor.PRIMARY} />
         </CustomIconButton>
       )
@@ -129,7 +132,8 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       {USER_RIGHT_SIDE_ITEMS.filter((item) => item.isProtected !== isLoggedIn).map(
         (item, index) => (
           <div key={index}>{item.component}</div>
-        ))}
+        )
+      )}
     </Box>
   )
 }
