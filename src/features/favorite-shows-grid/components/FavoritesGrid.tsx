@@ -1,24 +1,26 @@
 import { ImageList, Skeleton } from "@mui/material";
 
 import { MediaCardUpdated } from "@/components/ui/media-card-updated/MediaCardUpdated";
+import { useScrollPagination } from "@/hooks/ifninite-scroll/useScrollPagination";
 import { useResponsive } from "@/hooks/responsive/useResponsive";
-import Media from "@/interfaces/Media";
+import { Media } from "@/interfaces/Media";
 import { useMemo } from "react";
 
 interface FavoritesGridProps {
   medias: Media[];
-  currentPage: number;
   isLoading: boolean;
 }
 
-export const FavoritesGrid = ({ medias, currentPage, isLoading }: FavoritesGridProps) => {
-  const { mobile } = useResponsive();
+export const FavoritesGrid = ({ medias, isLoading }: FavoritesGridProps) => {
+  const { mobile,tablet } = useResponsive();
+  const { currentPage } = useScrollPagination()
 
   const gridStyles = {
-    gridTemplateColumns: mobile ? "repeat(2, 1fr) !important" : "repeat(6, 1fr) !important",
+    gridTemplateColumns: mobile || tablet ? "repeat(2, 1fr) !important" : "repeat(6, 1fr) !important",
     width: "100%",
     height: "100%",
   };
+
 
   const skeletons = useMemo(() => {
     return Array.from({ length: 12 }, (_, index) => (
@@ -28,7 +30,7 @@ export const FavoritesGrid = ({ medias, currentPage, isLoading }: FavoritesGridP
         sx={{
           width: "100%",
           //TODO change later
-          height: mobile ? "25vh" : "40vh",
+          height: mobile || tablet ? "15rem": "25rem",
           borderRadius: "1rem",
         }}
       />
@@ -44,6 +46,8 @@ export const FavoritesGrid = ({ medias, currentPage, isLoading }: FavoritesGridP
               borderRadius={"1rem"}
               key={index}
               id={media.id}
+              needsMediaCardBar={true}
+              isFavorite={true}
               imageUrl={media.imageUrl}
             />
           ))}
