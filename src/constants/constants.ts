@@ -45,9 +45,9 @@ export enum ToolTipPlacement {
 }
 
 export enum MainColor {
+  DEFAULT = "default",
   PRIMARY = "primary",
   SECONDRY = "secondry",
-
   WARNING = "warning"
 }
 export enum ButtonSize {
