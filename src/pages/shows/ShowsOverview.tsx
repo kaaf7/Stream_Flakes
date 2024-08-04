@@ -1,10 +1,21 @@
-import { Box, Grid } from "@mui/material"
+import { MAIN_PATH, SHOWS_PATH } from "@/constants/constants"
+import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
 
 import { MediaCard } from "@/components/ui/movie-card"
 import { ShowsGridApiConnector } from "@/features/all-shows"
 import { BRAND_ICONS } from "@/features/home"
+import { useResponsive } from "@/hooks/responsive/useResponsive"
+import { KeyboardArrowRight } from "@mui/icons-material"
+import { useTranslation } from "react-i18next"
 
 export default function ShowsOverview() {
+  const { t } = useTranslation(["common"])
+  const { laptop, desktop } = useResponsive()
+
+  const BREAD_CRUMBS_ITEMS: { title: string; link: string }[] = [
+    { title: t("home"), link: MAIN_PATH },
+    { title: t("shows"), link: SHOWS_PATH }
+  ]
   return (
     <Box
       sx={{
@@ -17,6 +28,17 @@ export default function ShowsOverview() {
         marginTop: "10rem",
         gap: 1
       }}>
+      <Box sx={{ width: "85%" }}>
+        <Breadcrumbs separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
+          {BREAD_CRUMBS_ITEMS.map((item: { title: string; link: string }) => (
+            <Link key={item.title} color="primary" href={item.link}>
+              {item.title}
+            </Link>
+          ))}
+        </Breadcrumbs>
+      </Box>
+      {laptop ||
+        (desktop && (
       <Box
         sx={{
           width: "85%",
@@ -41,7 +63,7 @@ export default function ShowsOverview() {
             />
           ))}
         </Grid>
-      </Box>
+      </Box>  ))}
       <ShowsGridApiConnector />
     </Box>
   )
