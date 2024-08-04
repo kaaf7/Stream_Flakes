@@ -1,4 +1,4 @@
-import { MAIN_PATH, SHOWS_PATH } from "@/constants/constants"
+import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
 import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
 
 import { MediaCard } from "@/components/ui/movie-card"
@@ -25,13 +25,13 @@ export default function ShowsOverview() {
         alignItems: "center",
         alignContent: "center",
         justifyItems: "center",
-        marginTop: "10rem",
-        gap: 1
+        marginTop: "5rem",
+        gap: 2
       }}>
       <Box sx={{ width: "85%" }}>
         <Breadcrumbs separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
           {BREAD_CRUMBS_ITEMS.map((item: { title: string; link: string }) => (
-            <Link key={item.title} color="primary" href={item.link}>
+            <Link key={item.title} color={MainColor.PRIMARY} href={item.link}>
               {item.title}
             </Link>
           ))}

@@ -6,6 +6,7 @@ interface GidSkeletonProps {
 export const GidSkeleton = ({ gridLength }: GidSkeletonProps) => {
   return Array.from({ length: gridLength }, (_, index) => (
     <Box
+      key={index}
       sx={{
         width: "100%",
         height: "100%",
@@ -14,7 +15,6 @@ export const GidSkeleton = ({ gridLength }: GidSkeletonProps) => {
         borderRadius: "1rem"
       }}>
       <Skeleton
-        key={index}
         variant="rectangular"
         sx={{
           width: "100%",
@@ -27,7 +27,7 @@ export const GidSkeleton = ({ gridLength }: GidSkeletonProps) => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover"
+            objectFit: "contain"
           }}
           src={
             "https://posters.movieposterdb.com/24_05/2024/21454134/l_the-bikeriders-movie-poster_95cd633e.jpg"
