@@ -1,5 +1,5 @@
 import { MainColor, ToolTipPlacement } from "@/constants/constants"
-import { ReactNode, useState } from "react"
+import { useState } from "react"
 
 import dummyData from "@/api/dummyData.json"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
@@ -18,11 +18,7 @@ const FavoriteShowsApiConnectorStyle = {
   alignItems: "center",
   height: "2rem"
 }
-interface FavoriteShowsApiConnectorProps {
-  children: ReactNode
-}
-
-export const FavoriteShowsApiConnector = ({ children }: FavoriteShowsApiConnectorProps) => {
+export const FavoriteShowsApiConnector = () => {
   const { t } = useTranslation(["common"])
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -66,7 +62,6 @@ export const FavoriteShowsApiConnector = ({ children }: FavoriteShowsApiConnecto
         </CustomIconButton>
         {FilterDrawer}
       </Box>
-      {children}
       <MediaGrid isLoading={isLoading} medias={dummyData} />
     </main>
   )
