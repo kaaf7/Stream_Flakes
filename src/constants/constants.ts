@@ -16,7 +16,7 @@ export const SHOWS_PATH = "/shows"
 
 export const SPORTS_PATH = "/sports"
 
-export const FAVORITES_PATH = `shows/${USER_IDENTIFIER}/favorites`
+export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
 
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
