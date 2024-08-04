@@ -1,47 +1,10 @@
 import { Box, InputAdornment, TextField, useTheme } from "@mui/material"
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useMemo, useState } from "react"
 
 import { SearchResultsDisplay } from "@/components/ui/search-results-display"
 import { MainColor } from "@/constants/constants"
 import { Search } from "@mui/icons-material"
 import { useTranslation } from "react-i18next"
-
-const SearchBarTextFieldStyle = {
-  width: "100%",
-  background: "inherit",
-  transition: "width 0.3s ease-in-out",
-  "&:focus-within": {},
-  "& .MuiInput-underline:before": {
-    borderBottom: ".01rem solid",
-    transition: "border-bottom-width 0.2s"
-  },
-  "&:hover .MuiInput-underline:before": {
-    borderBottom: ".01rem solid"
-  },
-  "& .MuiInput-underline:after": {
-    borderBottom: ".01rem solid"
-  },
-  "& .MuiOutlinedInput-root": {
-    "&:hover .MuiOutlinedInput-notchedOutline": {
-      borderColor: "none",
-      borderWidth: ".1px"
-    },
-    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "none",
-      borderWidth: ".1px"
-    },
-    height: "30px"
-  },
-  "& .MuiInputLabel-root": {
-    transform: "translate(14px, .3rem) scale(1)",
-    transition: "transform 0.2s",
-    width: "100%"
-  },
-  "& .MuiInputLabel-shrink": {
-    transform: "translate(14px, -6px) scale(0.75)"
-  },
-  zIndex: 100
-}
 
 export const SearchBar = () => {
   const theme = useTheme()
@@ -70,6 +33,45 @@ export const SearchBar = () => {
     }
   }, [])
 
+
+  const searchBarTextFieldStyle = useMemo(() => ({
+    width: "100%",
+    background: "inherit",
+    transition: "width 0.3s ease-in-out",
+    "&:focus-within": {},
+    "& .MuiInput-underline:before": {
+      borderBottom: ".01rem solid",
+      transition: "border-bottom-width 0.2s"
+    },
+    "&:hover .MuiInput-underline:before": {
+      borderBottom: ".01rem solid"
+    },
+    "& .MuiInput-underline:after": {
+      borderBottom: ".01rem solid"
+    },
+    "& .MuiOutlinedInput-root": {
+      "&:hover .MuiOutlinedInput-notchedOutline": {
+        borderColor: "none",
+        borderWidth: ".1px"
+      },
+      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        borderColor: "none",
+        borderWidth: ".1px"
+      },
+      height: "30px"
+    },
+    "& .MuiInputLabel-root": {
+      transform: "translate(14px, .3rem) scale(1)",
+      transition: "transform 0.2s",
+      width: "100%"
+    },
+    "& .MuiInputLabel-shrink": {
+      transform: "translate(14px, -6px) scale(0.75)"
+    },
+    zIndex: 100
+  }), [theme]) // Add dependencies if necessary
+
+
   return (
     <Box
       sx={{
@@ -95,7 +97,7 @@ export const SearchBar = () => {
             </InputAdornment>
           )
         }}
-        sx={SearchBarTextFieldStyle}
+        sx={searchBarTextFieldStyle}
       />
       <SearchResultsDisplay resultBoxVisible={resultBoxVisible} />
     </Box>
