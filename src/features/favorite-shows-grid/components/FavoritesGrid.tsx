@@ -1,57 +1,39 @@
-import { ImageList, Skeleton } from "@mui/material";
+import { GidSkeleton } from "@/components/ui/grid-skeleton"
+import { MediaCardUpdated } from "@/components/ui/media-card-updated"
+import { useScrollPagination } from "@/hooks/ifninite-scroll/useScrollPagination"
+import { useResponsive } from "@/hooks/responsive/useResponsive"
+import { Media } from "@/interfaces/Media"
+import { ImageList } from "@mui/material"
+import { memo } from "react"
 
-import { MediaCardUpdated } from "@/components/ui/media-card-updated/MediaCardUpdated";
-import { useScrollPagination } from "@/hooks/ifninite-scroll/useScrollPagination";
-import { useResponsive } from "@/hooks/responsive/useResponsive";
-import { Media } from "@/interfaces/Media";
-import { useMemo } from "react";
-
-interface FavoritesGridProps {
-  medias: Media[];
-  isLoading: boolean;
+interface MediaGridProps {
+  medias: Media[]
+  isLoading: boolean
 }
 
-export const FavoritesGrid = ({ medias, isLoading }: FavoritesGridProps) => {
-  const { mobile,tablet } = useResponsive();
+export const FavoritesGrid = ({ medias, isLoading }: MediaGridProps) => {
+  const { mobile, tablet } = useResponsive()
   const { currentPage } = useScrollPagination()
-
-  const gridStyles = {
-    gridTemplateColumns: mobile || tablet ? "repeat(2, 1fr) !important" : "repeat(6, 1fr) !important",
-    width: "100%",
-    height: "100%",
-  };
-
-
-  const skeletons = useMemo(() => {
-    return Array.from({ length: 12 }, (_, index) => (
-      <Skeleton
-        key={index}
-        variant="rectangular"
-        sx={{
-          width: "100%",
-          //TODO change later
-          height: mobile || tablet ? "15rem": "25rem",
-          borderRadius: "1rem",
-        }}
-      />
-    ));
-  }, [mobile]);
-
+  const MemoizedGridSkeleton = memo(GidSkeleton)
+  
   return (
-    <ImageList gap={15} sx={gridStyles}>
-      {isLoading && currentPage === 0
-        ? skeletons
-        : medias.map((media: Media,index:number) => (
-            <MediaCardUpdated
-              borderRadius={"1rem"}
-              key={index}
-              id={media.id}
-              needsMediaCardBar={true}
-              isFavorite={true}
-              imageUrl={media.imageUrl}
-            />
-          ))}
-      {isLoading && currentPage > 0 && skeletons}
+    <ImageList gap={10} cols={mobile || tablet ? 2 : 6} sx={{ width: "100%", height: "100%" }}>
+      {isLoading && currentPage === 0 ? (
+        <MemoizedGridSkeleton gridLength={18} />
+      ) : (
+        medias.map((media: Media, index: number) => (
+          <MediaCardUpdated
+            borderRadius={"1rem"}
+            key={index}
+            id={media.id}
+            isLoading={isLoading}
+            isFavorite={true}
+            needsMediaCardBar={true}
+            imageUrl={media.imageUrl}
+          />
+        ))
+      )}
+      {isLoading && currentPage >0 && <MemoizedGridSkeleton gridLength={12} />}
     </ImageList>
-  );
-};
+  )
+}
