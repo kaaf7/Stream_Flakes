@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material"
 
 import { CustomButton } from "@/components/buttons/custom-button"
 import { MainColor } from "@/constants/constants"
-import { FavoriteShowsApiConnector } from "@/features/favorite-shows-grid"
+import { FavoriteShowsApiConnector } from "@/features/favorite-shows"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 

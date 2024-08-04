@@ -1,4 +1,2 @@
-export * from "./components/ShowsGrid"
-
-export * from "./api/ShowsGridApiConnector"
+export * from "./api/ShowsGridApiConnector";
 

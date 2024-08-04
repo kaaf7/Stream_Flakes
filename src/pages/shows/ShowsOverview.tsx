@@ -1,8 +1,8 @@
 import { Box, Grid } from "@mui/material"
 
 import { MediaCard } from "@/components/ui/movie-card"
+import { ShowsGridApiConnector } from "@/features/all-shows"
 import { BRAND_ICONS } from "@/features/home"
-import { ShowsGridApiConnector } from "@/features/shows-grid"
 
 export default function ShowsOverview() {
   return (
