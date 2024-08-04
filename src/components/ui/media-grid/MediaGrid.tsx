@@ -8,14 +8,15 @@ import { memo } from "react"
 
 interface MediaGridProps {
   medias: Media[]
+  needsMediaCardBar?: boolean
   isLoading: boolean
 }
 
-export const MediaGrid = ({ medias, isLoading }: MediaGridProps) => {
+export const MediaGrid = ({ medias, needsMediaCardBar, isLoading }: MediaGridProps) => {
   const { mobile, tablet } = useResponsive()
   const { currentPage } = useScrollPagination()
   const MemoizedGridSkeleton = memo(GidSkeleton)
-  
+
   return (
     <ImageList gap={10} cols={mobile || tablet ? 2 : 6} sx={{ width: "100%", height: "100%" }}>
       {isLoading && currentPage === 0 ? (
@@ -26,13 +27,13 @@ export const MediaGrid = ({ medias, isLoading }: MediaGridProps) => {
             borderRadius={"1rem"}
             key={index}
             id={media.id}
-            isFavorite={true}
-            needsMediaCardBar={true}
+            needsMediaCardBar={needsMediaCardBar}
+            isFavorite={media.isFavorite}
             imageUrl={media.imageUrl}
           />
         ))
       )}
-      {isLoading && currentPage >0 && <MemoizedGridSkeleton gridLength={12} />}
+      {isLoading && currentPage > 0 && <MemoizedGridSkeleton gridLength={12} />}
     </ImageList>
   )
 }
