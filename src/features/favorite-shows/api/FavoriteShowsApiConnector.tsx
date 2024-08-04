@@ -1,11 +1,11 @@
 import { MainColor, ToolTipPlacement } from "@/constants/constants"
-import { ShowsFilter } from "@/features/shows-filter"
 import { ReactNode, useState } from "react"
 
 import dummyData from "@/api/dummyData.json"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
 import { FilterArray } from "@/components/ui/filter-array"
-import { FavoritesGrid } from "@/features/favorite-shows-grid"
+import { MediaGrid } from "@/components/ui/media-grid"
+import { ShowsFilter } from "@/features/shows-filter"
 import { TuneOutlined } from "@mui/icons-material"
 import { Box } from "@mui/material"
 import { useTranslation } from "react-i18next"
@@ -67,7 +67,7 @@ export const FavoriteShowsApiConnector = ({ children }: FavoriteShowsApiConnecto
         {FilterDrawer}
       </Box>
       {children}
-      <FavoritesGrid isLoading={isLoading} medias={dummyData} />
+      <MediaGrid isLoading={isLoading} medias={dummyData} />
     </main>
   )
 }

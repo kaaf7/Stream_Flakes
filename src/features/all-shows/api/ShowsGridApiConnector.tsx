@@ -3,8 +3,8 @@ import { MainColor, ToolTipPlacement } from "@/constants/constants"
 import dummyData from "@/api/dummyData.json"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
 import { FilterArray } from "@/components/ui/filter-array"
+import { MediaGrid } from "@/components/ui/media-grid"
 import { ShowsFilter } from "@/features/shows-filter"
-import { ShowsGrid } from "@/features/shows-grid"
 import { TuneOutlined } from "@mui/icons-material"
 import { Box } from "@mui/material"
 import { useState } from "react"
@@ -63,7 +63,7 @@ export const ShowsGridApiConnector = () => {
         </CustomIconButton>
         {FilterDrawer}
       </Box>
-      <ShowsGrid isLoading={isLoading} medias={dummyData} />
+      <MediaGrid isLoading={isLoading} medias={dummyData} />
     </main>
   )
 }
