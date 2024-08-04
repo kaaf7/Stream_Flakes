@@ -45,7 +45,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       isProtected: false,
       component: (
         <CustomIconButton
-          toolTipProps={{ title: t("favorites"), placement: ToolTipPlacement.BOTTOM }}
+          toolTipProps={{ title: t("shows"), placement: ToolTipPlacement.BOTTOM }}
           onClick={() => navigate(SHOWS_PATH)}>
           <LocalMoviesOutlined color={MainColor.PRIMARY} />
         </CustomIconButton>
