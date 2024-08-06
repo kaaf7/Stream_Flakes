@@ -1,6 +1,6 @@
 import { FAVORITES_PATH, LOGIN_PATH, MAIN_PATH, SHOWS_PATH, SIGN_UP_PATH } from "@/constants/constants"
-import { Suspense, lazy } from "react"
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Suspense, lazy, useEffect } from "react"
+import { Navigate, RouterProvider, createBrowserRouter, useLocation } from "react-router-dom"
 
 import { MainLayout } from "../ui/main-layout"
 
@@ -13,7 +13,15 @@ const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 const Home = lazy(() => import("@/pages/home/Home"))
 
 const FavoritesOverview = lazy(() => import("@/pages/favorites/FavoritesOverview"))
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 export const PageSuspense = () => {
   return (
