@@ -1,7 +1,6 @@
 import {
   LOGIN_PATH,
   MainColor,
-  SHOWS_PATH,
   SIGN_UP_PATH,
   ToolTipPlacement,
   createFavoriteShowsPath,
@@ -9,7 +8,6 @@ import {
 } from "@/constants/constants"
 import {
   FavoriteBorder,
-  LocalMoviesOutlined,
   Logout,
   SportsSoccerOutlined
 } from "@mui/icons-material"
@@ -17,6 +15,7 @@ import { Box, ContainerProps } from "@mui/material"
 
 import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
+import { ShowsButtonWithDialog } from "@/features/shows-display-dialog"
 import AccountCircle from "@mui/icons-material/AccountCircle"
 import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
@@ -44,11 +43,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
     {
       isProtected: false,
       component: (
-        <CustomIconButton
-          toolTipProps={{ title: t("shows"), placement: ToolTipPlacement.BOTTOM }}
-          onClick={() => navigate(SHOWS_PATH)}>
-          <LocalMoviesOutlined color={MainColor.PRIMARY} />
-        </CustomIconButton>
+        <ShowsButtonWithDialog/>
       )
     },
     {
