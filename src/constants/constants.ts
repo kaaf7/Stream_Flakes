@@ -2,23 +2,23 @@
 export const USER_IDENTIFIER = ":userId"
 
 //** PATHS **/
-export const MAIN_PATH = "/main"
+export const MAIN_PATH = "/"
 
-export const USER_PATH = `/main/users/${USER_IDENTIFIER}`
+export const USER_PATH = `users/${USER_IDENTIFIER}`
 
-export const LOGIN_PATH = "/main/login"
+export const LOGIN_PATH = "login"
 
-export const SIGN_UP_PATH = "/main/signup"
+export const SIGN_UP_PATH = "/signup"
 
-export const MEDIAS_PATH = "/main/medias"
+export const MEDIAS_PATH = "/medias"
 
-export const SHOWS_PATH = "/main/shows"
+export const SHOWS_PATH = "/shows"
 
-export const SPORTS_PATH = "/main/sports"
+export const SPORTS_PATH = "/sports"
 
-export const FAVORITES_PATH = `/main/shows/${USER_IDENTIFIER}/favorites`
+export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
 
-export const SHARED_FAVORITES_PATH = "/main/favorites/shared"
+export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
 /** PATH CREATOR **/
 export const createFavoriteShowsPath = (userId: string) => {
