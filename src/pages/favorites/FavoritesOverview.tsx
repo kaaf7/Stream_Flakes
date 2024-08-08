@@ -1,14 +1,14 @@
+import { MAIN_PATH, MainColor, SHOWS_PATH, createFavoriteShowsPath } from "@/constants/constants"
 import {
-  MAIN_PATH,
-  MainColor,
-  SHOWS_PATH,
-  createFavoriteShowsPath
-} from "@/constants/constants"
+  FavoriteBorder,
+  HomeMaxOutlined,
+  KeyboardArrowRight,
+  LocalMoviesOutlined
+} from "@mui/icons-material"
 import { Box, Breadcrumbs, Grid, Link, Typography } from "@mui/material"
 
 import { FavoriteShowsApiConnector } from "@/features/favorite-shows"
 import { useResponsive } from "@/hooks/responsive/useResponsive"
-import { KeyboardArrowRight } from "@mui/icons-material"
 import { useTranslation } from "react-i18next"
 
 const FavoritesOverviewTypographyStyle = {
@@ -27,10 +27,10 @@ export default function FavoritesOverview() {
 
   //TODO ADD userId later
   const userId = "userId"
-  const BREAD_CRUMBS_ITEMS: { title: string; link: string }[] = [
-    { title: t("home"), link: MAIN_PATH },
-    { title: t("shows"), link: SHOWS_PATH },
-    { title: t("favorites"), link: createFavoriteShowsPath(userId) }
+  const BREAD_CRUMBS_ITEMS: { icon: React.ReactNode; title: string; link: string }[] = [
+    { icon: <HomeMaxOutlined />, title: t("home"), link: MAIN_PATH },
+    { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH },
+    { icon: <FavoriteBorder />, title: t("favorites"), link: createFavoriteShowsPath(userId) }
   ]
   return (
     <Box
@@ -45,12 +45,14 @@ export default function FavoritesOverview() {
         gap: 2
       }}>
       <Box sx={{ width: "85%" }}>
-        <Breadcrumbs separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
-          {BREAD_CRUMBS_ITEMS.map((item: { title: string; link: string }) => (
-            <Link key={item.title} color={MainColor.PRIMARY} href={item.link}>
-              {item.title}
-            </Link>
-          ))}
+        <Breadcrumbs   sx={{ fontSize: ".75rem" }} separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
+          {BREAD_CRUMBS_ITEMS.map(
+            (item: { icon: React.ReactNode; title: string; link: string }) => (
+              <Link key={item.title} color={MainColor.PRIMARY} href={item.link}>
+                {item.icon} {item.title}
+              </Link>
+            )
+          )}
         </Breadcrumbs>
       </Box>
       {laptop ||
