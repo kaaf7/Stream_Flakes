@@ -4,9 +4,9 @@ export const USER_IDENTIFIER = ":userId"
 //** PATHS **/
 export const MAIN_PATH = "/"
 
-export const USER_PATH = `/users/${USER_IDENTIFIER}`
+export const USER_PATH = `users/${USER_IDENTIFIER}`
 
-export const LOGIN_PATH = "/login"
+export const LOGIN_PATH = "login"
 
 export const SIGN_UP_PATH = "/signup"
 
@@ -16,7 +16,7 @@ export const SHOWS_PATH = "/shows"
 
 export const SPORTS_PATH = "/sports"
 
-export const FAVORITES_PATH = `shows/${USER_IDENTIFIER}/favorites`
+export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
 
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
@@ -45,9 +45,9 @@ export enum ToolTipPlacement {
 }
 
 export enum MainColor {
+  DEFAULT = "default",
   PRIMARY = "primary",
   SECONDRY = "secondry",
-
   WARNING = "warning"
 }
 export enum ButtonSize {

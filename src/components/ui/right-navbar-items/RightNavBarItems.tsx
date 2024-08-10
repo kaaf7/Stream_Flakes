@@ -8,14 +8,13 @@ import {
 } from "@/constants/constants"
 import {
   FavoriteBorder,
-  LocalMoviesOutlined,
-  Logout,
-  SportsSoccerOutlined
+  Logout
 } from "@mui/icons-material"
 import { Box, ContainerProps } from "@mui/material"
 
 import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
+import { ShowsButtonWithDialogContainer } from "@/features/shows-display-dialog"
 import AccountCircle from "@mui/icons-material/AccountCircle"
 import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
@@ -43,19 +42,10 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
     {
       isProtected: false,
       component: (
-        <CustomIconButton toolTipProps={{ title: t("shows"), placement: ToolTipPlacement.BOTTOM }}>
-          <LocalMoviesOutlined color={MainColor.PRIMARY} />
-        </CustomIconButton>
+        <ShowsButtonWithDialogContainer/>
       )
     },
-    {
-      isProtected: false,
-      component: (
-        <CustomIconButton toolTipProps={{ title: t("sports"), placement: ToolTipPlacement.BOTTOM }}>
-          <SportsSoccerOutlined color={MainColor.PRIMARY} />
-        </CustomIconButton>
-      )
-    }
+    
   ]
 
   const USER_RIGHT_SIDE_ITEMS: Item[] = [
@@ -129,7 +119,8 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       {USER_RIGHT_SIDE_ITEMS.filter((item) => item.isProtected !== isLoggedIn).map(
         (item, index) => (
           <div key={index}>{item.component}</div>
-        ))}
+        )
+      )}
     </Box>
   )
 }

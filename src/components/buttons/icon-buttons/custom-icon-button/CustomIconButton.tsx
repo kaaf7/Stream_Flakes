@@ -16,9 +16,7 @@ export const CustomIconButton = ({
 }: CustomIconButtonProps) => {
   return (
     <Tooltip {...toolTipProps} title={toolTipProps.title}>
-      <span>
         <IconButton {...iconButtonProps}>{children}</IconButton>
-      </span>
     </Tooltip>
   )
 }
