@@ -45,11 +45,25 @@ export default function FavoritesOverview() {
         gap: 2
       }}>
       <Box sx={{ width: "85%" }}>
-        <Breadcrumbs   sx={{ fontSize: ".75rem" }} separator={<KeyboardArrowRight />} aria-label="breadcrumbs">
+        <Breadcrumbs
+          sx={{ fontSize: ".75rem" }}
+          separator={<KeyboardArrowRight />}
+          aria-label="breadcrumbs">
           {BREAD_CRUMBS_ITEMS.map(
             (item: { icon: React.ReactNode; title: string; link: string }) => (
-              <Link key={item.title} color={MainColor.PRIMARY} href={item.link}>
-                {item.icon} {item.title}
+              <Link
+                key={item.title}
+                color={MainColor.PRIMARY}
+                href={item.link}
+                sx={{
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 1
+                }}>
+                {item.title} {item.icon}
               </Link>
             )
           )}
