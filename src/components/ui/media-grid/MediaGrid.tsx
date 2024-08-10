@@ -18,7 +18,15 @@ export const MediaGrid = ({ medias, needsMediaCardBar, isLoading }: MediaGridPro
   const MemoizedGridSkeleton = memo(GidSkeleton)
 
   return (
-    <ImageList gap={10} cols={mobile  ? 2: tablet ? 3 : 6} sx={{ width: "100%", height: "100%" }}>
+    <ImageList
+      gap={10}
+      cols={mobile ? 2 : tablet ? 3 : 6}
+      sx={{
+        width: "100%",
+        height: "100%", 
+        boxSizing: "border-box", 
+        overflow: "hidden"
+      }}>
       {isLoading && currentPage === 0 ? (
         <MemoizedGridSkeleton gridLength={18} />
       ) : (
