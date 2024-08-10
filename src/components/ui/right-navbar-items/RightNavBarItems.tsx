@@ -8,8 +8,7 @@ import {
 } from "@/constants/constants"
 import {
   FavoriteBorder,
-  Logout,
-  SportsSoccerOutlined
+  Logout
 } from "@mui/icons-material"
 import { Box, ContainerProps } from "@mui/material"
 
@@ -46,14 +45,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
         <ShowsButtonWithDialog/>
       )
     },
-    {
-      isProtected: false,
-      component: (
-        <CustomIconButton toolTipProps={{ title: t("sports"), placement: ToolTipPlacement.BOTTOM }}>
-          <SportsSoccerOutlined color={MainColor.PRIMARY} />
-        </CustomIconButton>
-      )
-    }
+    
   ]
 
   const USER_RIGHT_SIDE_ITEMS: Item[] = [
