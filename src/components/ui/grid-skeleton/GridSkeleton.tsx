@@ -1,24 +1,18 @@
-import { Box, Skeleton } from "@mui/material"
+import { Skeleton } from "@mui/material"
 
 interface GidSkeletonProps {
   gridLength: number
 }
 export const GidSkeleton = ({ gridLength }: GidSkeletonProps) => {
   return Array.from({ length: gridLength }, (_, index) => (
-    <Box
-      key={index}
-      sx={{
-        width: "100%",
-        height: "100%",
-        position: "relative",
-        overflow: "hidden",
-        borderRadius: "1rem"
-      }}>
       <Skeleton
+        key={index}
         variant="rectangular"
         sx={{
           width: "100%",
-          height: "100%"
+          height: "100%",
+          borderRadius: "1rem",
+
         }}>
         <img
           alt="shows-skeletons"
@@ -34,6 +28,5 @@ export const GidSkeleton = ({ gridLength }: GidSkeletonProps) => {
           }
         />
       </Skeleton>
-    </Box>
   ))
 }
