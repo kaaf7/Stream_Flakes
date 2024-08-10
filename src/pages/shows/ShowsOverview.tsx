@@ -35,8 +35,19 @@ export default function ShowsOverview() {
           aria-label="breadcrumbs">
           {BREAD_CRUMBS_ITEMS.map(
             (item: { icon?: React.ReactNode; title: string; link: string }) => (
-              <Link key={item.title} color={MainColor.PRIMARY} href={item.link}>
-                {item.icon} {item.title}
+              <Link
+                key={item.title}
+                color={MainColor.PRIMARY}
+                href={item.link}
+                sx={{
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 1
+                }}>
+                {item.title} {item.icon}
               </Link>
             )
           )}
