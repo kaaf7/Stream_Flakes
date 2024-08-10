@@ -23,9 +23,10 @@ export const MediaGrid = ({ medias, needsMediaCardBar, isLoading }: MediaGridPro
       cols={mobile ? 2 : tablet ? 3 : 6}
       sx={{
         width: "100%",
-        height: "100%", 
+        height: "100%",
         boxSizing: "border-box", 
-        overflow: "hidden"
+        overflow: "hidden",
+        flexWrap: "wrap" 
       }}>
       {isLoading && currentPage === 0 ? (
         <MemoizedGridSkeleton gridLength={18} />
