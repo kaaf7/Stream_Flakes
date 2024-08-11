@@ -6,7 +6,6 @@ import { ReactNode } from "react"
 
 interface SearchResultDisplayProps {
   resultBoxVisible: boolean
-  isLoading?: boolean
 }
 
 export const SearchResultOverview = ({ resultBoxVisible }: SearchResultDisplayProps) => {
