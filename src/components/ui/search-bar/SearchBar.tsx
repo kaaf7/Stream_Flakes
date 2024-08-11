@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next"
 
 export const SearchBar = () => {
   const { t } = useTranslation(["common"])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const [search, setSearch] = useState<string | null>(null)
 
@@ -99,7 +98,7 @@ export const SearchBar = () => {
           zIndex: 100
         }}
       />
-      <SearchResultOverview isLoading={isLoading} resultBoxVisible={resultBoxVisible} />
+      <SearchResultOverview  resultBoxVisible={resultBoxVisible} />
     </Box>
   )
 }
