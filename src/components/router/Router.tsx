@@ -1,4 +1,11 @@
-import { FAVORITES_PATH, LOGIN_PATH, MAIN_PATH, SHOWS_PATH, SIGN_UP_PATH } from "@/constants/constants"
+import {
+  FAVORITES_PATH,
+  LOGIN_PATH,
+  MAIN_PATH,
+  MEDIA_PATH,
+  SHOWS_PATH,
+  SIGN_UP_PATH
+} from "@/constants/constants"
 import { Suspense, lazy, useEffect } from "react"
 import { Navigate, RouterProvider, createBrowserRouter, useLocation } from "react-router-dom"
 
@@ -13,15 +20,18 @@ const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 const Home = lazy(() => import("@/pages/home/Home"))
 
 const FavoritesOverview = lazy(() => import("@/pages/favorites/FavoritesOverview"))
+
+const MediaView = lazy(() => import("@/pages/media-view/MediaView"))
+
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    window.scrollTo(0, 0)
+  }, [pathname])
 
-  return null;
-};
+  return null
+}
 
 export const PageSuspense = () => {
   return (
@@ -46,30 +56,26 @@ const protectedRoutes = [
   },
   {
     path: SHOWS_PATH,
-    element: (
-        <ShowsOverview />
-    )
-  }, {
+    element: <ShowsOverview />
+  },
+  {
     path: FAVORITES_PATH,
-    element: (
-        <FavoritesOverview />
-    )
+    element: <FavoritesOverview />
+  },
+  {
+    path: MEDIA_PATH,
+    element: <MediaView />
   }
 ]
-
 
 const routes = (isLoggedIn: boolean) => [
   {
     path: SIGN_UP_PATH,
-    element: (
-        <SignUp />
-    )
+    element: <SignUp />
   },
   {
     path: LOGIN_PATH,
-    element: (
-        <Login />
-    )
+    element: <Login />
   },
 
   {
@@ -78,9 +84,7 @@ const routes = (isLoggedIn: boolean) => [
   },
   {
     path: MAIN_PATH,
-    element: (
-        <MainLayout isLoggedIn={isLoggedIn} />
-    ),
+    element: <MainLayout isLoggedIn={isLoggedIn} />,
     children: protectedRoutes
   }
 ]
