@@ -31,11 +31,7 @@ export const SearchBar = () => {
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
-  setTimeout(() => {
-    setIsLoading(false)
-  }, 2000)
-
-
+  
   return (
     <Box
       sx={{
