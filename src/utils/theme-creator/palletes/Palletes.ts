@@ -34,7 +34,7 @@ export const darkPalette: PaletteOptions = {
   text: {
     primary: "#fff",
     secondary: "rgba(255,255,255,0.7)",
-    disabled: "#d1d1d1"
+    disabled: "#808080"
   }
 }
 
@@ -71,8 +71,8 @@ export const lightPalette: PaletteOptions = {
   divider: "rgba(0,0,0,0)",
   text: {
     primary: "#626262",
-    secondary: "#9f9f9f",
-    disabled: "#c1c1c1"
+    secondary: "#f6f6f7",
+    disabled: "#c1c1c1",
   }
 }
 
