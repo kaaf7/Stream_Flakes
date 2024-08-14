@@ -26,35 +26,33 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
       display: "flex",
       position: "fixed",
       width: "100%",
-      background: "yellow",
       alignItems: "center",
-      backgroundColor: scrolled ? theme.palette.background.default : "transparent",
-      transition: "background-color 0.3s ease-in-out",
+      backgroundColor: "transparent",
+      backdropFilter: scrolled ? "blur(10px) brightness(40%)" : "none",
+      transition: "background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out",
       boxShadow: "none",
       zIndex: 1000,
-      height: "4rem",
+      height: "4rem"
     }),
     [scrolled, theme.palette.background.default]
   )
 
   const toolbarStyles = useMemo(
     () => ({
+      width:"85rem",
       height: "100%",
-      width: "85%",
-      padding:"0 0 0 0",
+      padding: "0 0 0 0",
       display: "flex",
       gap: 10,
       alignItems: "center",
-      justifyContent: "space-between",
+      justifyContent: "space-between"
     }),
     []
   )
 
   return (
-    <AppBar sx={appBarStyles}>
-      <Toolbar style={toolbarStyles}>
-        {children}
-      </Toolbar>
-    </AppBar>
+      <AppBar sx={appBarStyles}>
+        <Toolbar style={toolbarStyles}>{children}</Toolbar>
+      </AppBar>
   )
 }
