@@ -21,7 +21,7 @@ const Home = lazy(() => import("@/pages/home/Home"))
 
 const FavoritesOverview = lazy(() => import("@/pages/favorites/FavoritesOverview"))
 
-const MediaView = lazy(() => import("@/pages/media-view/MediaView"))
+const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -64,7 +64,7 @@ const protectedRoutes = [
   },
   {
     path: MEDIA_PATH,
-    element: <MediaView />
+    element: <MediaDetailView />
   }
 ]
 
