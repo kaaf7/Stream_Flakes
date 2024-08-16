@@ -5,11 +5,11 @@ import {
   MEDIA_PATH,
   SHOWS_PATH,
   SIGN_UP_PATH
-} from "@/constants/constants"
-import { Suspense, lazy } from "react"
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
+} from "@/constants/constants";
+import { Suspense, lazy } from "react";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { MainLayout } from "../ui/main-layout"
+import { MainLayout } from "../ui/main-layout";
 
 const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
 
@@ -23,9 +23,8 @@ const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMe
 
 const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
-
-
 export const PageSuspense = () => {
+
   return (
     <div
       style={{
@@ -37,7 +36,9 @@ export const PageSuspense = () => {
         justifyItems: "center",
         alignItems: "center",
         textAlign: "center"
-      }}></div>
+      }}>
+    
+    </div>
   )
 }
 
