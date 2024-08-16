@@ -1,10 +1,17 @@
-import { FAVORITES_PATH, LOGIN_PATH, MAIN_PATH, SHOWS_PATH, SIGN_UP_PATH } from "@/constants/constants"
-import { Suspense, lazy, useEffect } from "react"
-import { Navigate, RouterProvider, createBrowserRouter, useLocation } from "react-router-dom"
+import {
+  FAVORITES_PATH,
+  LOGIN_PATH,
+  MAIN_PATH,
+  MEDIA_PATH,
+  SHOWS_PATH,
+  SIGN_UP_PATH
+} from "@/constants/constants";
+import { Suspense, lazy } from "react";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { MainLayout } from "../ui/main-layout"
+import { MainLayout } from "../ui/main-layout";
 
-const ShowsOverview = lazy(() => import("@/pages/shows/ShowsOverview"))
+const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
 
 const Login = lazy(() => import("@/pages/login/Login"))
 
@@ -12,18 +19,12 @@ const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 
 const Home = lazy(() => import("@/pages/home/Home"))
 
-const FavoritesOverview = lazy(() => import("@/pages/favorites/FavoritesOverview"))
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
+const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMediasOverview"))
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-};
+const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
 export const PageSuspense = () => {
+
   return (
     <div
       style={{
@@ -35,7 +36,9 @@ export const PageSuspense = () => {
         justifyItems: "center",
         alignItems: "center",
         textAlign: "center"
-      }}></div>
+      }}>
+    
+    </div>
   )
 }
 
@@ -46,30 +49,26 @@ const protectedRoutes = [
   },
   {
     path: SHOWS_PATH,
-    element: (
-        <ShowsOverview />
-    )
-  }, {
+    element: <MediasOverview />
+  },
+  {
     path: FAVORITES_PATH,
-    element: (
-        <FavoritesOverview />
-    )
+    element: <FavoritesMediasOverview />
+  },
+  {
+    path: MEDIA_PATH,
+    element: <MediaDetailView />
   }
 ]
-
 
 const routes = (isLoggedIn: boolean) => [
   {
     path: SIGN_UP_PATH,
-    element: (
-        <SignUp />
-    )
+    element: <SignUp />
   },
   {
     path: LOGIN_PATH,
-    element: (
-        <Login />
-    )
+    element: <Login />
   },
 
   {
@@ -78,9 +77,7 @@ const routes = (isLoggedIn: boolean) => [
   },
   {
     path: MAIN_PATH,
-    element: (
-        <MainLayout isLoggedIn={isLoggedIn} />
-    ),
+    element: <MainLayout isLoggedIn={isLoggedIn} />,
     children: protectedRoutes
   }
 ]

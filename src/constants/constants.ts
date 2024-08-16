@@ -1,6 +1,9 @@
 //** IDENTIFIER **/
 export const USER_IDENTIFIER = ":userId"
 
+export const MEDIA_IDENTIFIER = ":mediaId"
+
+
 //** PATHS **/
 export const MAIN_PATH = "/"
 
@@ -20,6 +23,9 @@ export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
 
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
+export const MEDIA_PATH = `/medias/${MEDIA_IDENTIFIER}`
+
+
 /** PATH CREATOR **/
 export const createFavoriteShowsPath = (userId: string) => {
   return FAVORITES_PATH.replace(USER_IDENTIFIER, userId)
@@ -27,6 +33,10 @@ export const createFavoriteShowsPath = (userId: string) => {
 
 export const createUserAccountPath = (userId: string) => {
   return USER_PATH.replace(USER_IDENTIFIER, userId)
+}
+
+export const createMediaPath = (mediaId: string) => {
+  return MEDIA_PATH.replace(MEDIA_IDENTIFIER, mediaId)
 }
 
 /** SHOWS FILTERS **/
