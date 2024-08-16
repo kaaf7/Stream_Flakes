@@ -11,7 +11,7 @@ import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import { MainLayout } from "../ui/main-layout"
 
-const ShowsOverview = lazy(() => import("@/pages/shows/ShowsOverview"))
+const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
 
 const Login = lazy(() => import("@/pages/login/Login"))
 
@@ -19,7 +19,7 @@ const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 
 const Home = lazy(() => import("@/pages/home/Home"))
 
-const FavoritesOverview = lazy(() => import("@/pages/favorites/FavoritesOverview"))
+const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMediasOverview"))
 
 const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
@@ -48,11 +48,11 @@ const protectedRoutes = [
   },
   {
     path: SHOWS_PATH,
-    element: <ShowsOverview />
+    element: <MediasOverview />
   },
   {
     path: FAVORITES_PATH,
-    element: <FavoritesOverview />
+    element: <FavoritesMediasOverview />
   },
   {
     path: MEDIA_PATH,
