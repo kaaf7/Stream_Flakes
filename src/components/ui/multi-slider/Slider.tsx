@@ -153,7 +153,7 @@ export const Slider = ({
   }
 
   return (
-    <Grid container sx={{ width: "85%", background: "none" }}>
+    <Grid sx={{ width: "100%" }}>
       {needsTitle && (
         <Grid item xs={2}>
           <Box sx={{ height: "100%" }}>
@@ -169,7 +169,7 @@ export const Slider = ({
             width: "100%",
             position: "relative",
             overflow: "hidden",
-            background: "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))"
+            background: "linear-gradient(to left, rgba(17,17,17,1), rgba(0,0,0,0))"
           }}>
           <Carousel
             responsive={responsive}
@@ -201,7 +201,7 @@ export const Slider = ({
               right: 0,
               width: "5rem",
               height: "100%",
-              background: "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))"
+              background: "linear-gradient(to left, rgba(17,17,17,1), rgba(0,0,0,0))"
             }}
           />
           <div
@@ -211,7 +211,7 @@ export const Slider = ({
               left: 0,
               width: "5rem",
               height: "100%",
-              background: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))"
+              background: "linear-gradient(to right, rgba(17,17,17,1), rgba(0,0,0,0))"
             }}
           />
         </Box>

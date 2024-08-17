@@ -14,7 +14,7 @@ import { Box, ContainerProps } from "@mui/material"
 
 import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
-import { ShowsButtonWithDialogContainer } from "@/features/shows-display-dialog"
+import { ShowsButtonWithDialogContainer } from "@/features/medias-display-dialog"
 import AccountCircle from "@mui/icons-material/AccountCircle"
 import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
