@@ -61,7 +61,7 @@ export const TrendingShowsSearchDisplay = ({
             <MemoizedGridSkeleton gridLength={6} />
           ) : (
             <>
-              {medias.map((media) => (
+              {medias.slice(1,7).map((media) => (
                 <MediaCardUpdated
                   key={media.id}
                   id={media.id}

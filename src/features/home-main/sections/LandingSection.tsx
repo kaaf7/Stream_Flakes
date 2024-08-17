@@ -7,27 +7,30 @@ import { CustomButton } from "@/components/buttons/custom-button"
 import { IconCard } from "@/components/ui/icon-card"
 import { MediaCard } from "@/components/ui/movie-card"
 import { SHOWS_PATH } from "@/constants/constants"
-import { BRAND_ICONS } from "@/features/home"
+import { BRAND_ICONS } from "@/features/home-main"
 import { Add } from "@mui/icons-material"
 import { Link } from "react-router-dom"
 
 export const LandingSection = () => {
   return (
-    <main
+    <Box
       style={{
-        position: "relative",
         width: "100%",
         height: "100vh",
+        position: "relative",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        overflow: "hidden"
       }}>
       <Box
         style={{
           height: "100%",
-          width: "100%",
+          width: "80rem",
           display: "flex",
           justifyContent: "center",
+          overflow: "hidden",
+
           alignItems: "center",
           position: "absolute"
         }}>
@@ -36,28 +39,30 @@ export const LandingSection = () => {
           direction="column"
           spacing={2}
           sx={{
-            height: "auto",
-            width: "60%",
+            height: "40rem",
+            width: "80rem",
             zIndex: 2,
             color: "white",
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            gap: 1
+            gap: 2
           }}>
-          <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-            Your Favorite Shows in <br></br>
-            <span style={{ color: "orange" }}>One Place</span>
-          </Typography>
-          <Typography>
-            Browse, search, and watch TV & Movies from over 300+ services across many regions
-          </Typography>
-          <Typography sx={{ color: "grey", marginTop: 3 }}>Streaming From</Typography>
+          <Box sx={{ height: "15rem", display: "flex", flexDirection: "column", gap: 2 }}>
+            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+              Your Favorite Shows in <br></br>
+              <span style={{ color: "orange" }}>One Place</span>
+            </Typography>
+            <Typography>
+              Browse, search, and watch TV & Movies from over 300+ services across many regions
+            </Typography>
+            <Typography sx={{ color: "grey", marginTop: 3 }}>Streaming From</Typography>
+          </Box>
           <Grid
             container
             sx={{
               width: "100%",
-              height: "100px",
+              height: "5rem",
               justifyContent: "center",
               alignItems: "center",
               gap: 1
@@ -77,11 +82,12 @@ export const LandingSection = () => {
             container
             sx={{
               width: "100%",
+              height: "10rem",
               justifyContent: "center",
               alignItems: "center",
               alignContent: "center",
               maxHeight: "50px",
-              gap: 2
+              gap: 5
             }}>
             <MediaCard
               sx={{ width: "150px" }}
@@ -101,17 +107,52 @@ export const LandingSection = () => {
       <img
         src={movies}
         alt="Movies"
-        data-src={movies}
         loading="lazy"
         style={{
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          filter: "blur(5px) brightness(20%)"
+          position: "absolute",
+          top: 0,
+          left: 0,
+          filter: "blur(2px) brightness(15%)",
+          zIndex: 0
         }}
       />
-    </main>
+      
+      <div
+        style={{
+          position: "absolute",
+          background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)", 
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1
+        }}
+      />
+         <div
+        style={{
+          position: "absolute",
+          background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)", 
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1
+        }}
+      />
+         <div
+        style={{
+          position: "absolute",
+          background: "linear-gradient(to top, rgba(17,17,17,1) 4%, rgba(0,0,0,0) 30%)", 
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1
+        }}
+      />
+    </Box>
   )
 }
-
-

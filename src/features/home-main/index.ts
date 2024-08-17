@@ -1,4 +1,3 @@
-export * from "./footer/Footer"
 export * from "./sections/LandingSection"
 export * from "./sections/LatestShows"
 export * from "./sections/Movies"

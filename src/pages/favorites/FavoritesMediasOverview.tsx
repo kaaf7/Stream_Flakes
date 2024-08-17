@@ -1,20 +1,36 @@
-import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
-import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
-import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
+import { MAIN_PATH, MainColor, SHOWS_PATH, createFavoriteShowsPath } from "@/constants/constants"
+import {
+  FavoriteBorder,
+  HomeMaxOutlined,
+  KeyboardArrowRight,
+  LocalMoviesOutlined
+} from "@mui/icons-material"
+import { Box, Breadcrumbs, Grid, Link, Typography } from "@mui/material"
 
-import { MediaCard } from "@/components/ui/movie-card"
-import { ShowsGridApiConnector } from "@/features/all-shows"
-import { BRAND_ICONS } from "@/features/home"
+import { FavoriteMediasApiConnector } from "@/features/favorite-medias"
 import { useResponsive } from "@/hooks/responsive/useResponsive"
 import { useTranslation } from "react-i18next"
 
-export default function ShowsOverview() {
+const FavoritesOverviewTypographyStyle = {
+  textAlign: "left",
+  flex: 2,
+  position: "relative",
+  zIndex: 2,
+  overflow: "hidden",
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical"
+}
+
+export default function FavoritesOverview() {
   const { t } = useTranslation(["common"])
   const { laptop, desktop } = useResponsive()
 
+  //TODO ADD userId later
+  const userId = "userId"
   const BREAD_CRUMBS_ITEMS: { icon: React.ReactNode; title: string; link: string }[] = [
     { icon: <HomeMaxOutlined />, title: t("home"), link: MAIN_PATH },
-    { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH }
+    { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH },
+    { icon: <FavoriteBorder />, title: t("favorites"), link: createFavoriteShowsPath(userId) }
   ]
   return (
     <Box
@@ -26,15 +42,15 @@ export default function ShowsOverview() {
         alignContent: "center",
         justifyItems: "center",
         marginTop: "5rem",
-        gap: 2
+        gap: 3
       }}>
-      <Box sx={{ width: "85%" }}>
+      <Box sx={{width:"100%"}}>
         <Breadcrumbs
           sx={{ fontSize: ".75rem" }}
           separator={<KeyboardArrowRight />}
           aria-label="breadcrumbs">
           {BREAD_CRUMBS_ITEMS.map(
-            (item: { icon?: React.ReactNode; title: string; link: string }) => (
+            (item: { icon: React.ReactNode; title: string; link: string }) => (
               <Link
                 key={item.title}
                 color={MainColor.PRIMARY}
@@ -56,8 +72,9 @@ export default function ShowsOverview() {
       {laptop ||
         (desktop && (
           <Box
+  
             sx={{
-              width: "85%",
+              width:"100%",
               height: "4rem",
               display: "flex",
               justifyContent: "space-between",
@@ -69,19 +86,16 @@ export default function ShowsOverview() {
                 flex: 1,
                 gap: 1
               }}>
-              {BRAND_ICONS.map((brandIcon) => (
-                <MediaCard
-                  sx={{ width: "50px", height: "50px" }}
-                  key={brandIcon}
-                  imageUrl={brandIcon as string}
-                  title={brandIcon as string}
-                  id={brandIcon as string}
-                />
-              ))}
+              <Typography
+                sx={FavoritesOverviewTypographyStyle}
+                variant="body1"
+                color={MainColor.PRIMARY}>
+                {t("dummyText")}
+              </Typography>
             </Grid>
           </Box>
         ))}
-      <ShowsGridApiConnector />
+      <FavoriteMediasApiConnector />
     </Box>
   )
 }

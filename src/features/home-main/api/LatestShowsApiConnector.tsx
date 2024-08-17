@@ -1,4 +1,4 @@
-import { LatestShows } from "@/features/home/sections/LatestShows"
+import { LatestShows } from "@/features/home-main"
 import { useState } from "react"
 
 export const LatestShowsApiConnector = () => {

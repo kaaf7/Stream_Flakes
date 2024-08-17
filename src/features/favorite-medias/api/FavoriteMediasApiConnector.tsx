@@ -1,5 +1,4 @@
 import { MainColor, ToolTipPlacement } from "@/constants/constants"
-import { useState } from "react"
 
 import dummyData from "@/api/dummyData.json"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
@@ -8,17 +7,10 @@ import { MediaGrid } from "@/components/ui/media-grid"
 import { ShowsFilter } from "@/features/shows-filter"
 import { TuneOutlined } from "@mui/icons-material"
 import { Box } from "@mui/material"
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
-const FavoriteShowsApiConnectorStyle = {
-  display: "flex",
-  width: "100%",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  height: "2rem"
-}
-export const FavoriteShowsApiConnector = () => {
+export const FavoriteMediasApiConnector = () => {
   const { t } = useTranslation(["common"])
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -48,8 +40,16 @@ export const FavoriteShowsApiConnector = () => {
   }, 1000)
 
   return (
-    <main style={{ width: "85%", display: "flex", flexDirection: "column", gap: 10 }}>
-      <Box sx={FavoriteShowsApiConnectorStyle}>
+    <Box style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          height: "3rem"
+        }}>
         <FilterArray
           filter={filter}
           onFilterDelete={onFilterDelete}
@@ -63,6 +63,6 @@ export const FavoriteShowsApiConnector = () => {
         {FilterDrawer}
       </Box>
       <MediaGrid isLoading={isLoading} medias={dummyData} />
-    </main>
+    </Box>
   )
 }

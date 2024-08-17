@@ -1,49 +1,47 @@
-import { Box, Grid, Typography, useTheme } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 
 import { FooterLinkSection } from "@/components/ui/footer-link"
 
 export const Footer = () => {
   interface Link {
-    name: string
+    name: string 
     to: string
   }
 
   const CONTACT_AND_LEGAL_INFORMATION: Link[] = [
-    { name: "Support Center", to: "/support" },
-    { name: "Help Desk", to: "/help" },
-    { name: "FAQ", to: "/faq" },
-    { name: "Data Protection", to: "/data-protection" },
-    { name: "Privacy Policy", to: "/privacy-policy" },
-    { name: "Terms of Service", to: "/terms-of-service" },
-    { name: "Cookies Settings", to: "/cookies-settings" },
-    { name: "About Us", to: "/about" },
-    { name: "Company Mission", to: "/mission" },
-    { name: "Company History", to: "/history" },
-    { name: "Values", to: "/values" },
-    { name: "Social Media", to: "/social-media" },
-    { name: "Newsletter Signup", to: "/newsletter" },
-    { name: "Site Map", to: "/site-map" },
-    { name: "Accessibility Statement", to: "/accessibility" },
-    { name: "Terms of Use", to: "/terms-of-use" },
-    { name: "Compliance Statements", to: "/compliance" },
-    { name: "Copyright Information", to: "/copyright" },
-    { name: "Trust Badges", to: "/trust-badges" },
-    { name: "Language Selection", to: "/language-selection" }
+    { name: "supportCenter", to: "/support" },
+    { name: "helpDesk", to: "/help" },
+    { name: "fAQ", to: "/faq" },
+    { name: "dataProtection", to: "/data-protection" },
+    { name: "privacyPolicy", to: "/privacy-policy" },
+    { name: "termsOfService", to: "/terms-of-service" },
+    { name: "cookiesSettings", to: "/cookies-settings" },
+    { name: "aboutUs", to: "/about" },
+    { name: "companyMission", to: "/mission" },
+    { name: "companyHistory", to: "/history" },
+    { name: "values", to: "/values" },
+    { name: "socialMedia", to: "/social-media" },
+    { name: "newsletterSignup", to: "/newsletter" },
+    { name: "siteMap", to: "/site-map" },
+    { name: "accessibilityStatement", to: "/accessibility" },
+    { name: "termsOfUse", to: "/terms-of-use" },
+    { name: "complianceStatements", to: "/compliance" },
+    { name: "copyrightInformation", to: "/copyright" },
+    { name: "trustBadges", to: "/trust-badges" },
+    { name: "languageSelection", to: "/language-selection" }
   ]
 
-  const theme = useTheme()
   return (
     <Box
       style={{
         width: "100%",
-        height: "70vh",
+        height: "50vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        background: "inherit"
+        justifyContent: "center"
       }}>
-      <Box sx={{ width: "85%", height: "100%", position: "relative" }}>
+      <Box sx={{ height: "100%", position: "relative"}}>
         <Grid
           container
           justifyContent={"space-between"}

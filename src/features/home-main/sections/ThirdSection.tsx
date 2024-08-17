@@ -15,7 +15,6 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
     <main
       style={{
         width: "100%",
-        height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -24,7 +23,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
       }}>
       <Divider
         sx={{
-          width: "85%",
+          width: "100%",
           marginX: 0.1,
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
@@ -32,7 +31,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
       <MoviesApiConnector />
       <Divider
         sx={{
-          width: "85%",
+          width: "100%",
           marginX: 0.1,
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
@@ -41,7 +40,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
       <SeriesApiConnector />
       <Divider
         sx={{
-          width: "85%",
+          width: "100%",
           marginX: 0.1,
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
@@ -49,7 +48,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
       <TrendingShowsApiConnector />
       <Divider
         sx={{
-          width: "85%",
+          width: "100%",
           marginX: 0.1,
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}

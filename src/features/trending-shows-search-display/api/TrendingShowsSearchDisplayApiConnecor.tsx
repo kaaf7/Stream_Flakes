@@ -9,5 +9,5 @@ export const TrendingShowsSearchDisplayApiConnecor = () => {
     setIsLoading(false)
   }, 1000)
 
-  return <TrendingShowsSearchDisplay medias={medias.slice(1,7)} isLoading={isLoading} />
+  return <TrendingShowsSearchDisplay medias={medias} isLoading={isLoading} />
 }

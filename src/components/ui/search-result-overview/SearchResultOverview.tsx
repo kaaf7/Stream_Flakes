@@ -1,7 +1,7 @@
 import { Card, useTheme } from "@mui/material"
 
 import { TrendingShowsSearchDisplayApiConnecor } from "@/features/trending-shows-search-display"
-import { UserSearchResultDisplayApiConnector } from "@/features/user-search-result-display"
+import { UserSearchResultDisplayApiConnector } from "@/features/user-search-display"
 import { ReactNode } from "react"
 
 interface SearchResultDisplayProps {

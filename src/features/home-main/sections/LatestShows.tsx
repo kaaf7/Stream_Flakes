@@ -23,16 +23,17 @@ export const LatestShows = ({ isLoading, data }: SecondSectionProps) => {
     <div
       style={{
         width: "100%",
-        height: "80vh",
+        height: "60vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+
       }}>
       <Box
         sx={{
-          width: "85%",
-          height: "500px",
+          width: "100%",
+          height: "30rem",
           display: "flex",
           justifyContent: "space-between",
           gap: 3

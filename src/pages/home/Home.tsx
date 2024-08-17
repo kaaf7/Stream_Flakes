@@ -1,4 +1,4 @@
-import { Footer, LandingSection, LatestShowsApiConnector, ThirdSection } from "@/features/home"
+import { LandingSection, LatestShowsApiConnector, ThirdSection } from "@/features/home-main"
 
 import { useState } from "react"
 
@@ -13,7 +13,6 @@ export default function Home() {
       <LandingSection />
       <LatestShowsApiConnector/>
       <ThirdSection isLoading={isLoading} />
-      <Footer />
     </>
   )
 }

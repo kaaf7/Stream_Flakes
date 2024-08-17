@@ -1,10 +1,10 @@
-import { Box, IconButton, ImageListItemBar, ImageListItemProps } from "@mui/material"
+import { Box, BoxProps, IconButton, ImageListItemBar } from "@mui/material"
 
 import { MainColor } from "@/constants/constants"
 import { Favorite } from "@mui/icons-material"
 import { useState } from "react"
 
-export interface MediaCardProps extends ImageListItemProps {
+export interface MediaCardProps extends BoxProps {
   id: string
   width?: string
   height?: string
@@ -19,6 +19,7 @@ export const MediaCardUpdated = ({
   imageUrl,
   needsMediaCardBar = false,
   isFavorite = false,
+  ...props
 }: MediaCardProps) => {
   const [hover, setHover] = useState<boolean>(false)
   return (
@@ -30,6 +31,7 @@ export const MediaCardUpdated = ({
         overflow: "hidden",
         borderRadius: "1rem"
       }}
+      {...props}
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}>
       <img
@@ -61,7 +63,7 @@ export const MediaCardUpdated = ({
             <IconButton
               aria-label="favorite"
               sx={{
-                backgroundColor: "rgba(125, 125, 125, 0.4)",
+                backgroundColor: "rgba(125, 125, 125, 0.4)"
               }}>
               <Favorite color={isFavorite ? MainColor.WARNING : MainColor.PRIMARY} />
             </IconButton>
