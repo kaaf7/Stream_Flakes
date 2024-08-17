@@ -28,7 +28,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
       width: "100%",
       alignItems: "center",
       backgroundColor: "transparent",
-      backdropFilter: scrolled ? "blur(10px) brightness(40%)" : "none",
+      backdropFilter: scrolled ? "blur(10px) brightness(60%)" : "none",
       transition: "background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out",
       boxShadow: "none",
       zIndex: 1000,
@@ -39,7 +39,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
 
   const toolbarStyles = useMemo(
     () => ({
-      width:"85rem",
+      width:"85%",
       height: "100%",
       padding: "0 0 0 0",
       display: "flex",
