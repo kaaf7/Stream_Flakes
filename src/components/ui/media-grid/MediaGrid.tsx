@@ -5,7 +5,6 @@ import { useScrollPagination } from "@/hooks/ifninite-scroll/useScrollPagination
 import { useResponsive } from "@/hooks/responsive/useResponsive"
 import { MediaCardProps } from "@/interfaces/MediaCardProps"
 import { ImageList } from "@mui/material"
-import { memo } from "react"
 import { useNavigate } from "react-router-dom"
 
 interface MediaGridProps {
@@ -18,7 +17,6 @@ export const MediaGrid = ({ medias, needsMediaCardBar, isLoading }: MediaGridPro
   const { mobile, tablet } = useResponsive()
   const navigate = useNavigate()
   const { currentPage } = useScrollPagination()
-  const MemoizedGridSkeleton = memo(GidSkeleton)
 
   return (
     <ImageList
@@ -31,7 +29,7 @@ export const MediaGrid = ({ medias, needsMediaCardBar, isLoading }: MediaGridPro
         flexWrap: "wrap"
       }}>
       {isLoading && currentPage === 0 ? (
-        <MemoizedGridSkeleton gridLength={12} />
+        <GidSkeleton gridLength={12} />
       ) : (
         medias.map((media: MediaCardProps) => (
           <MediaCardUpdated
@@ -44,7 +42,7 @@ export const MediaGrid = ({ medias, needsMediaCardBar, isLoading }: MediaGridPro
           />
         ))
       )}
-      {isLoading&& currentPage > 0 && <MemoizedGridSkeleton gridLength={12} />}
+      {isLoading&& currentPage > 0 && <GidSkeleton gridLength={12} />}
     </ImageList>
   )
 }
