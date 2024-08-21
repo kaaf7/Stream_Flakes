@@ -6,8 +6,8 @@ import {
   SHOWS_PATH,
   SIGN_UP_PATH
 } from "@/constants/constants";
-import { Suspense, lazy } from "react";
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
 
 import { MainLayout } from "../ui/main-layout";
 
@@ -61,16 +61,27 @@ const protectedRoutes = [
   }
 ]
 
-const routes = (isLoggedIn: boolean) => [
+const publicRoutes = [
   {
-    path: SIGN_UP_PATH,
-    element: <SignUp />
+    path: MAIN_PATH,
+    element: <Home />
+  },
+  {
+    path: SHOWS_PATH,
+    element: <MediasOverview />
   },
   {
     path: LOGIN_PATH,
     element: <Login />
   },
+  {
+    path: SIGN_UP_PATH,
+    element: <SignUp />
+  },
+]
 
+const routes = (isLoggedIn: boolean) => [
+  
   {
     path: "*",
     element: <Navigate to={MAIN_PATH} />
@@ -78,7 +89,7 @@ const routes = (isLoggedIn: boolean) => [
   {
     path: MAIN_PATH,
     element: <MainLayout isLoggedIn={isLoggedIn} />,
-    children: protectedRoutes
+    children: isLoggedIn? protectedRoutes : publicRoutes
   }
 ]
 
