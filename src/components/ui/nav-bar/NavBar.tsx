@@ -13,7 +13,7 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
     <AppBarContainer>
       <Logo />
       <SearchBar />
-      <RightNavBarItems isLoggedIn={true} />
+      <RightNavBarItems isLoggedIn={isLoggedIn} />
     </AppBarContainer>
   )
 }
@@ -21,7 +21,7 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
 function Logo() {
   return (
     <Link href={MAIN_PATH} underline="none">
-      <Typography variant="h4" sx={{ color: "orange", fontWeight: "bold", cursor: "pointer" }}>
+      <Typography variant="h4" sx={{ color: "#c70c0c", fontWeight: "bold", cursor: "pointer" }}>
         StreamFlakes
       </Typography>
     </Link>
