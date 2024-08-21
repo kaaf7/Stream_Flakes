@@ -1,23 +1,18 @@
-import { Navigate, Outlet } from "react-router-dom"
-
+import { BaseContainer } from "../base-container"
 import { Footer } from "@/components/ui/main-layout-footer"
 import { NavBar } from "@/components/ui/nav-bar"
-import { LOGIN_PATH } from "@/constants/constants"
-import { BaseContainer } from "../base-container"
+import { Outlet } from "react-router-dom"
 
 interface MainLayoutProps {
   isLoggedIn: boolean
 }
 
 export function MainLayout({ isLoggedIn }: MainLayoutProps) {
-  return isLoggedIn ? (
+  return (
     <BaseContainer>
-      <NavBar isLoggedIn />
+      <NavBar isLoggedIn={isLoggedIn} />
       <Outlet />
       <Footer />
     </BaseContainer>
-  ) : (
-    <Navigate to={LOGIN_PATH} />
   )
 }
-
