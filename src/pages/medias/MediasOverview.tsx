@@ -1,9 +1,9 @@
-import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
-import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
 import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
+import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
+import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
 
-import { MediaCard } from "@/components/ui/movie-card"
 import { BRAND_ICONS } from "@/features/home-main"
+import { MediaCard } from "@/components/ui/movie-card"
 import { MediasGridApiConnector } from "@/features/medias-main"
 import { useResponsive } from "@/hooks/responsive/useResponsive"
 import { useTranslation } from "react-i18next"
