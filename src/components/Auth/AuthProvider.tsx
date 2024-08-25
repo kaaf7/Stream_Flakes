@@ -10,41 +10,47 @@ interface User {
   username: string | null
   email: string | null
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  favorites: any[]
-  createdAt: Date
-  updatedAt: Date
+  favorites: any[]|null
+  createdAt: Date|null
+  updatedAt: Date|null
   isLoggedIn: boolean
   accessToken: string | null
 }
 
 interface AuthContext {
-  token: string
-  setToken(token: string): void
+  token: string|null
+  setToken(token: string|null): void
   user: User | null
+  userData:User|null
   setUser(user: User | null): void
-  logout(): void
+  logOut():void
+
 }
 
 export const AuthContext = createContext<AuthContext>({
   token: "",
-  setToken: (token: "") => {},
+  setToken: (token: null) => {},
   user: null,
-  setUser: (user: nukk) => {},
-  logout: () => {}
+  userData:null,
+  setUser: (user: null) => {},
+  logOut:()=>{}
 })
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const storedUserInfo = localStorage.getItem("user")
-  const [user, setUser] = useState<User | null>(storedUserInfo ? JSON.parse(storedUserInfo) : null)
-  const [token, setToken] = useState<string>("")
+  const userData = storedUserInfo ? JSON.parse(storedUserInfo) : null
+  const [user, setUser] = useState<User | null>(null)
+  const [token, setToken] = useState<string|null>(null)
 
-  const logout = () => {
+   const logOut=()=>{
     localStorage.removeItem("user")
     setUser(null)
-    setToken("")
+    setToken(null)
+  
   }
 
+
   return (
-    <AuthContext.Provider value={{ token, setToken, user, setUser, logout }}>
+    <AuthContext.Provider value={{ token, setToken, user, setUser ,userData, logOut}}>
       {children}
     </AuthContext.Provider>
   )
