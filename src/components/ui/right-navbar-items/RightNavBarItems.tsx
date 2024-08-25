@@ -1,5 +1,3 @@
-import { Badge, Box, ContainerProps } from "@mui/material"
-import { FavoriteBorder, Logout } from "@mui/icons-material"
 import {
   LOGIN_PATH,
   MainColor,
@@ -8,16 +6,18 @@ import {
   createFavoriteShowsPath,
   createUserAccountPath
 } from "@/constants/constants"
+import { FavoriteBorder, Logout } from "@mui/icons-material"
+import { Badge, Box, ContainerProps } from "@mui/material"
 
-import AccountCircle from "@mui/icons-material/AccountCircle"
 import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
-import { ReactNode } from "react"
+import { WithNavBarItems } from "@/components/ui/with-navbar-items"
 import { ShowsButtonWithDialogContainer } from "@/features/medias-display-dialog"
-import { WithNavBarItems } from "../nav-bar/WithNavBarItems"
 import { useAuth } from "@/hooks/auth/useAuth"
-import { useNavigate } from "react-router-dom"
+import AccountCircle from "@mui/icons-material/AccountCircle"
+import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
 
 type Item = {
   title?: string
@@ -31,10 +31,9 @@ interface RightNavBarItemsProps extends ContainerProps {
   isLoggedIn: boolean
 }
 
-
 export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
   const { t } = useTranslation(["common"])
-  const { user ,logout} = useAuth()
+  const { user, logOut } = useAuth()
   const navigate = useNavigate()
   const Navbaritems = WithNavBarItems()
 
@@ -77,7 +76,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
         <CustomIconButton
           toolTipProps={{ title: t("favorites"), placement: ToolTipPlacement.BOTTOM }}
           onClick={() => navigate(createFavoriteShowsPath(user?.id as string))}>
-          <Badge badgeContent={user?.favorites?.length ?? 0} color={MainColor.WARNING}>
+          <Badge variant="dot" invisible={user?.favorites?.length === 0} color={MainColor.WARNING}>
             <FavoriteBorder color={MainColor.PRIMARY} />
           </Badge>
         </CustomIconButton>
@@ -95,7 +94,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
     {
       component: (
         <CustomIconButton
-          onClick={()=>{logout()} }
+          onClick={logOut}
           toolTipProps={{ title: t("logout"), placement: ToolTipPlacement.BOTTOM }}>
           <Logout color={MainColor.PRIMARY} />
         </CustomIconButton>
