@@ -20,6 +20,7 @@
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
     "@radix-ui/react-icons": "^1.3.0",
+    "axios": "^1.7.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "eslint-config-airbnb": "^19.0.4",

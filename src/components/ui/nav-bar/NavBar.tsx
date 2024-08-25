@@ -1,9 +1,9 @@
 import { AppBarContainer } from "@/components/ui/app-bar-container"
+import Link from "@mui/material/Link"
+import { MAIN_PATH } from "@/constants/constants"
 import { RightNavBarItems } from "@/components/ui/right-navbar-items"
 import { SearchBar } from "@/components/ui/search-bar"
-import { MAIN_PATH } from "@/constants/constants"
 import { Typography } from "@mui/material"
-import Link from "@mui/material/Link"
 
 interface NavbarProps {
   isLoggedIn: boolean
@@ -13,7 +13,7 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
     <AppBarContainer>
       <Logo />
       <SearchBar />
-      <RightNavBarItems isLoggedIn={true} />
+      <RightNavBarItems isLoggedIn={isLoggedIn} />
     </AppBarContainer>
   )
 }
@@ -21,7 +21,7 @@ export const NavBar = ({ isLoggedIn }: NavbarProps) => {
 function Logo() {
   return (
     <Link href={MAIN_PATH} underline="none">
-      <Typography variant="h4" sx={{ color: "orange", fontWeight: "bold", cursor: "pointer" }}>
+      <Typography variant="h4" sx={{ color: "#c70c0c", fontWeight: "bold", cursor: "pointer" }}>
         StreamFlakes
       </Typography>
     </Link>

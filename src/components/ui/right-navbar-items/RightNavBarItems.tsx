@@ -6,15 +6,14 @@ import {
   createFavoriteShowsPath,
   createUserAccountPath
 } from "@/constants/constants"
-import {
-  FavoriteBorder,
-  Logout
-} from "@mui/icons-material"
-import { Box, ContainerProps } from "@mui/material"
+import { FavoriteBorder, Logout } from "@mui/icons-material"
+import { Badge, Box, ContainerProps } from "@mui/material"
 
 import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
+import { WithNavBarItems } from "@/components/ui/with-navbar-items"
 import { ShowsButtonWithDialogContainer } from "@/features/medias-display-dialog"
+import { useAuth } from "@/hooks/auth/useAuth"
 import AccountCircle from "@mui/icons-material/AccountCircle"
 import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
@@ -25,7 +24,6 @@ type Item = {
   variant?: "text" | "outlined" | "contained"
   size?: "small" | "medium" | "large"
   to?: string
-  isProtected?: boolean
   component?: ReactNode
 }
 
@@ -35,34 +33,27 @@ interface RightNavBarItemsProps extends ContainerProps {
 
 export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
   const { t } = useTranslation(["common"])
+  const { user, logOut } = useAuth()
   const navigate = useNavigate()
-  // TODO add uderId later
-  const userId = "userId"
-  const RIGHT_SIDE_ITEMS: Item[] = [
-    {
-      isProtected: false,
-      component: (
-        <ShowsButtonWithDialogContainer/>
-      )
-    },
-    
-  ]
+  const Navbaritems = WithNavBarItems()
 
-  const USER_RIGHT_SIDE_ITEMS: Item[] = [
+  const PUBLIC_NAVBAR_ITEMS: Item[] = [
     {
-      isProtected: true,
+      component: <ShowsButtonWithDialogContainer />
+    },
+    {
       component: (
         <CustomButton
-          title={"signup"}
+          title={"signUp"}
           sx={{ height: "2rem" }}
           variant={"outlined"}
           size={"small"}
-          to={SIGN_UP_PATH}
-        />
+          to={SIGN_UP_PATH}>
+          {t("signUp")}
+        </CustomButton>
       )
     },
     {
-      isProtected: true,
       component: (
         <CustomButton
           title={t("login")}
@@ -73,31 +64,38 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
           {t("login")}
         </CustomButton>
       )
+    }
+  ]
+
+  const PROTECTED_NAVBAR_ITEMS: Item[] = [
+    {
+      component: <ShowsButtonWithDialogContainer />
     },
     {
-      isProtected: false,
       component: (
         <CustomIconButton
           toolTipProps={{ title: t("favorites"), placement: ToolTipPlacement.BOTTOM }}
-          onClick={() => navigate(createFavoriteShowsPath(userId))}>
-          <FavoriteBorder color={MainColor.PRIMARY} />
+          onClick={() => navigate(createFavoriteShowsPath(user?.id as string))}>
+          <Badge variant="dot" invisible={user?.favorites?.length === 0} color={MainColor.WARNING}>
+            <FavoriteBorder color={MainColor.PRIMARY} />
+          </Badge>
         </CustomIconButton>
       )
     },
     {
-      isProtected: false,
       component: (
         <CustomIconButton
           toolTipProps={{ title: t("account"), placement: ToolTipPlacement.BOTTOM }}
-          onClick={() => navigate(createUserAccountPath(userId))}>
+          onClick={() => navigate(createUserAccountPath(user?.id as string))}>
           <AccountCircle color={MainColor.PRIMARY} />
         </CustomIconButton>
       )
     },
     {
-      isProtected: false,
       component: (
-        <CustomIconButton toolTipProps={{ title: t("logout"), placement: ToolTipPlacement.BOTTOM }}>
+        <CustomIconButton
+          onClick={logOut}
+          toolTipProps={{ title: t("logout"), placement: ToolTipPlacement.BOTTOM }}>
           <Logout color={MainColor.PRIMARY} />
         </CustomIconButton>
       )
@@ -113,13 +111,10 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
         alignItems: "center",
         justifyContent: "space-between"
       }}>
-      {RIGHT_SIDE_ITEMS.map((item, index) => (
-        <div key={index}>{item.component}</div>
-      ))}
-      {USER_RIGHT_SIDE_ITEMS.filter((item) => item.isProtected !== isLoggedIn).map(
-        (item, index) => (
-          <div key={index}>{item.component}</div>
-        )
+      {isLoggedIn ? (
+        <Navbaritems items={PROTECTED_NAVBAR_ITEMS} />
+      ) : (
+        <Navbaritems items={PUBLIC_NAVBAR_ITEMS} />
       )}
     </Box>
   )
