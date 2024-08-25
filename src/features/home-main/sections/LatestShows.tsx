@@ -23,7 +23,7 @@ export const LatestShows = ({ isLoading, data }: SecondSectionProps) => {
     <div
       style={{
         width: "100%",
-        height: "60vh",
+        height: "70vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -33,7 +33,7 @@ export const LatestShows = ({ isLoading, data }: SecondSectionProps) => {
       <Box
         sx={{
           width: "100%",
-          height: "30rem",
+          height: "100%",
           display: "flex",
           justifyContent: "space-between",
           gap: 3
