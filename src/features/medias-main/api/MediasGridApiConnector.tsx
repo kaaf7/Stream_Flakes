@@ -5,6 +5,7 @@ import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-
 import { FilterArray } from "@/components/ui/filter-array"
 import { MediaGrid } from "@/components/ui/media-grid"
 import { ShowsFilter } from "@/features/shows-filter"
+import { useMedias } from "@/hooks/medias/useMedias"
 import { TuneOutlined } from "@mui/icons-material"
 import { Box } from "@mui/material"
 import { useState } from "react"
@@ -14,13 +15,15 @@ export const MediasGridApiConnector = () => {
   const { t } = useTranslation(["common"])
 
   const [isFilterOpen, setFilterOpen] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  //const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const { FilterDrawer, onFilterDelete, filter, onSubmit, isSubmitted, onFilterDeleteAll } =
     ShowsFilter({
       isFilterOPen: isFilterOpen,
       setFilterOpen: setFilterOpen
     })
+
+  const { isLoading, response, errors } = useMedias(filter)
 
   const toggleFilterDrawer =
     (isFilterOPen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -35,9 +38,9 @@ export const MediasGridApiConnector = () => {
       setFilterOpen(isFilterOPen)
     }
 
-  setTimeout(() => {
+  /*  setTimeout(() => {
     setIsLoading(false)
-  }, 1000)
+  }, 1000 )*/
 
   return (
     <Box style={{ display: "flex", flexDirection: "column", gap: 10 }}>
