@@ -2,16 +2,17 @@ import "./App.css"
 
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
-import { Router } from "@/components/router/Router"
-import englishTranslation from "@/translations/en/english.json"
-import { defineTheme } from "@/utils/theme-creator/themeCreator"
-import i18next from "i18next"
-import { useState } from "react"
 import { I18nextProvider } from "react-i18next"
+import { Router } from "@/components/router/Router"
+import { defineTheme } from "@/utils/theme-creator/themeCreator"
+import englishTranslation from "@/translations/en/english.json"
+import i18next from "i18next"
+import { useAuth } from "./hooks/auth/useAuth"
+import { useState } from "react"
 
 function App() {
   const [isDarkModOn, setDarkModeOn] = useState<boolean>(true)
-
+  const { user } = useAuth()
   const theme = defineTheme(isDarkModOn)
   i18next.init({
     interpolation: { escapeValue: false },
@@ -26,7 +27,7 @@ function App() {
     <I18nextProvider i18n={i18next}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Router isLoggedIn />
+        <Router isLoggedIn={user?.isLoggedIn as boolean} />
       </ThemeProvider>
     </I18nextProvider>
   )
