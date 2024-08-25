@@ -1,9 +1,13 @@
 import { UserApi } from "@/api/UserApi";
 
+interface LoginInfo {
+  username: string|null; password: string|null 
+}
+
 export const useLogin = () => {
   const authApi = new UserApi(null)
   
-  const submitLogin =  (loginInfo: { username: string|null; password: string|null }) => {
+  const submitLogin =  (loginInfo:LoginInfo) => {
     return authApi.login(loginInfo)
   }
 
