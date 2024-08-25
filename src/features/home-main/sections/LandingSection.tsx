@@ -51,7 +51,7 @@ export const LandingSection = () => {
           <Box sx={{ height: "15rem", display: "flex", flexDirection: "column", gap: 2 }}>
             <Typography variant="h2" sx={{ fontWeight: "bold" }}>
               Your Favorite Shows in <br></br>
-              <span style={{ color: "orange" }}>One Place</span>
+              <span style={{ color: "#c70c0c" }}>One Place</span>
             </Typography>
             <Typography>
               Browse, search, and watch TV & Movies from over 300+ services across many regions
