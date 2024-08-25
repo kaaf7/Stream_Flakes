@@ -3,13 +3,13 @@ import { BaseApi } from "./BaseApi"
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
 interface LoginInfo {
-  username: string
-  password: string
+  username: string|null
+  password:string|null
 }
 
 interface RegisterInfo {
-  username: string
-  password: string
+  username: string|null
+  password: string|null
 }
 
 interface FavoriteMediasBody {
