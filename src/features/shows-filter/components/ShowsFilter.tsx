@@ -8,7 +8,7 @@ import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
 import { CustomButton } from "@/components/buttons/custom-button"
-import { ShowsFilterInterface } from "@/features/shows-filter"
+import { MediasFilterInterface } from "@/features/shows-filter"
 import { createFormFields } from "@/utils/form-creator/createFormFields"
 import { useTranslation } from "react-i18next"
 
@@ -23,13 +23,13 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
 
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [filter, setFilter] = useState<ShowsFilterInterface>({
+  const [filter, setFilter] = useState<MediasFilterInterface>({
     name: searchParams.get(SHOWS_FILTER_BY_NAME),
     genre: searchParams.get(SHOWS_FILTER_BY_GENRE),
     year: searchParams.get(SHOWS_FILTER_BY_YEAR)
   })
 
-  const [filterState, setFilterState] = useState<ShowsFilterInterface>({})
+  const [filterState, setFilterState] = useState<MediasFilterInterface>({})
 
   const onFilterDeleteAll = () => {
     updateFilter({})
@@ -40,7 +40,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     setFilterState({ ...filterState, [name]: value })
   }
 
-  const updateFilter = (formValues: ShowsFilterInterface) => {
+  const updateFilter = (formValues: MediasFilterInterface) => {
     const filterEmptyValues = Object.fromEntries(
       Object.entries(formValues).filter(([_, v]) => v !== null && v !== "" && v !== undefined)
     )
@@ -50,12 +50,12 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     setSearchParams(filterEmptyValues as URLSearchParamsInit)
   }
 
-  const onSubmit = (filter: ShowsFilterInterface) => {
+  const onSubmit = (filter: MediasFilterInterface) => {
     updateFilter(filter)
     setFilterOpen((prevState) => !prevState)
   }
 
-  const onFilterDelete = (key: keyof ShowsFilterInterface) => {
+  const onFilterDelete = (key: keyof MediasFilterInterface) => {
     /*  updateFilter({
       ...filter,
       [key]: null
