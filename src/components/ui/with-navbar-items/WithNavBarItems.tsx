@@ -9,5 +9,5 @@ type Item = {
   }
 export const WithNavBarItems = () => {
     return ({ items }: { items: Item[] }) => (
-      <>{items?.map((item) => <div key={item.title}>{item.component}</div>)}</>
+      <>{items?.map((item,index) => <div key={index}>{item.component}</div>)}</>
     )}
