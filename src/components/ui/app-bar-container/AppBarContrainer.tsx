@@ -39,7 +39,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
 
   const toolbarStyles = useMemo(
     () => ({
-      width:"85%",
+      width:"75rem",
       height: "100%",
       padding: "0 0 0 0",
       display: "flex",
