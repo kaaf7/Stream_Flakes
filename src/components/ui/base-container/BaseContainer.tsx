@@ -16,7 +16,7 @@ export const BaseContainer = ({ children, ...containerProps }: BaseContainerProp
       }}>
       <Box
         sx={{
-          width: "85%",
+          width: "75rem",
           display: "flex",
           gap:5,
           justifySelf: "center",
