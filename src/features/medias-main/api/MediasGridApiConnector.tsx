@@ -1,20 +1,29 @@
 import { MainColor, ToolTipPlacement } from "@/constants/constants"
+import { useEffect, useRef, useState } from "react"
 
-import dummyData from "@/api/dummyData.json"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
 import { FilterArray } from "@/components/ui/filter-array"
 import { MediaGrid } from "@/components/ui/media-grid"
 import { ShowsFilter } from "@/features/shows-filter"
+import { useScrollPagination } from "@/hooks/ifninite-scroll/useScrollPagination"
 import { useMedias } from "@/hooks/medias/useMedias"
 import { TuneOutlined } from "@mui/icons-material"
 import { Box } from "@mui/material"
-import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
 export const MediasGridApiConnector = () => {
   const { t } = useTranslation(["common"])
-
+  const { currentPage } = useScrollPagination()
   const [isFilterOpen, setFilterOpen] = useState<boolean>(false)
+  const [limit, setLimit] = useState(120);
+  const prevPageRef = useRef(currentPage);  // Store the previous page
+  
+  useEffect(() => {
+    if (currentPage === prevPageRef.current + 1) {
+      setLimit(prevLimit => prevLimit + 120);
+    }
+    prevPageRef.current = currentPage;  // Update the previous page after checking
+  }, [currentPage]);
   //const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const { FilterDrawer, onFilterDelete, filter, onSubmit, isSubmitted, onFilterDeleteAll } =
@@ -22,8 +31,11 @@ export const MediasGridApiConnector = () => {
       isFilterOPen: isFilterOpen,
       setFilterOpen: setFilterOpen
     })
+    
+    useEffect(()=>{},)
 
-  const { isLoading, response, errors } = useMedias(filter)
+  const { isLoading, response:medias, errors } = useMedias({mediaFilterParams:filter,limit:limit})
+
 
   const toggleFilterDrawer =
     (isFilterOPen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -47,7 +59,7 @@ export const MediasGridApiConnector = () => {
       <Box
         sx={{
           display: "flex",
-          width: "100%",
+          width: "75rem",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
@@ -66,7 +78,7 @@ export const MediasGridApiConnector = () => {
         </CustomIconButton>
         {FilterDrawer}
       </Box>
-      <MediaGrid isLoading={isLoading} medias={dummyData} />
+      <MediaGrid isLoading={isLoading} medias={medias} currentPage={currentPage}/>
     </Box>
   )
 }
