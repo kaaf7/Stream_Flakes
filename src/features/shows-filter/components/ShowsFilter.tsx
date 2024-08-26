@@ -1,7 +1,8 @@
 import {
   SHOWS_FILTER_BY_GENRE,
-  SHOWS_FILTER_BY_NAME,
-  SHOWS_FILTER_BY_YEAR
+  SHOWS_FILTER_BY_MAX_YEAR,
+  SHOWS_FILTER_BY_MIN_YEAR,
+  SHOWS_FILTER_BY_TITLE
 } from "@/constants/constants"
 import { Box, Container, SwipeableDrawer } from "@mui/material"
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
@@ -24,9 +25,10 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [filter, setFilter] = useState<MediasFilterInterface>({
-    name: searchParams.get(SHOWS_FILTER_BY_NAME),
+    title: searchParams.get(SHOWS_FILTER_BY_TITLE),
+    minYear: searchParams.get(SHOWS_FILTER_BY_MIN_YEAR),
+    maxYear: searchParams.get(SHOWS_FILTER_BY_MAX_YEAR),
     genre: searchParams.get(SHOWS_FILTER_BY_GENRE),
-    year: searchParams.get(SHOWS_FILTER_BY_YEAR)
   })
 
   const [filterState, setFilterState] = useState<MediasFilterInterface>({})
@@ -66,8 +68,8 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
   const FILTER_FORM_FIELDS_ITEMS = [
     {
       id: t("form.filter.name"),
-      name: "name",
-      value: filterState.name ?? "",
+      name: "title",
+      value: filterState.title ?? "",
       label: t("form.filter.name"),
       placeholder: t("form.filter.name"),
       autoComplete: "off",
@@ -86,8 +88,17 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     },
     {
       id: t("form.filter.year"),
-      name: "year",
-      value: filterState.year ?? "",
+      name: "minYear",
+      value: filterState.minYear ?? "",
+      label: t("form.filter.year"),
+      placeholder: t("form.filter.year"),
+      autoComplete: "off",
+      sx: { width: "100%" },
+      onChange
+    },{
+      id: t("form.filter.year"),
+      name: "maxYear",
+      value: filterState.maxYear ?? "",
       label: t("form.filter.year"),
       placeholder: t("form.filter.year"),
       autoComplete: "off",
