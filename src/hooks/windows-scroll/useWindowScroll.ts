@@ -1,16 +1,11 @@
 import { useCallback, useEffect, useState } from "react"
 
-import { debounce } from "@mui/material"
-
 export const useWindowScroll = () => {
   const [scrolled, setScrolled] = useState(false)
 
-  const handleScroll = useCallback(
-    debounce(() => {
-      setScrolled(window.scrollY > 10)
-    }, 100),
-    []
-  )
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 160)
+  }, [])
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
@@ -19,5 +14,5 @@ export const useWindowScroll = () => {
     }
   }, [handleScroll])
 
-  return {scrolled,setScrolled}
+  return { scrolled, setScrolled }
 }
