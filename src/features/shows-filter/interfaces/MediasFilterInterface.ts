@@ -1,5 +1,6 @@
 export interface MediasFilterInterface {
-  name?: string | null
+  title?: string | null
   genre?: string | null
-  year?: string  | null
+  minYear?: string | null
+  maxYear?: string | null
 }
