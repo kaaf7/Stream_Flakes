@@ -14,6 +14,7 @@ interface FilterListProps {
 const FilterArrayStyle = {
   display: "flex",
   flexDirection: "row",
+  Width:"100%",
   position: "relative",
   justifyContent: "flex-start",
   gap: 1
@@ -26,10 +27,10 @@ export const FilterArray = ({ filter, onFilterDelete, onFilterDeleteAll }: Filte
     ([_, v]) => ["string", "number", "boolean"].includes(typeof v) && v !== ""
   )
   return (
-    <Box sx={FilterArrayStyle}>
-      {validFilterEntries.map(([key, value]) => (
+    <Box sx={FilterArrayStyle} >
+      {validFilterEntries.map(([key, value],index) => (
         <Chip
-          key={key}
+          key={index}
           variant={ChipVariant.OUTLINED}
           size={ChipSize.SMALL}
           label={`${t(`form.filter.${key}`)}: ${value}`}

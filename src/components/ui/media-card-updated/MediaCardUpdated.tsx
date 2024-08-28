@@ -1,11 +1,12 @@
-import { Box, BoxProps, IconButton, ImageListItemBar } from "@mui/material"
+import { Box, BoxProps, IconButton, ImageListItemBar } from "@mui/material";
 
-import { MainColor } from "@/constants/constants"
-import { Favorite } from "@mui/icons-material"
-import { useState } from "react"
+import { MainColor } from "@/constants/constants";
+import { Favorite } from "@mui/icons-material";
+import { useState } from "react";
 
 export interface MediaCardProps extends BoxProps {
   id: string
+  alt?:string
   width?: string
   height?: string
   borderRadius?: string
@@ -16,6 +17,7 @@ export interface MediaCardProps extends BoxProps {
 
 export const MediaCardUpdated = ({
   id,
+  alt,
   imageUrl,
   needsMediaCardBar = false,
   isFavorite = false,
@@ -23,6 +25,7 @@ export const MediaCardUpdated = ({
 }: MediaCardProps) => {
   const [hover, setHover] = useState<boolean>(false)
   return (
+
     <Box
       sx={{
         width: "100%",
@@ -34,11 +37,12 @@ export const MediaCardUpdated = ({
       {...props}
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}>
+
       <img
         id={id}
-        src={imageUrl}
-        alt="shows-images"
-        aria-label="shows-images"
+        src={imageUrl?.replace("original", "w342")?? ""}
+        alt={alt}
+        aria-label={alt}
         loading="lazy"
         style={{
           width: "100%",

@@ -40,8 +40,9 @@ export const createMediaPath = (mediaId: string) => {
 }
 
 /** SHOWS FILTERS **/
-export const SHOWS_FILTER_BY_NAME = "name"
-export const SHOWS_FILTER_BY_YEAR = "year"
+export const SHOWS_FILTER_BY_TITLE = "title"
+export const SHOWS_FILTER_BY_MIN_YEAR = "minYear"
+export const SHOWS_FILTER_BY_MAX_YEAR = "maxYear"
 export const SHOWS_FILTER_BY_GENRE = "genre"
 
 //** TOOL TIP PLACEMENT */

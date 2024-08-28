@@ -1,14 +1,15 @@
 import {
   SHOWS_FILTER_BY_GENRE,
-  SHOWS_FILTER_BY_NAME,
-  SHOWS_FILTER_BY_YEAR
+  SHOWS_FILTER_BY_MAX_YEAR,
+  SHOWS_FILTER_BY_MIN_YEAR,
+  SHOWS_FILTER_BY_TITLE
 } from "@/constants/constants"
 import { Box, Container, SwipeableDrawer } from "@mui/material"
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
 import { CustomButton } from "@/components/buttons/custom-button"
-import { ShowsFilterInterface } from "@/features/shows-filter"
+import { MediasFilterInterface } from "@/features/shows-filter"
 import { createFormFields } from "@/utils/form-creator/createFormFields"
 import { useTranslation } from "react-i18next"
 
@@ -23,13 +24,14 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
 
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [filter, setFilter] = useState<ShowsFilterInterface>({
-    name: searchParams.get(SHOWS_FILTER_BY_NAME),
+  const [filter, setFilter] = useState<MediasFilterInterface>({
+    title: searchParams.get(SHOWS_FILTER_BY_TITLE),
+    minYear: searchParams.get(SHOWS_FILTER_BY_MIN_YEAR),
+    maxYear: searchParams.get(SHOWS_FILTER_BY_MAX_YEAR),
     genre: searchParams.get(SHOWS_FILTER_BY_GENRE),
-    year: searchParams.get(SHOWS_FILTER_BY_YEAR)
   })
 
-  const [filterState, setFilterState] = useState<ShowsFilterInterface>({})
+  const [filterState, setFilterState] = useState<MediasFilterInterface>({})
 
   const onFilterDeleteAll = () => {
     updateFilter({})
@@ -40,7 +42,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     setFilterState({ ...filterState, [name]: value })
   }
 
-  const updateFilter = (formValues: ShowsFilterInterface) => {
+  const updateFilter = (formValues: MediasFilterInterface) => {
     const filterEmptyValues = Object.fromEntries(
       Object.entries(formValues).filter(([_, v]) => v !== null && v !== "" && v !== undefined)
     )
@@ -50,12 +52,12 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     setSearchParams(filterEmptyValues as URLSearchParamsInit)
   }
 
-  const onSubmit = (filter: ShowsFilterInterface) => {
+  const onSubmit = (filter: MediasFilterInterface) => {
     updateFilter(filter)
     setFilterOpen((prevState) => !prevState)
   }
 
-  const onFilterDelete = (key: keyof ShowsFilterInterface) => {
+  const onFilterDelete = (key: keyof MediasFilterInterface) => {
     /*  updateFilter({
       ...filter,
       [key]: null
@@ -66,8 +68,8 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
   const FILTER_FORM_FIELDS_ITEMS = [
     {
       id: t("form.filter.name"),
-      name: "name",
-      value: filterState.name ?? "",
+      name: "title",
+      value: filterState.title ?? "",
       label: t("form.filter.name"),
       placeholder: t("form.filter.name"),
       autoComplete: "off",
@@ -86,8 +88,17 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     },
     {
       id: t("form.filter.year"),
-      name: "year",
-      value: filterState.year ?? "",
+      name: "minYear",
+      value: filterState.minYear ?? "",
+      label: t("form.filter.year"),
+      placeholder: t("form.filter.year"),
+      autoComplete: "off",
+      sx: { width: "100%" },
+      onChange
+    },{
+      id: t("form.filter.year"),
+      name: "maxYear",
+      value: filterState.maxYear ?? "",
       label: t("form.filter.year"),
       placeholder: t("form.filter.year"),
       autoComplete: "off",

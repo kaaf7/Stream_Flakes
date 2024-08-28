@@ -1,25 +1,12 @@
 import { AppBar, AppBarProps, Toolbar, useTheme } from "@mui/material"
-import { useCallback, useEffect, useMemo, useState } from "react"
 
-import { debounce } from "lodash"
+import { useWindowScroll } from "@/hooks/windows-scroll/useWindowScroll"
+import { useMemo } from "react"
 
 export const AppBarContainer = ({ children }: AppBarProps) => {
-  const [scrolled, setScrolled] = useState(false)
   const theme = useTheme()
 
-  const handleScroll = useCallback(
-    debounce(() => {
-      setScrolled(window.scrollY > 10)
-    }, 100),
-    []
-  )
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [handleScroll])
+  const { scrolled, setScrolled } = useWindowScroll()
 
   const appBarStyles = useMemo(
     () => ({
@@ -39,7 +26,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
 
   const toolbarStyles = useMemo(
     () => ({
-      width:"85%",
+      width: "75rem",
       height: "100%",
       padding: "0 0 0 0",
       display: "flex",
@@ -51,8 +38,8 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
   )
 
   return (
-      <AppBar sx={appBarStyles}>
-        <Toolbar style={toolbarStyles}>{children}</Toolbar>
-      </AppBar>
+    <AppBar sx={appBarStyles}>
+      <Toolbar style={toolbarStyles}>{children}</Toolbar>
+    </AppBar>
   )
 }
