@@ -22,7 +22,7 @@ export const MediasGridApiConnector = () => {
 
   useEffect(() => {
     if (currentPage === prevPageRef.current + 1) {
-      setLimit((prevLimit) => prevLimit + 120)
+      setLimit((prevLimit) => prevLimit + 60)
     }
     prevPageRef.current = currentPage
   }, [currentPage])
