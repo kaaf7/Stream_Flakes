@@ -1,46 +1,71 @@
-import { Box, Grid, Typography } from "@mui/material"
-
 import { FooterLinkSection } from "@/components/ui/footer-link"
+import {
+  ABOUT_US_PATH,
+  ACCESSIBILITY_STATEMENT_PATH,
+  COMPANY_HISTORY_PATH,
+  COMPANY_MISSION_PATH,
+  COMPLIANCE_STATEMENTS_PATH,
+  COOKIES_SETTINGS_PATH,
+  COPYRIGHT_INFORMATION_PATH,
+  DATA_PROTECTION_PATH,
+  FAQ_PATH,
+  HELP_DESK_PATH,
+  LANGUAGE_SELECTION_PATH,
+  NEWSLETTER_SIGNUP_PATH,
+  PRIVACY_POLICY_PATH,
+  SITE_MAP_PATH,
+  SOCIAL_MEDIA_PATH,
+  SUPPORT_PATH,
+  TERMS_OF_SERVICE_PATH,
+  TERMS_OF_USE_PATH,
+  TRUST_BADGES_PATH,
+  VALUES_PATH
+} from "@/constants/constants.ts"
+import { Box, Grid, Typography } from "@mui/material"
+import { useTranslation } from "react-i18next"
 
 export const Footer = () => {
+  const { t } = useTranslation(["common"])
+
   interface Link {
-    name: string 
+    name: string
     to: string
   }
+
   const CONTACT_AND_LEGAL_INFORMATION: Link[] = [
-    { name: "Support Center", to: "/support" },
-    { name: "Help Desk", to: "/help" },
-    { name: "FAQ", to: "/faq" },
-    { name: "Data Protection", to: "/data-protection" },
-    { name: "Privacy Policy", to: "/privacy-policy" },
-    { name: "Terms of Service", to: "/terms-of-service" },
-    { name: "Cookies Settings", to: "/cookies-settings" },
-    { name: "Company Mission", to: "/mission" },
-    { name: "Company History", to: "/history" },
-    { name: "About Us", to: "/about" },
-    { name: "Values", to: "/values" },
-    { name: "Social Media", to: "/social-media" },
-    { name: "Newsletter Signup", to: "/newsletter" },
-    { name: "Site Map", to: "/site-map" },
-    { name: "Accessibility Statement", to: "/accessibility" },
-    { name: "Terms of Use", to: "/terms-of-use" },
-    { name: "Compliance Statements", to: "/compliance" },
-    { name: "Copyright Information", to: "/copyright" },
-    { name: "Trust Badges", to: "/trust-badges" },
-    { name: "Language Selection", to: "/language-selection" }
-]
+    { name: t("footer.supportCenter"), to: SUPPORT_PATH },
+    { name: t("footer.helpDesk"), to: HELP_DESK_PATH },
+    { name: t("footer.faq"), to: FAQ_PATH },
+    { name: t("footer.dataProtection"), to: DATA_PROTECTION_PATH },
+    { name: t("footer.privacyPolicy"), to: PRIVACY_POLICY_PATH },
+    { name: t("footer.termsOfService"), to: TERMS_OF_SERVICE_PATH },
+    { name: t("footer.cookiesSettings"), to: COOKIES_SETTINGS_PATH },
+    { name: t("footer.companyMission"), to: COMPANY_MISSION_PATH },
+    { name: t("footer.companyHistory"), to: COMPANY_HISTORY_PATH },
+    { name: t("footer.aboutUs"), to: ABOUT_US_PATH },
+    { name: t("footer.values"), to: VALUES_PATH },
+    { name: t("footer.socialMedia"), to: SOCIAL_MEDIA_PATH },
+    { name: t("footer.newsletterSignup"), to: NEWSLETTER_SIGNUP_PATH },
+    { name: t("footer.siteMap"), to: SITE_MAP_PATH },
+    { name: t("footer.accessibilityStatement"), to: ACCESSIBILITY_STATEMENT_PATH },
+    { name: t("footer.termsOfUse"), to: TERMS_OF_USE_PATH },
+    { name: t("footer.complianceStatements"), to: COMPLIANCE_STATEMENTS_PATH },
+    { name: t("footer.copyrightInformation"), to: COPYRIGHT_INFORMATION_PATH },
+    { name: t("footer.trustBadges"), to: TRUST_BADGES_PATH },
+    { name: t("footer.languageSelection"), to: LANGUAGE_SELECTION_PATH }
+  ]
 
   return (
     <Box
       style={{
         width: "100%",
-        height: "50vh",
+        height: "45vh",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "center"
       }}>
-      <Box sx={{ height: "100%", position: "relative"}}>
+      <Box sx={{ height: "100%", position: "relative" }}>
         <Grid
           container
           justifyContent={"space-between"}
@@ -49,6 +74,7 @@ export const Footer = () => {
             height: "100%",
             alignContent: "center",
             textAlign: "start",
+            paddingTop: 0,
             alignItems: "center"
           }}>
           <FooterLinkSection links={CONTACT_AND_LEGAL_INFORMATION} />
@@ -62,10 +88,9 @@ export const Footer = () => {
               justifyContent: "center"
             }}>
             <Typography variant="body2">
-              © 2024 StreamFlakes - Your Portal to Endless Entertainment - All external content
-              remains the property of the respective owner.
+              {t("footer.copyRights")}
               <br />
-              Impressum · Privacy Policy · Careers · Privacy Control Center
+              {t("footer.impressum")}
             </Typography>
           </span>
         </Grid>
