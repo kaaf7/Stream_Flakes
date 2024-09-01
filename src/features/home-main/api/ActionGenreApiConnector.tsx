@@ -1,17 +1,30 @@
 import { MediaSlider } from "@/features/home-main"
 import { MediasFilterInterface } from "@/features/shows-filter"
 import { useMedias } from "@/hooks/medias/useMedias"
-import { Genre } from "@/interfaces/Genre"
+import { Genre, MediaResultLimit } from "@/interfaces/Genre"
 import { useState } from "react"
+import { Languages } from "@/constants/constants.ts"
+import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 
-const trendingFilterStat = {
-  originalLnguage:"en",
-  spokenLanguage:"en",
+const trendingFilterState = {
+  originalLanguage: Languages.ENGLISH,
+  spokenLanguage: Languages.ENGLISH,
   genre: Genre.ACTION
 }
 export const ActionGenreApiConnector = () => {
-  const [filter, setFilter] = useState<MediasFilterInterface>(trendingFilterStat)
-
-  const { isLoading, response: medias, errors } = useMedias({ mediaFilterParams: filter, limit: 50 })
-  return <MediaSlider cardCount={5} cardWidth={14.2} isLoading={isLoading} medias={medias} slideTimer={15000} />
+  const [filter] = useState<MediasFilterInterface>(trendingFilterState)
+  const { mobile } = useResponsive()
+  const { isLoading, response: medias } = useMedias({
+    mediaFilterParams: filter,
+    limit: MediaResultLimit.LIMIT_50
+  })
+  return (
+    <MediaSlider
+      cardCount={mobile?1:5}
+      cardWidth={14.2}
+      isLoading={isLoading}
+      medias={medias}
+      slideTimer={15000}
+    />
+  )
 }
