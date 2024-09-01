@@ -3,28 +3,31 @@ import { MediasFilterInterface } from "@/features/shows-filter"
 import { useMedias } from "@/hooks/medias/useMedias"
 import { Genre, MediaResultLimit } from "@/interfaces/Genre"
 import { useState } from "react"
-import { Languages } from "@/constants/constants.ts"
+import { Languages, TmdbImageSizes } from "@/constants/constants.ts"
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 
 const trendingFilterState = {
   originalLanguage: Languages.ENGLISH,
   spokenLanguage: Languages.ENGLISH,
-  genre: Genre.ACTION
+  genre: Genre.COMEDY
 }
-export const ActionGenreApiConnector = () => {
+export const ComedyGenreApiConnector = () => {
   const [filter] = useState<MediasFilterInterface>(trendingFilterState)
   const { mobile } = useResponsive()
   const { isLoading, response: medias } = useMedias({
     mediaFilterParams: filter,
     limit: MediaResultLimit.LIMIT_50
   })
+
   return (
     <MediaSlider
-      cardCount={mobile?1:5}
-      cardWidth={14.2}
+      cardCount={mobile?1:2}
+      cardWidth={24.6}
+      containerHeight="100vh"
       isLoading={isLoading}
       medias={medias}
-      slideTimer={15000}
+      slideTimer={20000}
+      imageSize={TmdbImageSizes.POSTER_ORIGINAL}
     />
   )
 }

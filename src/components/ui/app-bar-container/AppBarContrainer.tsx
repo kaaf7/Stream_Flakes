@@ -1,12 +1,11 @@
+import { useWindowScroll } from "@/hooks/window-scroll/useWindowScroll"
 import { AppBar, AppBarProps, Toolbar, useTheme } from "@mui/material"
-
-import { useWindowScroll } from "@/hooks/windows-scroll/useWindowScroll"
 import { useMemo } from "react"
 
 export const AppBarContainer = ({ children }: AppBarProps) => {
   const theme = useTheme()
 
-  const { scrolled, setScrolled } = useWindowScroll()
+  const { scrolled } = useWindowScroll()
 
   const appBarStyles = useMemo(
     () => ({
@@ -26,7 +25,7 @@ export const AppBarContainer = ({ children }: AppBarProps) => {
 
   const toolbarStyles = useMemo(
     () => ({
-      width: "75rem",
+      width: "80%",
       height: "100%",
       padding: "0 0 0 0",
       display: "flex",

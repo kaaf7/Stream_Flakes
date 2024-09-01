@@ -1,56 +1,60 @@
-import { ReactNode, createContext, useState } from "react"
-
-interface LoginInfo {
-  username: string
-  password: string
-}
+import { createContext, ReactNode, useEffect, useState } from "react"
 
 interface User {
   id: string | null
   username: string | null
   email: string | null
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  favorites: any[]|null
-  createdAt: Date|null
-  updatedAt: Date|null
+  favorites: any[] | null
+  createdAt: Date | null
+  updatedAt: Date | null
   isLoggedIn: boolean
   accessToken: string | null
 }
 
 interface AuthContext {
-  token: string|null
-  setToken(token: string|null): void
+  token: string | null
   user: User | null
-  userData:User|null
-  setUser(user: User | null): void
-  logOut():void
 
+  setToken(token: string | null): void
+
+  setUser(user: User | null): void
+
+  logOut(): void
 }
 
 export const AuthContext = createContext<AuthContext>({
   token: "",
-  setToken: (token: null) => {},
+  setToken: () => {},
   user: null,
-  userData:null,
-  setUser: (user: null) => {},
-  logOut:()=>{}
+  setUser: () => {},
+  logOut: () => {}
 })
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const storedUserInfo = localStorage.getItem("user")
-  const userData = storedUserInfo ? JSON.parse(storedUserInfo) : null
+  // const storedUserInfo = localStorage.getItem("user")
+  //const userData = storedUserInfo ? JSON.parse(storedUserInfo) : null
+  // Handle retrieving user data from localStorage
+  const savedUser = localStorage.getItem("user")
   const [user, setUser] = useState<User | null>(null)
-  const [token, setToken] = useState<string|null>(null)
+  const [token, setToken] = useState<string | null>(null)
 
-   const logOut=()=>{
+  useEffect(() => {
+    if (savedUser) {
+      {
+        const initialValue = JSON.parse(savedUser)
+        setUser(initialValue)
+      }
+    }
+  }, [savedUser])
+
+  const logOut = () => {
     localStorage.removeItem("user")
     setUser(null)
     setToken(null)
-  
   }
 
-
   return (
-    <AuthContext.Provider value={{ token, setToken, user, setUser ,userData, logOut}}>
+    <AuthContext.Provider value={{ token, setToken, user, setUser, logOut }}>
       {children}
     </AuthContext.Provider>
   )

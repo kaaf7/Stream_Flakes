@@ -7,14 +7,16 @@ import { useTranslation } from "react-i18next"
 
 interface FilterListProps {
   filter: object
+
   onFilterDelete(key: string): void
+
   onFilterDeleteAll(event: SyntheticEvent): void
 }
 
 const FilterArrayStyle = {
   display: "flex",
   flexDirection: "row",
-  Width:"100%",
+  Width: "100%",
   position: "relative",
   justifyContent: "flex-start",
   gap: 1
@@ -27,8 +29,8 @@ export const FilterArray = ({ filter, onFilterDelete, onFilterDeleteAll }: Filte
     ([_, v]) => ["string", "number", "boolean"].includes(typeof v) && v !== ""
   )
   return (
-    <Box sx={FilterArrayStyle} >
-      {validFilterEntries.map(([key, value],index) => (
+    <Box sx={FilterArrayStyle}>
+      {validFilterEntries.map(([key, value], index) => (
         <Chip
           key={index}
           variant={ChipVariant.OUTLINED}
