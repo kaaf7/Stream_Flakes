@@ -9,7 +9,7 @@
   "search": "Search Shows",
   "checkMovie": "Explore",
   "streamsAt": "FIND IT ON",
-  "trending": "Now Trending",
+  "trending": "Explore",
   "deleteAllFilters": "Delete All Filters",
   "favorites": "Favorites",
   "dummyText": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.,Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient monte Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa",
@@ -19,5 +19,29 @@
       "year": "Year",
       "genre": "Genre"
     }
+  },
+  "footer": {
+    "supportCenter": "Support Center",
+    "helpDesk": "Help Desk",
+    "faq": "FAQ",
+    "dataProtection": "Data Protection",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiesSettings": "Cookies Settings",
+    "companyMission": "Company Mission",
+    "companyHistory": "Company History",
+    "aboutUs": "About Us",
+    "values": "Values",
+    "socialMedia": "Social Media",
+    "newsletterSignup": "Newsletter Signup",
+    "siteMap": "Site Map",
+    "accessibilityStatement": "Accessibility Statement",
+    "termsOfUse": "Terms of Use",
+    "complianceStatements": "Compliance Statements",
+    "copyrightInformation": "Copyright Information",
+    "trustBadges": "Trust Badges",
+    "languageSelection": "Language Selection",
+    "copyRights": " © 2024 StreamFlakes - Your Portal to Endless Entertainment - All external content remains the property of the respective owner.",
+    "impressum": "Impressum · Privacy Policy · Careers · Privacy Control Center"
   }
 }
