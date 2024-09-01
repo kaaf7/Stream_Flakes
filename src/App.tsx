@@ -1,19 +1,22 @@
 import "./App.css"
+import { Router } from "@/components/router/Router"
+import englishTranslation from "@/translations/en/english.json"
+import { defineTheme } from "@/utils/theme-creator/themeCreator"
 
 import { CssBaseline, ThemeProvider } from "@mui/material"
-
-import { I18nextProvider } from "react-i18next"
-import { Router } from "@/components/router/Router"
-import { defineTheme } from "@/utils/theme-creator/themeCreator"
-import englishTranslation from "@/translations/en/english.json"
 import i18next from "i18next"
-import { useAuth } from "./hooks/auth/useAuth"
 import { useState } from "react"
 
+import { I18nextProvider } from "react-i18next"
+import { useAuth } from "./hooks/auth/useAuth"
+
 function App() {
-  const [isDarkModOn, setDarkModeOn] = useState<boolean>(true)
   const { user } = useAuth()
+
+  const [isDarkModOn] = useState<boolean>(true)
+
   const theme = defineTheme(isDarkModOn)
+
   i18next.init({
     interpolation: { escapeValue: false },
     lng: "en",
