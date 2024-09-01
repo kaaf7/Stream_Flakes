@@ -3,8 +3,9 @@ import "react-multi-carousel/lib/styles.css"
 import { Box, Grid, Typography } from "@mui/material"
 import { CardSkeleton, CardSkeletonProps } from "../card-skeleton/CardSkeleton"
 
-import { MediaCard } from "@/components/ui/movie-card/"
+import { MediaCardProps } from "@/interfaces/MediaCardProps"
 import Carousel from "react-multi-carousel"
+import { MediaCardUpdated } from "../media-card-updated"
 
 const dummyMedia = [
   //First image url
@@ -111,6 +112,7 @@ const dummyMedia = [
 ]
 
 interface SliderProps extends CardSkeletonProps {
+  medias: MediaCardProps[]
   needsTitle?: boolean
   title?: string
   deskTopDisplayItems?: number
@@ -121,6 +123,7 @@ interface SliderProps extends CardSkeletonProps {
 }
 
 export const Slider = ({
+  medias,
   needsTitle,
   title,
   deskTopDisplayItems,
@@ -153,9 +156,9 @@ export const Slider = ({
   }
 
   return (
-    <Grid sx={{ width: "100%" }}>
+    <Grid  sx={{ width: "75rem"}} >
       {needsTitle && (
-        <Grid item xs={2}>
+        <Grid item xs={3}>
           <Box sx={{ height: "100%" }}>
             <Typography variant="body1" sx={{ height: "100%", color: "grey" }}>
               {title}
@@ -184,13 +187,13 @@ export const Slider = ({
             dotListClass="custom-dot-list-style">
             {isLoading
               ? skeletonCards
-              : dummyMedia.map((media, index) => (
-                  <MediaCard
-                    sx={{ marginRight: 1, marginLeft: 1 }}
-                    key={index}
-                    imageUrl={media.url}
+              : medias.map((media) => (
+                  <MediaCardUpdated
+                    sx={{ marginRight: 1, marginLeft: 1, borderRadius: "1rem" }}
+                    key={media.id}
+                    imageUrl={media.poster_path?.replace("original", "w154") as string}
                     title={media.title}
-                    id={media.url}
+                    id={media.id}
                   />
                 ))}
           </Carousel>

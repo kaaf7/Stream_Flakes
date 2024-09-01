@@ -1,19 +1,17 @@
-import { LatestShows } from "@/features/home-main"
+import { MediaSlider } from "@/features/home-main"
 import { MediasFilterInterface } from "@/features/shows-filter"
 import { useMedias } from "@/hooks/medias/useMedias"
 import { Genre } from "@/interfaces/Genre"
 import { useState } from "react"
 
 const trendingFilterStat = {
-  minYear: "2020",
-  maxYear: "2023",
-  genre:Genre.COMEDY
+  originalLnguage:"en",
+  spokenLanguage:"en",
+  genre: Genre.ACTION
 }
-
-export const LatestShowsApiConnector = () => {
+export const ActionGenreApiConnector = () => {
   const [filter, setFilter] = useState<MediasFilterInterface>(trendingFilterStat)
 
   const { isLoading, response: medias, errors } = useMedias({ mediaFilterParams: filter, limit: 50 })
-
-  return <LatestShows isLoading={isLoading} data={"a"} />
+  return <MediaSlider cardCount={5} cardWidth={14.2} isLoading={isLoading} medias={medias} slideTimer={15000} />
 }

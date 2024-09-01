@@ -1,15 +1,15 @@
+import { MainColor, TmdbImageSizes } from "@/constants/constants"
 import { Box, Container, Divider, ImageList, Typography, useTheme } from "@mui/material"
 
 import { GidSkeleton } from "@/components/ui/grid-skeleton"
 import { MediaCardUpdated } from "@/components/ui/media-card-updated"
-import { MainColor } from "@/constants/constants"
-import { Media } from "@/interfaces/Media"
+import { MediaCardProps } from "@/interfaces/MediaCardProps"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 
 interface TrendingShowsSearchDisplayProps {
   isLoading: boolean
-  medias: Media[]
+  medias: MediaCardProps[]
 }
 
 export const TrendingShowsSearchDisplay = ({
@@ -61,12 +61,12 @@ export const TrendingShowsSearchDisplay = ({
             <MemoizedGridSkeleton gridLength={6} />
           ) : (
             <>
-              {medias.slice(1,7).map((media) => (
+              {medias.map((media) => (
                 <MediaCardUpdated
                   key={media.id}
                   id={media.id}
                   needsMediaCardBar={false}
-                  imageUrl={media.imageUrl}
+                  imageUrl={media.poster_path?.replace("original",TmdbImageSizes.LOGO_W154) as string}
                 />
               ))}
             </>

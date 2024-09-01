@@ -5,7 +5,7 @@ import { ReactNode } from "react"
 interface CustomTooltipProps extends Omit<TooltipProps, "children"> {}
 
 interface CustomIconButtonProps extends IconButtonProps {
-  toolTipProps: CustomTooltipProps
+  toolTipProps?: CustomTooltipProps
   children: ReactNode
 }
 
@@ -15,7 +15,7 @@ export const CustomIconButton = ({
   ...iconButtonProps
 }: CustomIconButtonProps) => {
   return (
-    <Tooltip {...toolTipProps} title={toolTipProps.title}>
+    <Tooltip {...toolTipProps} title={toolTipProps?.title || ""}>
         <IconButton {...iconButtonProps}>{children}</IconButton>
     </Tooltip>
   )

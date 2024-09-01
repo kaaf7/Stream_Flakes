@@ -1,8 +1,8 @@
 export const serializeParams = (
   limit:number,
-  filterName: string,
+  filterName?: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  filter:any
+  filter?:any
 ): string => {
   const validFilterEntries = Object.entries(filter)
   .filter(

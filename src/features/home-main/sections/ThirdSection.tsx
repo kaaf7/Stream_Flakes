@@ -1,14 +1,12 @@
+import {
+  ActionGenreApiConnector,
+  DramaGenreApiConnector,
+  SeriesApiConnector,
+  TrendingShowsApiConnector
+} from "@/features/home-main"
 import { Divider, useTheme } from "@mui/material"
 
-import { MoviesApiConnector } from "../api/MoviesApiConnector"
-import { SeriesApiConnector } from "../api/SeriesApiConnector"
-import { SportsApiConnector } from "../api/SportsApiConnector"
-import { TrendingShowsApiConnector } from "../api/TrendingShowsApiConnector"
-
-interface ThirdSectionProps {
-  isLoading: boolean
-}
-export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
+export const ThirdSection = () => {
   const theme = useTheme()
 
   return (
@@ -21,6 +19,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
         gap: 30,
         alignItems: "center"
       }}>
+      <DramaGenreApiConnector />
       <Divider
         sx={{
           width: "100%",
@@ -28,7 +27,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
-      <MoviesApiConnector />
+      <ActionGenreApiConnector />
       <Divider
         sx={{
           width: "100%",
@@ -36,8 +35,7 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
-
-      <SeriesApiConnector />
+      <SeriesApiConnector/>
       <Divider
         sx={{
           width: "100%",
@@ -53,7 +51,6 @@ export const ThirdSection = ({ isLoading }: ThirdSectionProps) => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
-      <SportsApiConnector />
     </main>
   )
 }

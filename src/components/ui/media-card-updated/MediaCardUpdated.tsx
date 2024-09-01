@@ -40,7 +40,7 @@ export const MediaCardUpdated = ({
 
       <img
         id={id}
-        src={imageUrl?.replace("original", "w342")?? ""}
+        src={imageUrl}
         alt={alt}
         aria-label={alt}
         loading="lazy"

@@ -52,7 +52,7 @@ export const MediaGrid = ({ medias, needsMediaCardBar, isLoading,currentPage }: 
             id={media.id}
             needsMediaCardBar={needsMediaCardBar}
             isFavorite={media.isFavorite}
-            imageUrl={media.poster_path as string}
+            imageUrl={media.poster_path?.replace("original", "w342") as string?? "" }
           />
         ))
       )}

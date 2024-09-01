@@ -1,9 +1,9 @@
-import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
-import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
 import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
+import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
+import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
 
+import { MediaCardUpdated } from "@/components/ui/media-card-updated"
 import { BRAND_ICONS } from "@/features/home-main"
-import { MediaCard } from "@/components/ui/movie-card"
 import { MediasGridApiConnector } from "@/features/medias-main"
 import { useResponsive } from "@/hooks/responsive/useResponsive"
 import { useTranslation } from "react-i18next"
@@ -70,7 +70,7 @@ export default function MediasOverview() {
                 gap: 1
               }}>
               {BRAND_ICONS.map((brandIcon) => (
-                <MediaCard
+                <MediaCardUpdated
                   sx={{ width: "50px", height: "50px" }}
                   key={brandIcon}
                   imageUrl={brandIcon as string}
