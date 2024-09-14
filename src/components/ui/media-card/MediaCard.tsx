@@ -1,31 +1,40 @@
-import { Box, BoxProps, IconButton, ImageListItemBar } from "@mui/material";
-
-import { MainColor } from "@/constants/constants";
-import { Favorite } from "@mui/icons-material";
-import { useState } from "react";
+import { User } from "@/components/Auth/AuthProvider.tsx"
+import { MainColor } from "@/constants/constants"
+import { FavoriteOutlined } from "@mui/icons-material"
+import { Box, BoxProps, IconButton, ImageListItemBar } from "@mui/material"
+import { SyntheticEvent, useState } from "react"
 
 export interface MediaCardProps extends BoxProps {
   id: string
-  alt?:string
+  alt?: string
   width?: string
   height?: string
   borderRadius?: string
   imageUrl: string
   needsMediaCardBar?: boolean
   isFavorite?: boolean
+  user?: User
+
+  onClick?(event: SyntheticEvent): void
+
+  onIconClick?(event: SyntheticEvent): void
 }
 
-export const MediaCardUpdated = ({
+export const MediaCard = ({
   id,
   alt,
   imageUrl,
   needsMediaCardBar = false,
+  user,
   isFavorite = false,
+  onClick,
+  onIconClick,
+  borderRadius = "1rem",
+
   ...props
 }: MediaCardProps) => {
   const [hover, setHover] = useState<boolean>(false)
   return (
-
     <Box
       sx={{
         width: "100%",
@@ -37,23 +46,24 @@ export const MediaCardUpdated = ({
       {...props}
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}>
-
       <img
         id={id}
         src={imageUrl}
         alt={alt}
         aria-label={alt}
         loading="lazy"
+        onClick={onClick}
         style={{
           width: "100%",
           height: "100%",
+          borderRadius: borderRadius,
           objectFit: "cover",
           opacity: hover ? 0.6 : 1,
           cursor: hover ? "pointer" : "default",
           transition: "opacity 0.5s ease-in-out"
         }}
       />
-      {needsMediaCardBar && (
+      {needsMediaCardBar && user?.isLoggedIn && (
         <ImageListItemBar
           sx={{
             background: "none",
@@ -65,11 +75,12 @@ export const MediaCardUpdated = ({
           }}
           actionIcon={
             <IconButton
+              onClick={onIconClick}
               aria-label="favorite"
               sx={{
-                backgroundColor: "rgba(125, 125, 125, 0.4)"
+                backgroundColor: "rgba(125, 125, 125, 0.2)"
               }}>
-              <Favorite color={isFavorite ? MainColor.WARNING : MainColor.PRIMARY} />
+              <FavoriteOutlined color={isFavorite ? MainColor.WARNING : MainColor.PRIMARY} />
             </IconButton>
           }
         />
