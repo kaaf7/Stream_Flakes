@@ -1,16 +1,13 @@
+import { Languages } from "@/constants/constants.ts"
 import { MediaSlider } from "@/features/home-main"
 import { MediasFilterInterface } from "@/features/shows-filter"
-import { useMedias } from "@/hooks/medias/useMedias"
-import { Genre, MediaResultLimit } from "@/interfaces/Genre"
-import { useState } from "react"
-import { Languages } from "@/constants/constants.ts"
 import { getRandomGenre } from "@/helpers/getRandomGenre.ts"
+import { useMedias } from "@/hooks/medias/useMedias"
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
+import { GenreInterface, MediaResultLimit } from "@/interfaces/GenreInterface.ts"
+import { useState } from "react"
 
-const GENRE_LIST = [
-  Genre.THRILLER,
-  Genre.HORROR,
-]
+const GENRE_LIST = [GenreInterface.THRILLER, GenreInterface.HORROR]
 
 const filterState = {
   originalLanguage: Languages.ENGLISH,
@@ -19,16 +16,17 @@ const filterState = {
 }
 export const ExploreRandomShowsApiConnectors = () => {
   const [filter] = useState<MediasFilterInterface>(filterState)
-  const { mobile } = useResponsive()
+  const { mobile, tablet, laptop } = useResponsive()
 
-  const { isLoading, response: medias } = useMedias({ mediaFilterParams: filter,     limit: MediaResultLimit.LIMIT_50 })
-
+  const { isLoading, response: medias } = useMedias({
+    mediaFilterParams: filter,
+    limit: MediaResultLimit.LIMIT_10
+  })
   return (
     <MediaSlider
-      cardCount={mobile?3:10}
+      cardCount={mobile ? 2 : tablet ? 3 : laptop ? 3 : 10}
       cardWidth={7.4}
-      cardHeight="70vh"
-      containerHeight="72vh"
+      containerHeight={mobile ? "50vh" : tablet ? "30vh" : laptop ? "40vh" : "72vh"}
       isLoading={isLoading}
       medias={medias}
       slideTimer={25000}
