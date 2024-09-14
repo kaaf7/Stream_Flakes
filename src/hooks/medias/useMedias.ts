@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MediaApi } from "@/api/MediaApi"
 import { MediasFilterInterface } from "@/features/shows-filter"
+import { useSnackbar } from "notistack"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 interface UseMediaProps {
   mediaFilterParams: MediasFilterInterface
@@ -9,6 +11,9 @@ interface UseMediaProps {
 }
 
 export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
+  const { t } = useTranslation(["common"])
+  const { enqueueSnackbar } = useSnackbar()
+
   const mediaApi = new MediaApi()
   const [isLoading, setLoading] = useState<boolean>(true)
 
@@ -34,8 +39,8 @@ export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
           setResponse(data)
         }
       } catch (error) {
-        console.error(error)
         setErrors(error)
+        enqueueSnackbar(t("error.errorMessage"), { variant: "error" })
       } finally {
         setLoading(false)
         setRefresh(false)
@@ -44,5 +49,5 @@ export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
     fetchData()
   }, [refresh])
 
-  return { isLoading, response, errors }
+  return { isLoading, response, errors, prefetch }
 }
