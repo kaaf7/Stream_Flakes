@@ -22,9 +22,13 @@ export enum GenreInterface {
 
 export enum MediaResultLimit {
   LIMIT_6 = 6,
+  LIMIT_8 = 8,
+
+  LIMIT_10 = 10,
 
   LIMIT_25 = 25,
   LIMIT_50 = 50,
+  LIMIT_60 = 60,
   LIMIT_75 = 75,
   LIMIT_100 = 100
 }
