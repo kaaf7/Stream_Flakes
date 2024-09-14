@@ -1,7 +1,7 @@
 import { GidSkeleton } from "@/components/ui/grid-skeleton"
 import { MediaCard } from "@/components/ui/media-card"
 import { createMediaPath, MainColor, TmdbImageSizes } from "@/constants/constants"
-import { MediaCardProps } from "@/interfaces/MediaCardProps"
+import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import { Box, Container, Divider, ImageList, Typography, useTheme } from "@mui/material"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 interface TrendingShowsSearchDisplayProps {
   isLoading: boolean
-  medias: MediaCardProps[]
+  medias: MediaInterface[]
 }
 
 export const ExploreShowsSearchDisplay = ({
