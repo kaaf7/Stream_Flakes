@@ -1,5 +1,5 @@
 import fallbackImage from "@/assets/images/fallback.jpg"
-import { MediaCardProps } from "@/interfaces/MediaCardProps.ts"
+import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
 import {
   Box,
@@ -11,7 +11,7 @@ import {
 } from "@mui/material"
 
 interface UserSearchResultDisplayProps {
-  medias: MediaCardProps[]
+  medias: MediaInterface[]
   isLoading: boolean
 
   setImdbId(imdbId: string): void
@@ -85,7 +85,9 @@ export const UserSearchResultDisplay = ({
           {medias?.map((media) => (
             <ImageListItem
               key={media?.id}
-              onClick={() => setImdbId(media.imdb_id as string)}
+              onClick={() => {
+                setImdbId(media.imdb_id as string)
+              }}
               sx={{
                 width: "100%",
                 height: "5rem",
@@ -105,6 +107,7 @@ export const UserSearchResultDisplay = ({
               }}>
               <Box>
                 <img
+                  id={media.id}
                   src={media.poster_path}
                   alt={media.original_title}
                   loading={"lazy"}
@@ -115,7 +118,8 @@ export const UserSearchResultDisplay = ({
                   style={{
                     width: "4rem",
                     height: "5rem",
-                    objectFit: "cover"
+                    objectFit: "cover",
+                    borderRadius: "1rem"
                   }}
                 />
               </Box>
