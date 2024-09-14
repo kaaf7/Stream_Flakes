@@ -1,11 +1,14 @@
+import { LOGIN_PATH } from "@/constants/constants.ts"
+import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import { createContext, ReactNode, useEffect, useState } from "react"
+import { NavigateFunction } from "react-router-dom"
 
-interface User {
+export interface User {
   id: string | null
   username: string | null
   email: string | null
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  favorites: any[] | null
+  favorites: MediaInterface[] | null
   createdAt: Date | null
   updatedAt: Date | null
   isLoggedIn: boolean
@@ -20,7 +23,7 @@ interface AuthContext {
 
   setUser(user: User | null): void
 
-  logOut(): void
+  logOut(navigate: NavigateFunction): void
 }
 
 export const AuthContext = createContext<AuthContext>({
@@ -28,14 +31,13 @@ export const AuthContext = createContext<AuthContext>({
   setToken: () => {},
   user: null,
   setUser: () => {},
-  logOut: () => {}
+  logOut: (navigate: NavigateFunction) => {}
 })
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  // const storedUserInfo = localStorage.getItem("user")
-  //const userData = storedUserInfo ? JSON.parse(storedUserInfo) : null
-  // Handle retrieving user data from localStorage
   const savedUser = localStorage.getItem("user")
-  const [user, setUser] = useState<User | null>(null)
+  const userData = savedUser ? JSON.parse(savedUser) : null
+
+  const [user, setUser] = useState<User | null>(userData)
   const [token, setToken] = useState<string | null>(null)
 
   useEffect(() => {
@@ -47,10 +49,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [savedUser])
 
-  const logOut = () => {
+  const logOut = (navigate: NavigateFunction) => {
     localStorage.removeItem("user")
     setUser(null)
     setToken(null)
+    navigate(LOGIN_PATH)
   }
 
   return (
