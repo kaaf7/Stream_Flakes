@@ -1,47 +1,61 @@
-import { Box, Container, TextField, Typography, useTheme } from "@mui/material"
-import { ChangeEvent, useState } from "react"
-import { Form, useNavigate } from "react-router-dom"
-
 import movies from "@/assets/images/movies.jpg"
+import { User } from "@/components/Auth/AuthProvider.tsx"
 import { CustomButton } from "@/components/buttons/custom-button"
 import { MAIN_PATH } from "@/constants/constants"
-import { loginFormValues } from "@/features/account"
+import { LoginFormValuesInterface } from "@/features/account"
 import { formatResponse } from "@/helpers/formatResponse"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useLogin } from "@/hooks/auth/useLogin"
+import { useLoadingBackdrop } from "@/hooks/back-drop/useLoadingBackdrop.tsx"
+import { Box, Container, TextField, Typography, useTheme } from "@mui/material"
+import { useSnackbar } from "notistack"
+import { ChangeEvent, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { Form, useNavigate } from "react-router-dom"
 
 export const LoginForm = () => {
-  const theme = useTheme()
+  const { t } = useTranslation(["common"])
+  const { showBackdrop, hideBackdrop, LoadingBackdrop } = useLoadingBackdrop()
 
-  const { setToken, setUser,user } = useAuth()
+  const theme = useTheme()
+  const { enqueueSnackbar } = useSnackbar()
+
+  const { setToken, setUser } = useAuth()
   const { submitLogin } = useLogin()
 
-
   const navigate = useNavigate()
-  const [loginFormValues, setLoginFormValues] = useState<loginFormValues>({
-    username: "null",
-    password: "null"
+  const [loginFormValues, setLoginFormValues] = useState<LoginFormValuesInterface>({
+    username: "",
+    password: ""
   })
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setLoginFormValues({ ...loginFormValues, [name]: value })
   }
+
+  const handleUserLogin = (user: User) => {
+    const { accessToken, ...rest } = user
+    localStorage.setItem("user", JSON.stringify(user))
+    setUser({ ...rest } as User)
+    setToken(accessToken)
+  }
+
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    showBackdrop()
     try {
       const res = await submitLogin(loginFormValues)
       const user = await formatResponse(res)
       if (user) {
-        const { accessToken, ...rest } = user
-        setUser({ ...rest })
-        setToken(accessToken)
-        if(user.isLoggedIn){
-          navigate(MAIN_PATH)
-        }
+        handleUserLogin(user)
+        enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "success" })
+        navigate(MAIN_PATH)
       }
     } catch (error) {
-      console.error("Login failed:", error)
+      enqueueSnackbar(t("error.loginError"), { variant: "error" })
+    } finally {
+      hideBackdrop()
     }
   }
 
@@ -166,6 +180,7 @@ export const LoginForm = () => {
           zIndex: 1
         }}
       />
+      <LoadingBackdrop />
     </main>
   )
 }
