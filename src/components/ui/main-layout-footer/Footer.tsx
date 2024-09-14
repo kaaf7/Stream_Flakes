@@ -21,13 +21,11 @@ import {
   TRUST_BADGES_PATH,
   VALUES_PATH
 } from "@/constants/constants.ts"
-import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
-import { Box, Grid, Typography } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
 export const Footer = () => {
   const { t } = useTranslation(["common"])
-  const { desktop } = useResponsive()
 
   interface Link {
     name: string
@@ -80,21 +78,6 @@ export const Footer = () => {
             alignItems: "center"
           }}>
           <FooterLinkSection links={CONTACT_AND_LEGAL_INFORMATION} />
-          <Box
-            sx={{
-              width: "100%",
-              height: { mobile: "20vh", tablet: "20vh", desktop: "20vh" },
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center"
-            }}>
-            <Typography variant={desktop ? "body2" : "caption"}>
-              {t("footer.copyRights")}
-              <br />
-              {t("footer.impressum")}
-            </Typography>
-          </Box>
         </Grid>
       </Box>
     </Box>
