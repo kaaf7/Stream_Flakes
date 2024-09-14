@@ -1,15 +1,12 @@
-import {
-  MediaInfoDisplayApiConnector,
-  SuggestedMoviesApiConnector,
-  SuggestedSeriesApiConnector
-} from "@/features/media-detail-view"
+import { ActionGenreApiConnector, TrendingShowsApiConnector } from "@/features/home-main"
+import { MediaInfoDisplayApiConnector } from "@/features/media-detail-view"
 
 export const MediaDetailView = () => {
   return (
     <>
       <MediaInfoDisplayApiConnector />
-      <SuggestedMoviesApiConnector />
-      <SuggestedSeriesApiConnector />
+      <TrendingShowsApiConnector />
+      <ActionGenreApiConnector />
     </>
   )
 }
