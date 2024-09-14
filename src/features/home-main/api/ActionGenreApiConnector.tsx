@@ -1,5 +1,5 @@
+import { MediaSlider } from "@/components/ui/media-slider-carousel"
 import { Languages } from "@/constants/constants.ts"
-import { MediaSlider } from "@/features/home-main"
 import { MediasFilterInterface } from "@/features/shows-filter"
 import { useMedias } from "@/hooks/medias/useMedias"
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
