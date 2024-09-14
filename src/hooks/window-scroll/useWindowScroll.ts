@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react"
 
 export const useWindowScroll = () => {
   const [scrolled, setScrolled] = useState(false)
-
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 160)
   }, [])
