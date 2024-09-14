@@ -1,7 +1,4 @@
-export * from "./api/MediaInfoDisplayApiConnector";
-export * from "./api/SuggestedMoviesApiConnector";
-export * from "./api/SuggestedSeriesApiConnector";
+export * from "./api/MediaInfoDisplayApiConnector"
 
-export * from "./components/MediaDetailView";
-export * from "./components/MediaInfoDisplay";
-
+export * from "./components/MediaDetailView"
+export * from "./components/MediaInfoDisplay"
