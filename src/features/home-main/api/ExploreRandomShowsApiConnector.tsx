@@ -1,5 +1,5 @@
+import { MediaSlider } from "@/components/ui/media-slider-carousel"
 import { Languages } from "@/constants/constants.ts"
-import { MediaSlider } from "@/features/home-main"
 import { MediasFilterInterface } from "@/features/shows-filter"
 import { getRandomGenre } from "@/helpers/getRandomGenre.ts"
 import { useMedias } from "@/hooks/medias/useMedias"
@@ -14,7 +14,7 @@ const filterState = {
   spokenLanguage: Languages.ENGLISH,
   genre: getRandomGenre(GENRE_LIST)
 }
-export const ExploreRandomShowsApiConnectors = () => {
+export const ExploreRandomShowsApiConnector = () => {
   const [filter] = useState<MediasFilterInterface>(filterState)
   const { mobile, tablet, laptop } = useResponsive()
 
