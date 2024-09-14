@@ -102,6 +102,7 @@ export enum TmdbImageSizes {
   POSTER_W342 = "w342",
   POSTER_W500 = "w500",
   POSTER_W780 = "w780",
+  POSTER_W1280 = "w1280",
   POSTER_ORIGINAL = "original"
 }
 
