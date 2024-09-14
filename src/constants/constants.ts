@@ -1,7 +1,9 @@
 //** IDENTIFIER **/
 export const USER_IDENTIFIER = ":userId"
 
-export const MEDIA_IDENTIFIER = ":mediaId"
+export const MEDIA_IMDB_IDENTIFIER = ":imdbId"
+
+export const MEDIA_TITLE = ":title"
 
 //** PATHS **/
 export const MAIN_PATH = "/"
@@ -13,16 +15,18 @@ export const LOGIN_PATH = "login"
 export const SIGN_UP_PATH = "/signup"
 
 export const MEDIAS_PATH = "/medias"
+export const BACK_DROP = ":backDrop"
+
+export const MEDIA_BACKDROP_PATH = `https://image.tmdb.org/t/p/original/${BACK_DROP}`
 
 export const SHOWS_PATH = "/shows"
 
 export const SPORTS_PATH = "/sports"
 
 export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
-
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
-export const MEDIA_PATH = `/medias/${MEDIA_IDENTIFIER}`
+export const MEDIA_PATH = `/medias/${MEDIA_IMDB_IDENTIFIER}}`
 
 /** PATH CREATOR **/
 export const createFavoriteShowsPath = (userId: string) => {
@@ -33,8 +37,12 @@ export const createUserAccountPath = (userId: string) => {
   return USER_PATH.replace(USER_IDENTIFIER, userId)
 }
 
-export const createMediaPath = (mediaId: string) => {
-  return MEDIA_PATH.replace(MEDIA_IDENTIFIER, mediaId)
+export const createMediaPath = (imdbId: string) => {
+  return MEDIA_PATH.replace(MEDIA_IMDB_IDENTIFIER, imdbId)
+}
+
+export const createBackDropBack = (backDropPath: string) => {
+  return MEDIA_BACKDROP_PATH.replace(BACK_DROP, backDropPath)
 }
 
 /** SHOWS FILTERS **/
