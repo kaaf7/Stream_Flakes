@@ -1,4 +1,8 @@
-import { MAIN_PATH, MainColor, SHOWS_PATH, createFavoriteShowsPath } from "@/constants/constants"
+import { createFavoriteShowsPath, MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
+
+import { FavoriteMediasApiConnector } from "@/features/favorite-medias"
+import { useAuth } from "@/hooks/auth/useAuth.ts"
+import { useResponsive } from "@/hooks/responsive/useResponsive"
 import {
   FavoriteBorder,
   HomeMaxOutlined,
@@ -6,9 +10,6 @@ import {
   LocalMoviesOutlined
 } from "@mui/icons-material"
 import { Box, Breadcrumbs, Grid, Link, Typography } from "@mui/material"
-
-import { FavoriteMediasApiConnector } from "@/features/favorite-medias"
-import { useResponsive } from "@/hooks/responsive/useResponsive"
 import { useTranslation } from "react-i18next"
 
 const FavoritesOverviewTypographyStyle = {
@@ -24,13 +25,16 @@ const FavoritesOverviewTypographyStyle = {
 export default function FavoritesOverview() {
   const { t } = useTranslation(["common"])
   const { laptop, desktop } = useResponsive()
+  const { user } = useAuth()
 
-  //TODO ADD userId later
-  const userId = "userId"
   const BREAD_CRUMBS_ITEMS: { icon: React.ReactNode; title: string; link: string }[] = [
     { icon: <HomeMaxOutlined />, title: t("home"), link: MAIN_PATH },
     { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH },
-    { icon: <FavoriteBorder />, title: t("favorites"), link: createFavoriteShowsPath(userId) }
+    {
+      icon: <FavoriteBorder />,
+      title: t("favorites"),
+      link: createFavoriteShowsPath(user?.id as string)
+    }
   ]
   return (
     <Box
@@ -44,7 +48,7 @@ export default function FavoritesOverview() {
         marginTop: "5rem",
         gap: 3
       }}>
-      <Box sx={{width:"100%"}}>
+      <Box sx={{ width: "100%" }}>
         <Breadcrumbs
           sx={{ fontSize: ".75rem" }}
           separator={<KeyboardArrowRight />}
@@ -63,7 +67,7 @@ export default function FavoritesOverview() {
                   alignItems: "center",
                   gap: 1
                 }}>
-                {item.title} {item.icon}
+                {item.title.toUpperCase()}
               </Link>
             )
           )}
@@ -72,9 +76,8 @@ export default function FavoritesOverview() {
       {laptop ||
         (desktop && (
           <Box
-  
             sx={{
-              width:"100%",
+              width: "100%",
               height: "4rem",
               display: "flex",
               justifyContent: "space-between",
