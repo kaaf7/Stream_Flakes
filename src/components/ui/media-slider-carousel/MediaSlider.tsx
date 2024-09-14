@@ -1,7 +1,7 @@
 import { GidSkeleton } from "@/components/ui/grid-skeleton"
 
 import { createMediaPath, TmdbImageSizes } from "@/constants/constants.ts"
-import { MediaCardProps } from "@/interfaces/MediaCardProps.ts"
+import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined"
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined"
 import { Box, Button } from "@mui/material"
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 interface MoviesProps {
   isLoading: boolean
-  medias: MediaCardProps[]
+  medias: MediaInterface[]
   containerHeight?: string | any
   cardWidth?: number
   cardHeight?: string | object
@@ -129,7 +129,7 @@ export const MediaSlider = ({
             skeletonHeight={containerHeight as string}
           />
         ) : (
-          medias?.map((media: MediaCardProps) => (
+          medias?.map((media: MediaInterface) => (
             <img
               id={media.id}
               alt={media.title}
