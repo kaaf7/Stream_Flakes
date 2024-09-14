@@ -1,18 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MediaApi } from "@/api/MediaApi"
+import { useSnackbar } from "notistack"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 interface useSearchMediaByTitleProps {
   title: string
 }
 
 export const useSearchMediaByTitle = ({ title }: useSearchMediaByTitleProps) => {
+  const { t } = useTranslation(["common"])
+  const { enqueueSnackbar } = useSnackbar()
+
   const mediaApi = new MediaApi()
   const [isLoading, setLoading] = useState<boolean>(true)
 
   const [response, setResponse] = useState<any>(null)
   const [refresh, setRefresh] = useState<boolean>(true)
   const [errors, setErrors] = useState<unknown>(null)
+
   const prefetch = () => setRefresh(true)
   useEffect(() => {
     prefetch()
@@ -32,8 +38,8 @@ export const useSearchMediaByTitle = ({ title }: useSearchMediaByTitleProps) => 
           setResponse(data)
         }
       } catch (error) {
-        console.error(error)
         setErrors(error)
+        enqueueSnackbar(t("error.errorMessage"), { variant: "error" })
       } finally {
         setLoading(false)
         setRefresh(false)

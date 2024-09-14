@@ -1,14 +1,14 @@
 import { ExploreShowsSearchDisplayApiConnector } from "@/features/explore-shows-search-display"
 
 import { UserSearchResultDisplay } from "@/features/user-search-display"
-import { MediaCardProps } from "@/interfaces/MediaCardProps.ts"
+import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import { Card, useTheme } from "@mui/material"
 import { ReactNode } from "react"
 
 interface SearchResultDisplayProps {
   resultBoxVisible: boolean
   isLoading: boolean
-  medias: MediaCardProps[]
+  medias: MediaInterface[]
 
   setImdbId(imdbId: string): void
 }

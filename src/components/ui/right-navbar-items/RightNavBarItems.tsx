@@ -1,20 +1,19 @@
-import {
-  LOGIN_PATH,
-  MainColor,
-  SIGN_UP_PATH,
-  ToolTipPlacement,
-  createFavoriteShowsPath,
-  createUserAccountPath
-} from "@/constants/constants"
-import { FavoriteBorder, Logout } from "@mui/icons-material"
-import { Badge, Box, ContainerProps } from "@mui/material"
-
 import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
 import { WithNavBarItems } from "@/components/ui/with-navbar-items"
+import {
+  createFavoriteShowsPath,
+  createUserAccountPath,
+  LOGIN_PATH,
+  MainColor,
+  SIGN_UP_PATH,
+  ToolTipPlacement
+} from "@/constants/constants"
 import { ShowsButtonWithDialogContainer } from "@/features/medias-display-dialog"
 import { useAuth } from "@/hooks/auth/useAuth"
+import { FavoriteBorder, Logout } from "@mui/icons-material"
 import AccountCircle from "@mui/icons-material/AccountCircle"
+import { Badge, Box, ContainerProps } from "@mui/material"
 import { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
@@ -45,7 +44,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       component: (
         <CustomButton
           title={"signUp"}
-          sx={{ height: "2rem" }}
+          sx={{ height: "2rem", display: { mobile: "none", tablet: "block", desktop: "block" } }}
           variant={"outlined"}
           size={"small"}
           to={SIGN_UP_PATH}>
@@ -57,7 +56,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       component: (
         <CustomButton
           title={t("login")}
-          sx={{ height: "2rem" }}
+          sx={{ height: "2rem", display: { mobile: "none", tablet: "block", desktop: "block" } }}
           variant={"outlined"}
           size={"small"}
           to={LOGIN_PATH}>
@@ -94,8 +93,8 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
     {
       component: (
         <CustomIconButton
-          onClick={logOut}
-          toolTipProps={{ title: t("logout"), placement: ToolTipPlacement.BOTTOM }}>
+          toolTipProps={{ title: t("logout"), placement: ToolTipPlacement.BOTTOM }}
+          onClick={() => logOut(navigate)}>
           <Logout color={MainColor.PRIMARY} />
         </CustomIconButton>
       )

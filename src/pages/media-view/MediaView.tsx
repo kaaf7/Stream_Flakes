@@ -1,12 +1,13 @@
 import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
-import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
-import { Box, Breadcrumbs, Link } from "@mui/material"
 
 import { MediaDetailView } from "@/features/media-detail-view"
+import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
+import { Box, Breadcrumbs, Link } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
 export default function MediaView() {
-  const {t}=useTranslation(["common"])
+  const { t } = useTranslation(["common"])
+
   const BREAD_CRUMBS_ITEMS: { icon: React.ReactNode; title: string; link: string }[] = [
     { icon: <HomeMaxOutlined />, title: t("home"), link: MAIN_PATH },
     { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH }
@@ -42,7 +43,7 @@ export default function MediaView() {
                   alignItems: "center",
                   gap: 1
                 }}>
-                {item.title} {item.icon}
+                {item.title.toUpperCase()}
               </Link>
             )
           )}

@@ -1,9 +1,9 @@
+import { LoginFormValuesInterface } from "@/features/account"
 import { ChangeEvent, Dispatch, SetStateAction } from "react"
 
-import { loginFormValues } from "@/features/account"
-
 export interface LoginFormProps {
+  loginFormValues: LoginFormValuesInterface
+  setLoginFormValues: Dispatch<SetStateAction<LoginFormValuesInterface>>
+
   onChange(event: ChangeEvent<HTMLTextAreaElement>): void
-  loginFormValues: loginFormValues
-  setLoginFormValues: Dispatch<SetStateAction<loginFormValues>>
 }

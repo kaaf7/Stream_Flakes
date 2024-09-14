@@ -6,14 +6,7 @@ import { useMedias } from "@/hooks/medias/useMedias"
 import { GenreInterface, MediaResultLimit } from "@/interfaces/GenreInterface.ts"
 import { useState } from "react"
 
-const GENRE_LIST = [
-  GenreInterface.TV_MOVIE,
-  GenreInterface.THRILLER,
-  GenreInterface.HORROR,
-  GenreInterface.DOCUMENTARY,
-  GenreInterface.HISTORICAL,
-  GenreInterface.CRIME
-]
+const GENRE_LIST = [GenreInterface.THRILLER, GenreInterface.HORROR, GenreInterface.CRIME]
 
 const filterState = {
   originalLanguage: Languages.ENGLISH,
@@ -27,5 +20,6 @@ export const ExploreShowsSearchDisplayApiConnector = () => {
     mediaFilterParams: filter,
     limit: MediaResultLimit.LIMIT_6
   })
+
   return <ExploreShowsSearchDisplay medias={medias} isLoading={isLoading} />
 }

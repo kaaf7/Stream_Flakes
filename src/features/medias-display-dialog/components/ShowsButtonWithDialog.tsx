@@ -2,6 +2,7 @@ import { CustomButton } from "@/components/buttons/custom-button"
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
 import { GidSkeleton } from "@/components/ui/grid-skeleton"
 import { MediaCard } from "@/components/ui/media-card"
+
 import {
   ButtonVariant,
   createMediaPath,
@@ -11,8 +12,9 @@ import {
   TmdbImageSizes,
   ToolTipPlacement
 } from "@/constants/constants"
+
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
-import { MediaCardProps } from "@/interfaces/MediaCardProps.ts"
+import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import { LocalMoviesOutlined } from "@mui/icons-material"
 import { Dialog, DialogActions, DialogContent, ImageList, ImageListItem } from "@mui/material"
 import { SyntheticEvent, useEffect, useState } from "react"
@@ -21,7 +23,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 
 interface ShowsButtonWithDialogProps {
   isLoading: boolean
-  medias: MediaCardProps[]
+  medias: MediaInterface[]
 }
 
 export const ShowsButtonWithDialog = ({ isLoading, medias }: ShowsButtonWithDialogProps) => {

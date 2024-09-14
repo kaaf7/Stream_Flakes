@@ -1,5 +1,5 @@
+import { MediaSlider } from "@/components/ui/media-slider-carousel"
 import { Languages } from "@/constants/constants.ts"
-import { MediaSlider } from "@/features/home-main"
 import { MediasFilterInterface } from "@/features/shows-filter"
 import { getRandomGenre } from "@/helpers/getRandomGenre.ts"
 import { useMedias } from "@/hooks/medias/useMedias"
@@ -8,11 +8,13 @@ import { GenreInterface, MediaResultLimit } from "@/interfaces/GenreInterface.ts
 import { useState } from "react"
 
 const GENRE_LIST = [GenreInterface.TV_MOVIE, GenreInterface.DOCUMENTARY]
+
 const filterState = {
   originalLanguage: Languages.ENGLISH,
   spokenLanguage: Languages.ENGLISH,
   genre: getRandomGenre(GENRE_LIST)
 }
+
 export const TrendingShowsApiConnector = () => {
   const [filter] = useState<MediasFilterInterface>(filterState)
   const { mobile, tablet, laptop } = useResponsive()
@@ -24,7 +26,7 @@ export const TrendingShowsApiConnector = () => {
 
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 4 : laptop ? 5 : 10}
+      cardCount={mobile ? 2 : tablet ? 4 : laptop ? 5 : 9}
       cardWidth={7.4}
       containerHeight={mobile ? "40vh" : tablet ? "40vh" : "25vh"}
       isLoading={isLoading}
