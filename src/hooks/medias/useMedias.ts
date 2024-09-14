@@ -1,24 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react"
-
 import { MediaApi } from "@/api/MediaApi"
 import { MediasFilterInterface } from "@/features/shows-filter"
+import { useEffect, useState } from "react"
 
 interface UseMediaProps {
-    mediaFilterParams: MediasFilterInterface
-    limit:number
+  mediaFilterParams: MediasFilterInterface
+  limit: number
 }
 
-export const useMedias = ({mediaFilterParams,limit}: UseMediaProps) => {
+export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
   const mediaApi = new MediaApi()
   const [isLoading, setLoading] = useState<boolean>(true)
+
   const [response, setResponse] = useState<any>(null)
   const [refresh, setRefresh] = useState<boolean>(true)
   const [errors, setErrors] = useState<unknown>(null)
-  const refetch = () => setRefresh(true)
+  const prefetch = () => setRefresh(true)
   useEffect(() => {
-    refetch()
-  }, [mediaFilterParams,limit])
+    prefetch()
+  }, [mediaFilterParams, limit])
 
   useEffect(() => {
     if (!refresh) {
@@ -28,7 +28,7 @@ export const useMedias = ({mediaFilterParams,limit}: UseMediaProps) => {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await mediaApi.getMedias( mediaFilterParams,limit)
+        const response = await mediaApi.getMedias(mediaFilterParams, limit)
         if (response && response.ok) {
           const data = await response.json()
           setResponse(data)
