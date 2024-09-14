@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MediaApi } from "@/api/MediaApi"
-import { MediasFilterInterface } from "@/features/shows-filter"
 import { useEffect, useState } from "react"
 
-interface UseMediaProps {
-  mediaFilterParams: MediasFilterInterface
-  limit: number
+interface useFindMediaByTitleProps {
+  imdbId: string
 }
 
-export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
+export const useFindMediaByImdbId = ({ imdbId }: useFindMediaByTitleProps) => {
   const mediaApi = new MediaApi()
   const [isLoading, setLoading] = useState<boolean>(true)
 
@@ -18,7 +16,7 @@ export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
   const prefetch = () => setRefresh(true)
   useEffect(() => {
     prefetch()
-  }, [mediaFilterParams, limit])
+  }, [imdbId])
 
   useEffect(() => {
     if (!refresh) {
@@ -28,7 +26,7 @@ export const useMedias = ({ mediaFilterParams, limit }: UseMediaProps) => {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await mediaApi.getMedias(mediaFilterParams, limit)
+        const response = await mediaApi.findMediaByImdbId(imdbId)
         if (response && response.ok) {
           const data = await response.json()
           setResponse(data)

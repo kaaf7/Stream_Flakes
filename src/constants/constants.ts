@@ -1,8 +1,9 @@
 //** IDENTIFIER **/
 export const USER_IDENTIFIER = ":userId"
 
-export const MEDIA_IDENTIFIER = ":mediaId"
+export const MEDIA_IMDB_IDENTIFIER = ":imdbId"
 
+export const MEDIA_TITLE = ":title"
 
 //** PATHS **/
 export const MAIN_PATH = "/"
@@ -14,17 +15,18 @@ export const LOGIN_PATH = "login"
 export const SIGN_UP_PATH = "/signup"
 
 export const MEDIAS_PATH = "/medias"
+export const BACK_DROP = ":backDrop"
+
+export const MEDIA_BACKDROP_PATH = `https://image.tmdb.org/t/p/original/${BACK_DROP}`
 
 export const SHOWS_PATH = "/shows"
 
 export const SPORTS_PATH = "/sports"
 
 export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
-
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
-export const MEDIA_PATH = `/medias/${MEDIA_IDENTIFIER}`
-
+export const MEDIA_PATH = `/medias/${MEDIA_IMDB_IDENTIFIER}}`
 
 /** PATH CREATOR **/
 export const createFavoriteShowsPath = (userId: string) => {
@@ -35,8 +37,12 @@ export const createUserAccountPath = (userId: string) => {
   return USER_PATH.replace(USER_IDENTIFIER, userId)
 }
 
-export const createMediaPath = (mediaId: string) => {
-  return MEDIA_PATH.replace(MEDIA_IDENTIFIER, mediaId)
+export const createMediaPath = (imdbId: string) => {
+  return MEDIA_PATH.replace(MEDIA_IMDB_IDENTIFIER, imdbId)
+}
+
+export const createBackDropBack = (backDropPath: string) => {
+  return MEDIA_BACKDROP_PATH.replace(BACK_DROP, backDropPath)
 }
 
 /** SHOWS FILTERS **/
@@ -45,8 +51,7 @@ export const SHOWS_FILTER_BY_MIN_YEAR = "minYear"
 export const SHOWS_FILTER_BY_MAX_YEAR = "maxYear"
 export const SHOWS_FILTER_BY_GENRE = "genre"
 
-//** TOOL TIP PLACEMENT */
-
+/** TOOL TIP PLACEMENT */
 export enum ToolTipPlacement {
   TOP = "top",
   BOTTOM = "bottom",
@@ -61,21 +66,25 @@ export enum MainColor {
   SECONDRY = "secondry",
   WARNING = "warning"
 }
+
 export enum ButtonSize {
   SMALL = "small",
   MEDIUM = "medium",
   LARGE = "large"
 }
+
 export enum ButtonVariant {
   OUTLINED = "outlined",
   CONTAINED = "contained",
   TEXT = "text"
 }
+
 export enum ChipSize {
   SMALL = "small",
   MEDIUM = "medium",
   LARGE = "large"
 }
+
 export enum ChipVariant {
   OUTLINED = "outlined",
   CONTAINED = "contained",
@@ -83,39 +92,71 @@ export enum ChipVariant {
 }
 
 export enum TmdbImageSizes {
-  // Backdrop sizes
-  BACKDROP_W300 = "w300",
-  BACKDROP_W780 = "w780",
-  BACKDROP_W1280 = "w1280",
-  BACKDROP_ORIGINAL = "original",
-
-  // Logo sizes
-  LOGO_W45 = "w45",
-  LOGO_W92 = "w92",
+  /** BACKDROP SIZES **/
+  /** LOGO SIZES **/
   LOGO_W154 = "w154",
-  LOGO_W185 = "w185",
-  LOGO_W300 = "w300",
-  LOGO_W500 = "w500",
-  LOGO_ORIGINAL = "original",
 
-  // Poster sizes
+  /** POSTER SIZES **/
   POSTER_W92 = "w92",
-  POSTER_W154 = "w154",
   POSTER_W185 = "w185",
   POSTER_W342 = "w342",
   POSTER_W500 = "w500",
   POSTER_W780 = "w780",
-  POSTER_ORIGINAL = "original",
-
-  // Profile sizes
-  PROFILE_W45 = "w45",
-  PROFILE_W185 = "w185",
-  PROFILE_H632 = "h632",
-  PROFILE_ORIGINAL = "original",
-
-  // Still sizes
-  STILL_W92 = "w92",
-  STILL_W185 = "w185",
-  STILL_W300 = "w300",
-  STILL_ORIGINAL = "original",
+  POSTER_ORIGINAL = "original"
 }
+
+/** FOOTER LINKS **/
+
+export enum Languages {
+  ENGLISH = "en",
+  SPANISH = "es",
+  FRENCH = "fr",
+  GERMAN = "de",
+  ITALIAN = "it",
+  PORTUGUESE = "pt",
+  CHINESE = "zh",
+  JAPANESE = "ja",
+  KOREAN = "ko",
+  RUSSIAN = "ru",
+  ARABIC = "ar",
+  HINDI = "hi",
+  TURKISH = "tr",
+  SWEDISH = "sv",
+  DANISH = "da",
+  NORWEGIAN = "no",
+  FINNISH = "fi",
+  POLISH = "pl",
+  HUNGARIAN = "hu",
+  CZECH = "cs",
+  SLOVAK = "sk",
+  ROMANIAN = "ro",
+  BULGARIAN = "bg",
+  GREEK = "el",
+  THAI = "th",
+  VIETNAMESE = "vi",
+  INDONESIAN = "id",
+  MALAY = "ms",
+  FILIPINO = "tl"
+}
+
+// Footer Lins
+export const SUPPORT_PATH = "/support"
+export const HELP_DESK_PATH = "/help"
+export const FAQ_PATH = "/faq"
+export const DATA_PROTECTION_PATH = "/data-protection"
+export const PRIVACY_POLICY_PATH = "/privacy-policy"
+export const TERMS_OF_SERVICE_PATH = "/terms-of-service"
+export const COOKIES_SETTINGS_PATH = "/cookies-settings"
+export const COMPANY_MISSION_PATH = "/mission"
+export const COMPANY_HISTORY_PATH = "/history"
+export const ABOUT_US_PATH = "/about"
+export const VALUES_PATH = "/values"
+export const SOCIAL_MEDIA_PATH = "/social-media"
+export const NEWSLETTER_SIGNUP_PATH = "/newsletter"
+export const SITE_MAP_PATH = "/site-map"
+export const ACCESSIBILITY_STATEMENT_PATH = "/accessibility"
+export const TERMS_OF_USE_PATH = "/terms-of-use"
+export const COMPLIANCE_STATEMENTS_PATH = "/compliance"
+export const COPYRIGHT_INFORMATION_PATH = "/copyright"
+export const TRUST_BADGES_PATH = "/trust-badges"
+export const LANGUAGE_SELECTION_PATH = "/language-selection"

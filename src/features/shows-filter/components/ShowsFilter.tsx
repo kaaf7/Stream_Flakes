@@ -1,17 +1,16 @@
+import { CustomButton } from "@/components/buttons/custom-button"
 import {
   SHOWS_FILTER_BY_GENRE,
   SHOWS_FILTER_BY_MAX_YEAR,
   SHOWS_FILTER_BY_MIN_YEAR,
   SHOWS_FILTER_BY_TITLE
 } from "@/constants/constants"
-import { Box, Container, SwipeableDrawer } from "@mui/material"
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
-import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
-
-import { CustomButton } from "@/components/buttons/custom-button"
 import { MediasFilterInterface } from "@/features/shows-filter"
 import { createFormFields } from "@/utils/form-creator/createFormFields"
+import { Box, Container, SwipeableDrawer } from "@mui/material"
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 import { useTranslation } from "react-i18next"
+import { URLSearchParamsInit, useSearchParams } from "react-router-dom"
 
 interface ShowsFilterProps {
   setFilterOpen: Dispatch<SetStateAction<boolean>>
@@ -20,7 +19,7 @@ interface ShowsFilterProps {
 
 export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) => {
   const { t } = useTranslation(["common"])
-  const [isSubmitted, setSubmit] = useState<boolean>(false)
+  const [isSubmitted] = useState<boolean>(false)
 
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -28,7 +27,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     title: searchParams.get(SHOWS_FILTER_BY_TITLE),
     minYear: searchParams.get(SHOWS_FILTER_BY_MIN_YEAR),
     maxYear: searchParams.get(SHOWS_FILTER_BY_MAX_YEAR),
-    genre: searchParams.get(SHOWS_FILTER_BY_GENRE),
+    genre: searchParams.get(SHOWS_FILTER_BY_GENRE)
   })
 
   const [filterState, setFilterState] = useState<MediasFilterInterface>({})
@@ -53,6 +52,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
   }
 
   const onSubmit = (filter: MediasFilterInterface) => {
+    window.scrollTo(0, 0)
     updateFilter(filter)
     setFilterOpen((prevState) => !prevState)
   }
@@ -95,7 +95,8 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
       autoComplete: "off",
       sx: { width: "100%" },
       onChange
-    },{
+    },
+    {
       id: t("form.filter.year"),
       name: "maxYear",
       value: filterState.maxYear ?? "",
@@ -107,13 +108,13 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
     }
   ]
 
-  const FilterFormFileds = createFormFields(FILTER_FORM_FIELDS_ITEMS)
+  const FilterFormFields = createFormFields(FILTER_FORM_FIELDS_ITEMS)
 
   return {
     FilterDrawer: (
       <SwipeableDrawer
         sx={{
-          height:"100%",
+          height: "100%",
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: "350px"
@@ -121,7 +122,7 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
         }}
         anchor="right"
         open={isFilterOPen}
-        onOpen={()=>setFilterOpen(true)}
+        onOpen={() => setFilterOpen(true)}
         onClose={() => setFilterOpen(false)}>
         <Container
           sx={{
@@ -133,22 +134,25 @@ export const ShowsFilter = ({ setFilterOpen, isFilterOPen }: ShowsFilterProps) =
             padding: "1rem 1rem 1rem 1rem",
             gap: 5
           }}>
-          <Box sx={{
-            width:"100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            gap: 5
-          }}>{FilterFormFileds}</Box>
-            <CustomButton
-              variant="outlined"
-              size="small"
-              onClick={(e) => onSubmit(filterState)}
-              sx={{ width: "100%"}}>
-              submit
-            </CustomButton>
+          <Box
+            sx={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              gap: 5
+            }}>
+            {FilterFormFields}
+          </Box>
+          <CustomButton
+            variant="outlined"
+            size="small"
+            onClick={() => onSubmit(filterState)}
+            sx={{ width: "100%" }}>
+            submit
+          </CustomButton>
         </Container>
       </SwipeableDrawer>
     ),

@@ -7,13 +7,13 @@ import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 import { GenreInterface, MediaResultLimit } from "@/interfaces/GenreInterface.ts"
 import { useState } from "react"
 
-const GENRE_LIST = [GenreInterface.TV_MOVIE, GenreInterface.DOCUMENTARY]
+const GENRE_LIST = [GenreInterface.MUSIC]
 const filterState = {
   originalLanguage: Languages.ENGLISH,
   spokenLanguage: Languages.ENGLISH,
   genre: getRandomGenre(GENRE_LIST)
 }
-export const TrendingShowsApiConnector = () => {
+export const RomanceGenreApiConnector = () => {
   const [filter] = useState<MediasFilterInterface>(filterState)
   const { mobile, tablet, laptop } = useResponsive()
 
@@ -24,12 +24,12 @@ export const TrendingShowsApiConnector = () => {
 
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 4 : laptop ? 5 : 10}
-      cardWidth={7.4}
-      containerHeight={mobile ? "40vh" : tablet ? "40vh" : "25vh"}
+      cardCount={mobile ? 2 : tablet ? 2 : laptop ? 5 : 6}
+      cardWidth={24.6}
+      containerHeight={mobile ? "67vh" : tablet ? "40vh" : "40vh"}
       isLoading={isLoading}
       medias={medias}
-      slideTimer={25000}
+      slideTimer={29000}
     />
   )
 }

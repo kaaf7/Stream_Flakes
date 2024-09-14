@@ -1,18 +1,18 @@
-import { Box, Container, TextField, Typography, useTheme } from "@mui/material"
-import { ChangeEvent, useState } from "react"
-
 import movies from "@/assets/images/movies.jpg"
 import { CustomButton } from "@/components/buttons/custom-button"
 import { LOGIN_PATH } from "@/constants/constants"
 import { SignUpFormValues } from "@/features/account"
+import { Box, Container, TextField, Typography, useTheme } from "@mui/material"
+import { ChangeEvent, useState } from "react"
 
 export const SignUpForm = () => {
   const theme = useTheme()
+
   const [signUpFormValues, setSignUpFormValues] = useState<SignUpFormValues>({
-    email: null,
-    username: null,
-    password: null,
-    confirmPassword: null
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: ""
   })
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {

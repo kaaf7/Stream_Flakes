@@ -1,22 +1,32 @@
-import { Card, useTheme } from "@mui/material"
+import { ExploreShowsSearchDisplayApiConnector } from "@/features/explore-shows-search-display"
 
-import { TrendingShowsSearchDisplayApiConnecor } from "@/features/trending-shows-search-display"
-import { UserSearchResultDisplayApiConnector } from "@/features/user-search-display"
+import { UserSearchResultDisplay } from "@/features/user-search-display"
+import { MediaCardProps } from "@/interfaces/MediaCardProps.ts"
+import { Card, useTheme } from "@mui/material"
 import { ReactNode } from "react"
 
 interface SearchResultDisplayProps {
   resultBoxVisible: boolean
+  isLoading: boolean
+  medias: MediaCardProps[]
+
+  setImdbId(imdbId: string): void
 }
 
-export const SearchResultOverview = ({ resultBoxVisible }: SearchResultDisplayProps) => {
-
+export const SearchResultOverview = ({
+  resultBoxVisible,
+  isLoading,
+  medias,
+  setImdbId
+}: SearchResultDisplayProps) => {
   return (
     <SearchResultOverviewContainer resultBoxVisible={resultBoxVisible}>
-      <UserSearchResultDisplayApiConnector />
-      <TrendingShowsSearchDisplayApiConnecor />
+      <UserSearchResultDisplay isLoading={isLoading} medias={medias} setImdbId={setImdbId} />
+      <ExploreShowsSearchDisplayApiConnector />
     </SearchResultOverviewContainer>
   )
 }
+
 function SearchResultOverviewContainer({
   resultBoxVisible,
   children
@@ -34,7 +44,7 @@ function SearchResultOverviewContainer({
             width: "100%",
             height: "25rem",
             display: "flex",
-            flexDirection:"row",
+            flexDirection: "row",
             justifyContent: "center",
             alignContent: "center",
             alignItems: "center",
@@ -42,8 +52,7 @@ function SearchResultOverviewContainer({
             transition: "opacity 0.3s ease, visibility 0.3s ease",
             borderRadius: "1rem",
             backgroundColor: theme.palette.background.default,
-            mt: 2,
-
+            mt: 2
           }}>
           {children}
         </Card>

@@ -1,19 +1,18 @@
-import { MediasFilterInterface } from "@/features/shows-filter"
-import { useMedias } from "@/hooks/medias/useMedias"
-import { Genre, MediaResultLimit } from "@/interfaces/Genre"
-import { useState } from "react"
 import { Languages } from "@/constants/constants.ts"
-import { getRandomGenre } from "@/helpers/getRandomGenre.ts"
 import { ExploreShowsSearchDisplay } from "@/features/explore-shows-search-display"
-
+import { MediasFilterInterface } from "@/features/shows-filter"
+import { getRandomGenre } from "@/helpers/getRandomGenre.ts"
+import { useMedias } from "@/hooks/medias/useMedias"
+import { GenreInterface, MediaResultLimit } from "@/interfaces/GenreInterface.ts"
+import { useState } from "react"
 
 const GENRE_LIST = [
-  Genre.TV_MOVIE,
-  Genre.THRILLER,
-  Genre.HORROR,
-  Genre.DOCUMENTARY,
-  Genre.HISTORICAL,
-  Genre.CRIME
+  GenreInterface.TV_MOVIE,
+  GenreInterface.THRILLER,
+  GenreInterface.HORROR,
+  GenreInterface.DOCUMENTARY,
+  GenreInterface.HISTORICAL,
+  GenreInterface.CRIME
 ]
 
 const filterState = {
@@ -24,6 +23,9 @@ const filterState = {
 export const ExploreShowsSearchDisplayApiConnector = () => {
   const [filter] = useState<MediasFilterInterface>(filterState)
 
-  const { isLoading, response: medias } = useMedias({ mediaFilterParams: filter,limit: MediaResultLimit.LIMIT_6 })
+  const { isLoading, response: medias } = useMedias({
+    mediaFilterParams: filter,
+    limit: MediaResultLimit.LIMIT_6
+  })
   return <ExploreShowsSearchDisplay medias={medias} isLoading={isLoading} />
 }

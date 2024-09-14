@@ -5,11 +5,11 @@ import {
   MEDIA_PATH,
   SHOWS_PATH,
   SIGN_UP_PATH
-} from "@/constants/constants";
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Suspense, lazy } from "react";
+} from "@/constants/constants"
+import { lazy, Suspense } from "react"
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 
-import { MainLayout } from "../ui/main-layout";
+import { MainLayout } from "../ui/main-layout"
 
 const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
 
@@ -24,7 +24,6 @@ const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMe
 const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
 export const PageSuspense = () => {
-
   return (
     <div
       style={{
@@ -36,9 +35,7 @@ export const PageSuspense = () => {
         justifyItems: "center",
         alignItems: "center",
         textAlign: "center"
-      }}>
-    
-    </div>
+      }}></div>
   )
 }
 
@@ -52,12 +49,12 @@ const protectedRoutes = [
     element: <MediasOverview />
   },
   {
-    path: FAVORITES_PATH,
-    element: <FavoritesMediasOverview />
-  },
-  {
     path: MEDIA_PATH,
     element: <MediaDetailView />
+  },
+  {
+    path: FAVORITES_PATH,
+    element: <FavoritesMediasOverview />
   }
 ]
 
@@ -75,13 +72,16 @@ const publicRoutes = [
     element: <Login />
   },
   {
+    path: MEDIA_PATH,
+    element: <MediaDetailView />
+  },
+  {
     path: SIGN_UP_PATH,
     element: <SignUp />
-  },
+  }
 ]
 
 const routes = (isLoggedIn: boolean) => [
-  
   {
     path: "*",
     element: <Navigate to={MAIN_PATH} />
@@ -89,13 +89,14 @@ const routes = (isLoggedIn: boolean) => [
   {
     path: MAIN_PATH,
     element: <MainLayout isLoggedIn={isLoggedIn} />,
-    children: isLoggedIn? protectedRoutes : publicRoutes
+    children: isLoggedIn ? protectedRoutes : publicRoutes
   }
 ]
 
 interface RouterProps {
   isLoggedIn: boolean
 }
+
 export const Router = ({ isLoggedIn }: RouterProps) => {
   const router = createBrowserRouter(routes(isLoggedIn))
 
