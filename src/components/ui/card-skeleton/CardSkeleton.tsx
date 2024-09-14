@@ -1,23 +1,29 @@
 import { ImageListItem, Skeleton } from "@mui/material"
 
 export interface CardSkeletonProps {
-    cardSkeletonWidth?: string
+  cardSkeletonWidth?: string
   cardSkeletonHeight?: string
   borderRadius?: number
   marginRight?: number
   marginLeft?: number
 }
+
 export const CardSkeleton = ({
   cardSkeletonWidth,
   cardSkeletonHeight,
-  borderRadius,
+  borderRadius = 2,
   marginRight,
   marginLeft
 }: CardSkeletonProps) => {
   return (
     <ImageListItem>
       <Skeleton
-        sx={{ bgcolor: "grey.900", borderRadius: borderRadius ?? 2, marginRight, marginLeft }}
+        sx={{
+          backgroundColor: "grey.900",
+          borderRadius: borderRadius,
+          marginRight,
+          marginLeft
+        }}
         variant="rectangular"
         width={cardSkeletonWidth}
         height={cardSkeletonHeight}
