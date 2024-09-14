@@ -1,22 +1,23 @@
-import { MainColor, TmdbImageSizes } from "@/constants/constants"
-import { Box, Container, Divider, ImageList, Typography, useTheme } from "@mui/material"
-
 import { GidSkeleton } from "@/components/ui/grid-skeleton"
-import { MediaCardUpdated } from "@/components/ui/media-card-updated"
+import { MediaCard } from "@/components/ui/media-card"
+import { createMediaPath, MainColor, TmdbImageSizes } from "@/constants/constants"
 import { MediaCardProps } from "@/interfaces/MediaCardProps"
+import { Box, Container, Divider, ImageList, Typography, useTheme } from "@mui/material"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
 
 interface TrendingShowsSearchDisplayProps {
   isLoading: boolean
   medias: MediaCardProps[]
 }
 
-export const TrendingShowsSearchDisplay = ({
+export const ExploreShowsSearchDisplay = ({
   isLoading,
   medias
 }: TrendingShowsSearchDisplayProps) => {
   const { t } = useTranslation(["common"])
+  const navigate = useNavigate()
   const theme = useTheme()
   const MemoizedGridSkeleton = memo(GidSkeleton)
 
@@ -57,16 +58,19 @@ export const TrendingShowsSearchDisplay = ({
           cols={3}
           gap={5}
           variant="woven">
-          {isLoading ? (
+          {isLoading && medias?.length === 0 ? (
             <MemoizedGridSkeleton gridLength={6} />
           ) : (
             <>
-              {medias.map((media) => (
-                <MediaCardUpdated
+              {medias?.map((media) => (
+                <MediaCard
                   key={media.id}
                   id={media.id}
+                  onClick={() => navigate(createMediaPath(media.imdb_id as string))}
                   needsMediaCardBar={false}
-                  imageUrl={media.poster_path?.replace("original",TmdbImageSizes.LOGO_W154) as string}
+                  imageUrl={
+                    media.poster_path?.replace("original", TmdbImageSizes.LOGO_W154) as string
+                  }
                 />
               ))}
             </>
