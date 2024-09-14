@@ -5,7 +5,7 @@ import {
   RomanceGenreApiConnector,
   TrendingShowsApiConnector
 } from "@/features/home-main"
-import { ExploreRandomShowsApiConnectors } from "@/features/home-main/api/ExploreRandomShowsApiConnectors.tsx"
+import { ExploreRandomShowsApiConnector } from "@/features/home-main/api/ExploreRandomShowsApiConnector.tsx"
 import { Divider, useTheme } from "@mui/material"
 
 export const ShowsSection = () => {
@@ -53,7 +53,7 @@ export const ShowsSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
-      <ExploreRandomShowsApiConnectors />
+      <ExploreRandomShowsApiConnector />
       <Divider
         sx={{
           width: "100%",
