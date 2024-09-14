@@ -1,151 +1,158 @@
-import { Box, Grid, Typography } from "@mui/material"
-
 import apple_app_store from "@/assets/images/apple_app_store.svg"
 import google_app_store from "@/assets/images/google_app_store.svg"
 import movies from "@/assets/images/movies.jpg"
 import { CustomButton } from "@/components/buttons/custom-button"
-import { IconCard } from "@/components/ui/icon-card"
-import { MediaCard } from "@/components/ui/movie-card"
+import { MediaCard } from "@/components/ui/media-card"
 import { SHOWS_PATH } from "@/constants/constants"
 import { BRAND_ICONS } from "@/features/home-main"
+import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 import { Add } from "@mui/icons-material"
+import { Box, Grid, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 
 export const LandingSection = () => {
+  const { mobile, desktop } = useResponsive()
+
   return (
     <Box
-      style={{
+      sx={{
         width: "100%",
         height: "100vh",
         position: "relative",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: { mobile: "center", tablet: "center", desktop: "center" },
+        alignItems: { mobile: "center", tablet: "space-between", desktop: "center" },
         overflow: "hidden"
       }}>
-      <Box
-        style={{
+      <Grid
+        container
+        direction="column"
+        sx={{
           height: "100%",
-          width: "80rem",
-          display: "flex",
+          width: "100%",
+          zIndex: 2,
+          color: "white",
           justifyContent: "center",
-          overflow: "hidden",
-
           alignItems: "center",
-          position: "absolute"
+          textAlign: "center",
+          gap: { mobile: 10, tablet: 10, laptop: 1, desktop: 3 }
         }}>
-        <Grid
-          container
-          direction="column"
-          spacing={2}
+        <Box
           sx={{
-            height: "40rem",
-            width: "80rem",
-            zIndex: 2,
-            color: "white",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            gap: 2
+            height: { mobile: "70vh", tablet: "40vh", desktop: "40vh" },
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            textAlign: "space-between",
+            gap: { mobile: 2, tablet: 2, laptop: 1, desktop: 2 },
+            zIndex: 2
           }}>
-          <Box sx={{ height: "15rem", display: "flex", flexDirection: "column", gap: 2 }}>
-            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-              Your Favorite Shows in <br></br>
-              <span style={{ color: "#c70c0c" }}>One Place</span>
-            </Typography>
-            <Typography>
-              Browse, search, and watch TV & Movies from over 300+ services across many regions
-            </Typography>
-            <Typography sx={{ color: "grey", marginTop: 3 }}>Streaming From</Typography>
-          </Box>
+          <Typography variant={mobile ? "h4" : desktop ? "h2" : "h3"} sx={{ fontWeight: "bold" }}>
+            Your Favorite Shows in <br></br>
+            <span style={{ color: "#c70c0c" }}>One Place</span>
+          </Typography>
+          <Typography variant={mobile ? "body2" : "h6"}>
+            Browse, search, and watch TV & Movies from over 300+ services across many regions
+          </Typography>
           <Grid
             container
             sx={{
               width: "100%",
-              height: "5rem",
+              height: { mobile: "10rem", tablet: "7rem", laptop: "3rem", desktop: "3rem" },
               justifyContent: "center",
               alignItems: "center",
-              gap: 1
+              gap: { mobile: 2, tablet: 1, desktop: 1 }
             }}>
             {BRAND_ICONS.map((brandIcon) => (
-              <IconCard icon={brandIcon} />
+              <MediaCard
+                imageUrl={brandIcon}
+                id={brandIcon}
+                sx={{
+                  width: { mobile: "64px", tablet: "64px", laptop: "64px", desktop: "64px" },
+                  height: { mobile: "64px", tablet: "64px", laptop: "64px", desktop: "64px" }
+                }}
+              />
             ))}
             <CustomButton
-              sx={{ width: "5ßpx", height: "64px" }}
-              variant={"outlined"}
+              sx={{
+                width: { mobile: "20px", tablet: "64px", laptop: "64px", desktop: "64px" },
+                height: { mobile: "20px", tablet: "64px", laptop: "64px", desktop: "64px" }
+              }}
+              variant={mobile ? "text" : "outlined"}
               component={Link}
               to={SHOWS_PATH}>
-              <Add />
+              <Add fontSize={"small"} />
             </CustomButton>
           </Grid>
           <Grid
             container
             sx={{
               width: "100%",
-              height: "10rem",
+              height: "3rem",
+              flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              alignContent: "center",
-              maxHeight: "50px",
-              gap: 5
+              gap: { mobile: 3, tablet: 1, laptop: 1, desktop: 2 }
             }}>
             <MediaCard
-              sx={{ width: "150px" }}
+              sx={{
+                width: { mobile: "120px", tablet: "150px", laptop: "150px", desktop: "180px" }
+              }}
               imageUrl={apple_app_store}
               title={apple_app_store}
-              id="apple_app_store"
+              id={"apple_app_store"}
             />
             <MediaCard
-              sx={{ width: "150px" }}
+              sx={{
+                width: { mobile: "120px", tablet: "150px", laptop: "150px", desktop: "180px" }
+              }}
               imageUrl={google_app_store}
               title={google_app_store}
-              id="google_app_store"
+              id={"google_app_store"}
             />
           </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </Grid>
       <img
         src={movies}
         alt="Movies"
         loading="lazy"
         style={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
           objectFit: "cover",
           position: "absolute",
           top: 0,
           left: 0,
-          filter: "blur(2px) brightness(15%)",
-          zIndex: 0
+          filter: "blur(2px) brightness(15%)"
         }}
       />
-      
+
       <div
         style={{
           position: "absolute",
-          background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)", 
+          background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)",
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
-          zIndex: 1
+          height: "100%"
         }}
       />
-         <div
+      <div
         style={{
           position: "absolute",
-          background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)", 
+          background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)",
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
-          zIndex: 1
+          height: "100%"
         }}
       />
-         <div
+      <div
         style={{
           position: "absolute",
-          background: "linear-gradient(to top, rgba(17,17,17,1) 4%, rgba(0,0,0,0) 30%)", 
+          background: "linear-gradient(to top, rgba(17,17,17,1) 4%, rgba(0,0,0,0) 30%)",
           top: 0,
           left: 0,
           width: "100%",
