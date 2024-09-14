@@ -5,7 +5,7 @@
   "signUp": "signup",
   "login": "Login",
   "logout": "Logout",
-  "shows": "Movies",
+  "shows": "Shows",
   "movie": "Movie",
   "search": "Search Shows",
   "checkMovie": "Explore",
@@ -20,6 +20,13 @@
       "year": "Year",
       "genre": "Genre"
     }
+  },
+  "success": {
+    "successMessage": "Favorites have been updated successfully",
+    "loginSuccessMessage": "You have successfully logged in."
+  },
+  "error": {
+    "loginError": "There was an error logging in. Please try again."
   },
   "footer": {
     "supportCenter": "Support Center",
