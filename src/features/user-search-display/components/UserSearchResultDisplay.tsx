@@ -1,3 +1,6 @@
+import fallbackImage from "@/assets/images/fallback.jpg"
+import { MediaCardProps } from "@/interfaces/MediaCardProps.ts"
+import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
 import {
   Box,
   CircularProgress,
@@ -7,15 +10,41 @@ import {
   useTheme
 } from "@mui/material"
 
-import { Media } from "@/interfaces/Media"
-
 interface UserSearchResultDisplayProps {
-  medias: Media[]
+  medias: MediaCardProps[]
   isLoading: boolean
+
+  setImdbId(imdbId: string): void
 }
 
-export const UserSearchResultDisplay = ({ medias, isLoading }: UserSearchResultDisplayProps) => {
+export const UserSearchResultDisplay = ({
+  medias,
+  isLoading,
+  setImdbId
+}: UserSearchResultDisplayProps) => {
   const theme = useTheme()
+
+  if (medias?.length === 0 && !isLoading) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          height: "25rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 1
+        }}>
+        <SentimentDissatisfiedIcon
+          color={"disabled"}
+          sx={{ width: "5rem", height: "5rem" }}
+          fontSize={"large"}
+        />
+      </Box>
+    )
+  }
+
   return (
     <Box
       sx={{
@@ -25,7 +54,7 @@ export const UserSearchResultDisplay = ({ medias, isLoading }: UserSearchResultD
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: 1,
+        gap: 1
       }}>
       {isLoading ? (
         <CircularProgress thickness={1} />
@@ -53,8 +82,10 @@ export const UserSearchResultDisplay = ({ medias, isLoading }: UserSearchResultD
             scrollbarWidth: "thin",
             scrollbarColor: `${theme.palette.primary.main} transparent`
           }}>
-          {medias.slice(1, 10).map((media) => (
+          {medias?.map((media) => (
             <ImageListItem
+              key={media?.id}
+              onClick={() => setImdbId(media.imdb_id as string)}
               sx={{
                 width: "100%",
                 height: "5rem",
@@ -74,9 +105,13 @@ export const UserSearchResultDisplay = ({ medias, isLoading }: UserSearchResultD
               }}>
               <Box>
                 <img
-                  src={media.imageUrl}
-                  alt={"search-images-display"}
+                  src={media.poster_path}
+                  alt={media.original_title}
                   loading={"lazy"}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.src = fallbackImage
+                  }}
                   style={{
                     width: "4rem",
                     height: "5rem",
@@ -93,9 +128,9 @@ export const UserSearchResultDisplay = ({ medias, isLoading }: UserSearchResultD
                   gap: 1
                 }}>
                 <Typography variant="body1" sx={{ fontWeight: "bolder" }}>
-                  Movie Title
+                  {media.original_title}
                 </Typography>
-                <Typography variant="body2">Movie Year</Typography>
+                <Typography variant="body2">{media.release_date?.split("-")[0]}</Typography>
               </Box>
             </ImageListItem>
           ))}
