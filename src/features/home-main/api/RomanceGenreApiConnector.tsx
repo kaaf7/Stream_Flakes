@@ -1,9 +1,13 @@
+import { MediaSlider } from "@/components/ui/media-slider-carousel"
 import { Languages } from "@/constants/constants.ts"
-import { MediaSlider } from "@/features/home-main"
+
 import { MediasFilterInterface } from "@/features/shows-filter"
+
 import { getRandomGenre } from "@/helpers/getRandomGenre.ts"
+
 import { useMedias } from "@/hooks/medias/useMedias"
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
+
 import { GenreInterface, MediaResultLimit } from "@/interfaces/GenreInterface.ts"
 import { useState } from "react"
 
