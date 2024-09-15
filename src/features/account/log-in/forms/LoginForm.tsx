@@ -49,7 +49,7 @@ export const LoginForm = () => {
       const user = await formatResponse(res)
       if (user) {
         handleUserLogin(user)
-        enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "success" })
+        enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "default" })
         navigate(MAIN_PATH)
       }
     } catch (error) {
@@ -60,14 +60,16 @@ export const LoginForm = () => {
   }
 
   return (
-    <main
-      style={{
+    <Box
+      sx={{
         width: "100%",
         height: "100vh",
+        position: "relative",
         display: "flex",
-        flex: "column",
-        justifyContent: "center",
-        alignItems: "center"
+        flexDirection: "column",
+        justifyContent: { mobile: "center", tablet: "center", desktop: "center" },
+        alignItems: { mobile: "center", tablet: "space-between", desktop: "center" },
+        overflow: "hidden"
       }}>
       <Container
         sx={{
@@ -161,26 +163,50 @@ export const LoginForm = () => {
       <img
         src={movies}
         alt="Movies"
+        loading="lazy"
         style={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
           objectFit: "cover",
           position: "absolute",
-          filter: "blur(5px) brightness(20%)"
+          top: 0,
+          left: 0,
+          filter: "blur(2px) brightness(15%)"
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%"
         }}
       />
       <div
         style={{
           position: "absolute",
+          background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          background: "linear-gradient(to top, rgba(17,17,17,1) 4%, rgba(0,0,0,0) 30%)",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundImage: "linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.2))",
           zIndex: 1
         }}
       />
       <LoadingBackdrop />
-    </main>
+    </Box>
   )
 }
