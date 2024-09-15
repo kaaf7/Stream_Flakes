@@ -1,14 +1,15 @@
 import "./index.css"
+import { SnackbarProvider } from "notistack"
 
-import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
+
 import AuthProvider from "./components/Auth/AuthProvider.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AuthProvider>
+  <AuthProvider>
+    <SnackbarProvider maxSnack={3}>
       <App />
-    </AuthProvider>
-  </React.StrictMode>
+    </SnackbarProvider>
+  </AuthProvider>
 )

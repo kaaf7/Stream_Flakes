@@ -1,11 +1,13 @@
+import { MediaCard } from "@/components/ui/media-card"
 import { MAIN_PATH, MainColor, SHOWS_PATH } from "@/constants/constants"
-import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
-import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
 
-import { MediaCardUpdated } from "@/components/ui/media-card-updated"
 import { BRAND_ICONS } from "@/features/home-main"
 import { MediasGridApiConnector } from "@/features/medias-main"
+
 import { useResponsive } from "@/hooks/responsive/useResponsive"
+import { HomeMaxOutlined, KeyboardArrowRight, LocalMoviesOutlined } from "@mui/icons-material"
+
+import { Box, Breadcrumbs, Grid, Link } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
 export default function MediasOverview() {
@@ -16,6 +18,7 @@ export default function MediasOverview() {
     { icon: <HomeMaxOutlined />, title: t("home"), link: MAIN_PATH },
     { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH }
   ]
+  
   return (
     <Box
       sx={{
@@ -28,7 +31,7 @@ export default function MediasOverview() {
         marginTop: "5rem",
         gap: 3
       }}>
-      <Box sx={{width:"100%"}}>
+      <Box sx={{ width: "100%" }}>
         <Breadcrumbs
           sx={{ fontSize: ".75rem" }}
           separator={<KeyboardArrowRight />}
@@ -47,7 +50,7 @@ export default function MediasOverview() {
                   alignItems: "center",
                   gap: 1
                 }}>
-                {item.title} {item.icon}
+                {item.title.toUpperCase()}
               </Link>
             )
           )}
@@ -57,7 +60,7 @@ export default function MediasOverview() {
         (desktop && (
           <Box
             sx={{
-              width:"100%",
+              width: "100%",
               height: "4rem",
               display: "flex",
               justifyContent: "space-between",
@@ -70,7 +73,7 @@ export default function MediasOverview() {
                 gap: 1
               }}>
               {BRAND_ICONS.map((brandIcon) => (
-                <MediaCardUpdated
+                <MediaCard
                   sx={{ width: "50px", height: "50px" }}
                   key={brandIcon}
                   imageUrl={brandIcon as string}
