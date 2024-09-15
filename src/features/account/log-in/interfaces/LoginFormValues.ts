@@ -1,3 +1,3 @@
-export interface loginFormValues {
-    username: string |null
-    password: string |null}
+export interface LoginFormValuesInterface {
+    username: string
+    password: string }
