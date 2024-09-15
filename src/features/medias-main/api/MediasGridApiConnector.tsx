@@ -1,65 +1,64 @@
-import { MainColor, ToolTipPlacement } from "@/constants/constants"
-import { useEffect, useRef, useState } from "react"
-
 import { CustomIconButton } from "@/components/buttons/icon-buttons/custom-icon-button"
 import { FilterArray } from "@/components/ui/filter-array"
 import { MediaGrid } from "@/components/ui/media-grid"
+
+import { MainColor, ToolTipPlacement } from "@/constants/constants"
+
 import { ShowsFilter } from "@/features/shows-filter"
-import { useScrollPagination } from "@/hooks/ifninite-scroll/useScrollPagination"
+
+import { useInfiniteScroll } from "@/hooks/ifninite-scroll/useInfiniteScroll.ts"
 import { useMedias } from "@/hooks/medias/useMedias"
-import { useWindowScroll } from "@/hooks/windows-scroll/useWindowScroll"
+import { useWindowScroll } from "@/hooks/window-scroll/useWindowScroll"
+
 import { TuneOutlined } from "@mui/icons-material"
 import { Box } from "@mui/material"
+import { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 export const MediasGridApiConnector = () => {
   const { t } = useTranslation(["common"])
-  const { currentPage } = useScrollPagination()
+
+  const { currentPage } = useInfiniteScroll()
+
   const [isFilterOpen, setFilterOpen] = useState<boolean>(false)
-  const [limit, setLimit] = useState(120)
-  const prevPageRef = useRef(currentPage) 
-  const { scrolled, setScrolled } = useWindowScroll()
+  const [limit, setLimit] = useState(6)
+
+  const prevPageRef = useRef(currentPage)
+  const { scrolled } = useWindowScroll()
 
   useEffect(() => {
-    if (currentPage === prevPageRef.current + 1) {
-      setLimit((prevLimit) => prevLimit + 60)
+    if (currentPage === prevPageRef.current + 1 && medias?.length !== 0) {
+      setLimit((prevLimit) => prevLimit + 3)
     }
     prevPageRef.current = currentPage
   }, [currentPage])
 
-  const { FilterDrawer, onFilterDelete, filter, onSubmit, isSubmitted, onFilterDeleteAll } =
-    ShowsFilter({
-      isFilterOPen: isFilterOpen,
-      setFilterOpen: setFilterOpen
-    })
+  const { FilterDrawer, onFilterDelete, filter, onFilterDeleteAll } = ShowsFilter({
+    isFilterOPen: isFilterOpen,
+    setFilterOpen: setFilterOpen
+  })
 
-  useEffect(() => {})
-
-  const {
-    isLoading,
-    response: medias,
-    errors
-  } = useMedias({ mediaFilterParams: filter, limit: limit })
-
-  const toggleFilterDrawer =
-    (isFilterOPen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event &&
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return
-      }
-      setFilterOpen(isFilterOPen)
+  const { isLoading, response: medias } = useMedias({
+    mediaFilterParams: filter,
+    limit: limit
+  })
+  const toggleFilterDrawer = (isFilterOPen: boolean) => (event: KeyboardEvent | MouseEvent) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      ((event as KeyboardEvent).key === "Tab" || (event as KeyboardEvent).key === "Shift")
+    ) {
+      return
     }
+    setFilterOpen(isFilterOPen)
+  }
 
   return (
-    <Box style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+    <Box style={{ display: "flex", width: "100%", flexDirection: "column", gap: 10 }}>
       <Box
         sx={{
           display: "flex",
-          width: "75rem",
+          width: "100%",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
@@ -75,8 +74,16 @@ export const MediasGridApiConnector = () => {
           sx={{
             position: scrolled ? "fixed" : "relative",
             zIndex: 100,
-            right: scrolled ? 70 : null,
-            top:scrolled ? 70 : null,
+            right: {
+              mobile: scrolled ? 0 : null,
+              laptop: scrolled ? 100 : null,
+              desktop: scrolled ? 100 : null
+            },
+            top: {
+              mobile: scrolled ? 100 : null,
+              laptop: scrolled ? 100 : null,
+              desktop: scrolled ? 100 : null
+            },
             transition: "right .4s ease-in-out, position 0.4s ease-in-out"
           }}
           toolTipProps={{ title: t("filter"), placement: ToolTipPlacement.LEFT }}
@@ -85,7 +92,12 @@ export const MediasGridApiConnector = () => {
         </CustomIconButton>
         {FilterDrawer}
       </Box>
-      <MediaGrid isLoading={isLoading} medias={medias} currentPage={currentPage} />
+      <MediaGrid
+        isLoading={isLoading}
+        medias={medias}
+        currentPage={currentPage}
+        needsMediaCardBar={true}
+      />
     </Box>
   )
 }
