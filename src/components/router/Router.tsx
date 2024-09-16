@@ -11,17 +11,17 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 
 import { MainLayout } from "../ui/main-layout"
 
-const MediasOverview = lazy(() => import("src/pages/medias/MediasOverview"))
+const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
 
-const Login = lazy(() => import("src/pages/login/Login"))
+const Login = lazy(() => import("@/pages/login/Login"))
 
-const SignUp = lazy(() => import("src/pages/sign-up/SignUp"))
+const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 
-const Home = lazy(() => import("src/pages/home/Home"))
+const Home = lazy(() => import("@/pages/home/Home"))
 
-const FavoritesMediasOverview = lazy(() => import("src/pages/favorites/FavoritesMediasOverview"))
+const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMediasOverview"))
 
-const MediaDetailView = lazy(() => import("src/pages/media-view/MediaView"))
+const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
 export const PageSuspense = () => {
   return (
