@@ -30,7 +30,8 @@
     "loginError": "There was an error logging in. Please try again.",
     "signUpError": "There was an error signing up. Please try again.",
     "confirmPasswordError": "Passwords do not match or too short",
-    "invalidEmailError": "Invalid Email."
+    "invalidEmailError": "Invalid Email.",
+    "errorMessage": "Something went wrong. Please try again"
   },
   "footer": {
     "supportCenter": "Support Center",
