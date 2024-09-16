@@ -26,7 +26,7 @@ export const SPORTS_PATH = "/sports"
 export const FAVORITES_PATH = `/shows/${USER_IDENTIFIER}/favorites`
 export const SHARED_FAVORITES_PATH = "/favorites/shared"
 
-export const MEDIA_PATH = `/medias/${MEDIA_IMDB_IDENTIFIER}}`
+export const MEDIA_PATH = `/shows/${MEDIA_IMDB_IDENTIFIER}}`
 
 /** PATH CREATOR **/
 export const createFavoriteShowsPath = (userId: string) => {
