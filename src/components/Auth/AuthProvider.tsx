@@ -31,7 +31,7 @@ export const AuthContext = createContext<AuthContext>({
   setToken: () => {},
   user: null,
   setUser: () => {},
-  logOut: (navigate: NavigateFunction) => {}
+  logOut: () => {}
 })
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const savedUser = localStorage.getItem("user")
