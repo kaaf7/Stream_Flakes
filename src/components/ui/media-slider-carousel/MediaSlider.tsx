@@ -1,9 +1,11 @@
 import { GidSkeleton } from "@/components/ui/grid-skeleton"
 
-import { createMediaPath, TmdbImageSizes } from "@/constants/constants.ts"
+import { createBackDropBack, createMediaPath, TmdbImageSizes } from "@/constants/constants.ts"
 import { MediaInterface } from "@/interfaces/MediaInterface.ts"
+
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined"
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined"
+
 import { Box, Button } from "@mui/material"
 import { SyntheticEvent, useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -17,6 +19,7 @@ interface MoviesProps {
   cardCount?: number
   slideTimer?: number
   imageSize?: TmdbImageSizes
+  isPortrait?: boolean
 }
 
 export const MediaSlider = ({
@@ -25,6 +28,7 @@ export const MediaSlider = ({
   containerHeight = "52vh",
   cardCount = 5,
   slideTimer = 10000,
+  isPortrait = true,
   imageSize = TmdbImageSizes.POSTER_W780
 }: MoviesProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null)
@@ -33,7 +37,7 @@ export const MediaSlider = ({
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
   const [touchEndX, setTouchEndX] = useState<number | null>(null)
 
-  const gapWidth = 1 // rem unit for gap between cards
+  const gapWidth = 1
   const cardWidth = `calc((100% - ${(cardCount - 1) * gapWidth}rem) / ${cardCount})`
   const handleSlide = (direction: number) => {
     if (scrollRef.current) {
@@ -138,7 +142,14 @@ export const MediaSlider = ({
                 navigate(createMediaPath(media.imdb_id as string))
                 window.scrollTo(0, 0)
               }}
-              src={media?.poster_path?.replace(TmdbImageSizes.POSTER_ORIGINAL, imageSize)}
+              src={
+                isPortrait
+                  ? media?.poster_path?.replace(TmdbImageSizes.POSTER_ORIGINAL, imageSize)
+                  : createBackDropBack(media.backdrop_path as string).replace(
+                      TmdbImageSizes.POSTER_ORIGINAL,
+                      imageSize
+                    )
+              }
               key={media.id}
               style={{
                 width: cardWidth,

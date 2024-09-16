@@ -22,7 +22,7 @@ export const ComedyGenreApiConnector = () => {
   return (
     <MediaSlider
       cardCount={mobile ? 1 : tablet ? 1 : laptop ? 2 : 3}
-      portrait={false}
+      isPortrait={false}
       containerHeight={mobile ? "60vh" : laptop ? "40vh" : "30vh"}
       isLoading={isLoading}
       medias={medias}
