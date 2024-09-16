@@ -28,7 +28,7 @@ function Logo() {
       <Typography
         variant={mobile ? "body2" : "h4"}
         sx={{ color: "#c70c0c", fontWeight: "bold", cursor: "pointer" }}>
-        StreamFlakes
+        |SF._
       </Typography>
     </Link>
   )
