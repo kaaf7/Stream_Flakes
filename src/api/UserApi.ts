@@ -8,17 +8,18 @@ interface LoginInfo {
   password: string
 }
 
-interface RegisterInfo {
+interface signUpInfo {
   username: string
   password: string
+  email: string
 }
 
 export class UserApi extends BaseApi {
-  register = async (registerInfo: RegisterInfo) => {
+  signUp = async (signUpInfo: signUpInfo) => {
     return await fetch(`${BASE_URL}/auth/register`, {
       method: "POST",
       headers: this.headers,
-      body: JSON.stringify(registerInfo)
+      body: JSON.stringify(signUpInfo)
     })
   }
   login = async (loginInfo: LoginInfo) => {
