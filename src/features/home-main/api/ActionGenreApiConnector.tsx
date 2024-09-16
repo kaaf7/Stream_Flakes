@@ -13,19 +13,18 @@ const trendingFilterState = {
 }
 export const ActionGenreApiConnector = () => {
   const [filter] = useState<MediasFilterInterface>(trendingFilterState)
-  const { mobile, tablet, laptop, desktop } = useResponsive()
+  const { mobile, tablet, laptop } = useResponsive()
   const { isLoading, response: medias } = useMedias({
     mediaFilterParams: filter,
     limit: MediaResultLimit.LIMIT_10
   })
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 3 : laptop ? 3 : 6}
-      cardWidth={desktop ? 25 : 14.2}
-      containerHeight={"40vh"}
+      cardCount={mobile ? 1 : tablet ? 2 : laptop ? 3 : 6}
+      containerHeight={mobile ? "60vh" : laptop ? "60vh" : "40vh"}
       isLoading={isLoading}
       medias={medias}
-      slideTimer={15000}
+      slideTimer={12000}
     />
   )
 }
