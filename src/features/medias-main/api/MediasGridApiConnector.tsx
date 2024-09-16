@@ -21,14 +21,14 @@ export const MediasGridApiConnector = () => {
   const { currentPage } = useInfiniteScroll()
 
   const [isFilterOpen, setFilterOpen] = useState<boolean>(false)
-  const [limit, setLimit] = useState(6)
+  const [limit, setLimit] = useState(30)
 
   const prevPageRef = useRef(currentPage)
   const { scrolled } = useWindowScroll()
 
   useEffect(() => {
     if (currentPage === prevPageRef.current + 1 && medias?.length !== 0) {
-      setLimit((prevLimit) => prevLimit + 3)
+      setLimit((prevLimit) => prevLimit + 30)
     }
     prevPageRef.current = currentPage
   }, [currentPage])
