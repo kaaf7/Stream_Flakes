@@ -26,9 +26,9 @@ export const TrendingShowsApiConnector = () => {
 
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 4 : laptop ? 5 : 9}
+      cardCount={mobile ? 1 : tablet ? 4 : laptop ? 6 : 9}
       cardWidth={7.4}
-      containerHeight={mobile ? "40vh" : tablet ? "40vh" : "25vh"}
+      containerHeight={mobile ? "60vh" : tablet ? "40vh" : laptop ? "40vh" : "25vh"}
       isLoading={isLoading}
       medias={medias}
       slideTimer={25000}

@@ -28,9 +28,8 @@ export const RomanceGenreApiConnector = () => {
 
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 2 : laptop ? 5 : 6}
-      cardWidth={24.6}
-      containerHeight={mobile ? "67vh" : tablet ? "40vh" : "40vh"}
+      cardCount={mobile ? 1 : tablet ? 2 : laptop ? 5 : 6}
+      containerHeight={mobile ? "60vh" : tablet ? "40vh" : "40vh"}
       isLoading={isLoading}
       medias={medias}
       slideTimer={29000}
