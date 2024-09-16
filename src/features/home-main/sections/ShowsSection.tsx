@@ -98,6 +98,11 @@ export const ShowsSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
+      <Box sx={{ width: "100%" }}>
+        <Typography color={MainColor.PRIMARY} variant={"caption"}>
+          {t("DISCOVER")}
+        </Typography>
+      </Box>
       <RomanceGenreApiConnector />
     </main>
   )
