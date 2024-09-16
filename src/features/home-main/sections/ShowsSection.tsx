@@ -1,12 +1,14 @@
 import { MainColor } from "@/constants/constants.ts"
+
 import {
   ActionGenreApiConnector,
   ComedyGenreApiConnector,
   DramaGenreApiConnector,
+  ExploreRandomShowsApiConnector,
   RomanceGenreApiConnector,
   TrendingShowsApiConnector
 } from "@/features/home-main"
-import { ExploreRandomShowsApiConnector } from "@/features/home-main/api/ExploreRandomShowsApiConnector.tsx"
+
 import { Box, Divider, Typography, useTheme } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
