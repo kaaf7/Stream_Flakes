@@ -21,9 +21,8 @@ export const DramaGenreApiConnector = () => {
   })
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 3 : laptop ? 3 : 6}
-      cardWidth={14.2}
-      containerHeight={"40vh"}
+      cardCount={mobile ? 1 : tablet ? 2 : laptop ? 3 : 6}
+      containerHeight={mobile ? "60vh" : laptop ? "60vh" : "40vh"}
       isLoading={isLoading}
       medias={medias}
       slideTimer={12000}
