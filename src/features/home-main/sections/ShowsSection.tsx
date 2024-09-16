@@ -1,14 +1,19 @@
+import { MainColor } from "@/constants/constants.ts"
+
 import {
   ActionGenreApiConnector,
   ComedyGenreApiConnector,
   DramaGenreApiConnector,
+  ExploreRandomShowsApiConnector,
   RomanceGenreApiConnector,
   TrendingShowsApiConnector
 } from "@/features/home-main"
-import { ExploreRandomShowsApiConnector } from "@/features/home-main/api/ExploreRandomShowsApiConnector.tsx"
-import { Divider, useTheme } from "@mui/material"
+
+import { Box, Divider, Typography, useTheme } from "@mui/material"
+import { useTranslation } from "react-i18next"
 
 export const ShowsSection = () => {
+  const { t } = useTranslation(["common"])
   const theme = useTheme()
 
   return (
@@ -21,6 +26,18 @@ export const ShowsSection = () => {
         gap: 30,
         alignItems: "center"
       }}>
+      <Divider
+        sx={{
+          width: "100%",
+          marginX: 0.1,
+          borderBottom: `1px solid ${theme.palette.background.paper}`
+        }}
+      />
+      <Box sx={{ width: "100%" }}>
+        <Typography color={MainColor.PRIMARY} variant={"caption"}>
+          {t("DRAMA")}
+        </Typography>
+      </Box>
       <DramaGenreApiConnector />
       <Divider
         sx={{
@@ -29,6 +46,11 @@ export const ShowsSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
+      <Box sx={{ width: "100%" }}>
+        <Typography color={MainColor.PRIMARY} variant={"caption"}>
+          {t("ACTION")}
+        </Typography>
+      </Box>
       <ActionGenreApiConnector />
       <Divider
         sx={{
@@ -37,6 +59,11 @@ export const ShowsSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
+      <Box sx={{ width: "100%" }}>
+        <Typography color={MainColor.PRIMARY} variant={"caption"}>
+          {t("COMEDY")}
+        </Typography>
+      </Box>
       <ComedyGenreApiConnector />
       <Divider
         sx={{
@@ -45,6 +72,11 @@ export const ShowsSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
+      <Box sx={{ width: "100%" }}>
+        <Typography color={MainColor.PRIMARY} variant={"caption"}>
+          {t("EXPLORE")}
+        </Typography>
+      </Box>
       <TrendingShowsApiConnector />
       <Divider
         sx={{
@@ -53,6 +85,11 @@ export const ShowsSection = () => {
           borderBottom: `1px solid ${theme.palette.background.paper}`
         }}
       />
+      <Box sx={{ width: "100%" }}>
+        <Typography color={MainColor.PRIMARY} variant={"caption"}>
+          {t("NEW")}
+        </Typography>
+      </Box>
       <ExploreRandomShowsApiConnector />
       <Divider
         sx={{

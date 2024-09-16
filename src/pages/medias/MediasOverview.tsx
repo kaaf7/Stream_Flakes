@@ -18,7 +18,7 @@ export default function MediasOverview() {
     { icon: <HomeMaxOutlined />, title: t("home"), link: MAIN_PATH },
     { icon: <LocalMoviesOutlined />, title: t("shows"), link: SHOWS_PATH }
   ]
-  
+
   return (
     <Box
       sx={{
@@ -29,7 +29,7 @@ export default function MediasOverview() {
         alignContent: "center",
         justifyItems: "center",
         marginTop: "5rem",
-        gap: 3
+        gap: 1
       }}>
       <Box sx={{ width: "100%" }}>
         <Breadcrumbs
@@ -61,7 +61,7 @@ export default function MediasOverview() {
           <Box
             sx={{
               width: "100%",
-              height: "4rem",
+              height: "3rem",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center"

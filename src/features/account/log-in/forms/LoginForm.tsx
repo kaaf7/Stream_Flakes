@@ -25,8 +25,8 @@ export const LoginForm = () => {
 
   const navigate = useNavigate()
   const [loginFormValues, setLoginFormValues] = useState<LoginFormValuesInterface>({
-    username: "",
-    password: ""
+    username: "testuser",
+    password: "admin"
   })
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -110,6 +110,7 @@ export const LoginForm = () => {
               aria-label="username"
               aria-required="true"
               variant="outlined"
+              value={loginFormValues.username}
               autoComplete="off"
               onChange={onChange}
               sx={{ width: "90%", background: theme.palette.background.default }}
@@ -122,6 +123,8 @@ export const LoginForm = () => {
               size="small"
               aria-label="password"
               aria-required="true"
+              variant="outlined"
+              value={loginFormValues.password}
               autoComplete="off"
               onChange={onChange}
               sx={{ width: "90%", background: theme.palette.background.default }}

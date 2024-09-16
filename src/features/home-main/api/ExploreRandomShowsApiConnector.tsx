@@ -24,9 +24,8 @@ export const ExploreRandomShowsApiConnector = () => {
   })
   return (
     <MediaSlider
-      cardCount={mobile ? 2 : tablet ? 3 : laptop ? 3 : 9}
-      cardWidth={7.4}
-      containerHeight={mobile ? "50vh" : tablet ? "30vh" : laptop ? "40vh" : "72vh"}
+      cardCount={mobile ? 1 : tablet ? 2 : laptop ? 3 : 9}
+      containerHeight={mobile ? "60vh" : tablet ? "40vh" : laptop ? "60vh" : "72vh"}
       isLoading={isLoading}
       medias={medias}
       slideTimer={25000}
