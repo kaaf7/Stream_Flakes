@@ -23,10 +23,14 @@
   },
   "success": {
     "successMessage": "Favorites have been updated successfully",
-    "loginSuccessMessage": "You have successfully logged in."
+    "loginSuccessMessage": "You have successfully logged in.",
+    "signUpSuccessMessage": "You have successfully signed up"
   },
   "error": {
-    "loginError": "There was an error logging in. Please try again."
+    "loginError": "There was an error logging in. Please try again.",
+    "signUpError": "There was an error signing up. Please try again.",
+    "confirmPasswordError": "Passwords do not match or too short",
+    "invalidEmailError": "Invalid Email."
   },
   "footer": {
     "supportCenter": "Support Center",
