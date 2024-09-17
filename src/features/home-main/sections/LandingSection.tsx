@@ -1,5 +1,3 @@
-import apple_app_store from "@/assets/images/apple_app_store.svg"
-import google_app_store from "@/assets/images/google_app_store.svg"
 import movies from "@/assets/images/movies.jpg"
 import { CustomButton } from "@/components/buttons/custom-button"
 import { MediaCard } from "@/components/ui/media-card"
@@ -96,7 +94,7 @@ export const LandingSection = () => {
               <Add fontSize={"small"} />
             </CustomButton>
           </Grid>
-          <Grid
+          {/* <Grid
             container
             sx={{
               width: "100%",
@@ -121,7 +119,7 @@ export const LandingSection = () => {
               imageUrl={google_app_store}
               title={google_app_store}
             />
-          </Grid>
+          </Grid>*/}
         </Box>
       </Grid>
       <Box
@@ -134,7 +132,7 @@ export const LandingSection = () => {
           objectFit: "cover",
           position: "absolute",
           bottom: 0,
-          filter: "blur(4px) brightness(15%)",
+          filter: "blur(6px) brightness(15%)",
           transition: "width 0.6s ease-in-out"
         }}>
         <img

@@ -244,7 +244,7 @@ export const SignUpForm = () => {
           objectFit: "cover",
           position: "absolute",
           bottom: 0,
-          filter: "blur(4px) brightness(15%)",
+          filter: "blur(6px) brightness(15%)",
           transition: "width 0.6s ease-in-out"
         }}>
         <img
