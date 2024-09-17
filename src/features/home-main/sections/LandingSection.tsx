@@ -8,10 +8,18 @@ import { BRAND_ICONS } from "@/features/home-main"
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 import { Add } from "@mui/icons-material"
 import { Box, Grid, Typography } from "@mui/material"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 export const LandingSection = () => {
   const { mobile, desktop } = useResponsive()
+  const [imageLoaded, setImageLoaded] = useState(false)
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = movies
+    img.onload = () => setImageLoaded(true)
+  }, [])
 
   return (
     <Box
@@ -26,6 +34,7 @@ export const LandingSection = () => {
         alignItems: { mobile: "center", tablet: "space-between", desktop: "center" },
         overflow: "hidden"
       }}>
+      {/* Content section */}
       <Grid
         container
         direction="column"
@@ -45,7 +54,6 @@ export const LandingSection = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            textAlign: "space-between",
             gap: { mobile: 2, tablet: 2, laptop: 1, desktop: 2 },
             zIndex: 2
           }}>
@@ -67,8 +75,9 @@ export const LandingSection = () => {
             }}>
             {BRAND_ICONS.map((brandIcon) => (
               <MediaCard
-                imageUrl={brandIcon}
                 id={brandIcon}
+                key={brandIcon}
+                imageUrl={brandIcon}
                 sx={{
                   width: { mobile: "64px", tablet: "64px", laptop: "64px", desktop: "64px" },
                   height: { mobile: "64px", tablet: "64px", laptop: "64px", desktop: "64px" }
@@ -91,79 +100,69 @@ export const LandingSection = () => {
             sx={{
               width: "100%",
               height: "3rem",
-              flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
               gap: { mobile: 3, tablet: 1, laptop: 1, desktop: 2 }
             }}>
             <MediaCard
+              id={"apple"}
               sx={{
                 width: { mobile: "120px", tablet: "150px", laptop: "150px", desktop: "180px" }
               }}
               imageUrl={apple_app_store}
               title={apple_app_store}
-              id={"apple_app_store"}
             />
             <MediaCard
+              id={"google"}
               sx={{
                 width: { mobile: "120px", tablet: "150px", laptop: "150px", desktop: "180px" }
               }}
               imageUrl={google_app_store}
               title={google_app_store}
-              id={"google_app_store"}
             />
           </Grid>
         </Box>
       </Grid>
-
-      <Box
-        sx={{
+      <img
+        src={movies}
+        alt="Movies"
+        loading="lazy"
+        style={{
+          width: imageLoaded ? "100vw" : "90vw",
+          height: "100vh",
+          objectPosition: "center center",
+          objectFit: "cover",
           position: "absolute",
           top: 0,
           left: 0,
-          width: "100%",
-          height: "100vh",
-          overflow: "hidden",
           filter: "blur(2px) brightness(15%)",
-          transition: "transform 0.5s ease",
-          zIndex: 1,
-          "& img": {
-            width: "100%",
-            height: "100vh",
-            objectPosition: "center center",
-            objectFit: "cover",
-            position: "absolute",
-            top: 0,
-            left: 0
-          }
-        }}>
-        <img src={movies} alt="Movies" loading="lazy" />
-      </Box>
+          transition: "width 0.6s ease-in-out" // Smooth horizontal expansion
+        }}
+      />
 
-      <Box
-        sx={{
+      {/* Gradient overlays */}
+      <div
+        style={{
           width: "100%",
           height: "100vh",
           position: "absolute",
           background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)",
           top: 0,
-          left: 0,
-          zIndex: 2
+          left: 0
         }}
       />
-      <Box
-        sx={{
+      <div
+        style={{
           width: "100%",
           height: "100vh",
           position: "absolute",
           background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)",
           top: 0,
-          left: 0,
-          zIndex: 2
+          left: 0
         }}
       />
-      <Box
-        sx={{
+      <div
+        style={{
           width: "100%",
           height: "100vh",
           position: "absolute",
