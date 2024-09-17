@@ -6,6 +6,7 @@ import {
   SHOWS_PATH,
   SIGN_UP_PATH
 } from "@/constants/constants"
+import CircularProgress from "@mui/material/CircularProgress"
 import { lazy, Suspense } from "react"
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 
@@ -35,7 +36,9 @@ export const PageSuspense = () => {
         justifyItems: "center",
         alignItems: "center",
         textAlign: "center"
-      }}></div>
+      }}>
+      <CircularProgress />
+    </div>
   )
 }
 
