@@ -136,7 +136,7 @@ export const Router = ({ isLoggedIn }: RouterProps) => {
   const router = createBrowserRouter(routes(isLoggedIn))
 
   return (
-    <ErrorBoundary fallback={<ErrorFallBack />}>
+    <ErrorBoundary fallback={<ErrorFallBack />} onReset={() => window.location.reload()}>
       <Suspense fallback={<PageSuspense />}>
         <RouterProvider router={router} />
       </Suspense>
