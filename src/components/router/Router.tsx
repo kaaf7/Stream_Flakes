@@ -7,7 +7,7 @@ import {
   SIGN_UP_PATH
 } from "@/constants/constants"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
-import CircularProgress from "@mui/material/CircularProgress"
+import { LinearProgress, Stack, Typography } from "@mui/material"
 import { lazy, Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
@@ -37,9 +37,15 @@ export const PageSuspense = () => {
         justifyContent: "center",
         justifyItems: "center",
         alignItems: "center",
-        textAlign: "center"
+        textAlign: "center",
+        gap: 5
       }}>
-      <CircularProgress />
+      <Typography variant={"h4"} sx={{ color: "#c70c0c", fontWeight: "bold", cursor: "pointer" }}>
+        |SF._
+      </Typography>
+      <Stack sx={{ width: "10%" }} spacing={2}>
+        <LinearProgress color={"primary"} />
+      </Stack>
     </div>
   )
 }
