@@ -170,6 +170,8 @@ export const LoginForm = () => {
         style={{
           width: "100%",
           height: "100vh",
+          minWidth: "100vw",
+          minHeight: "100vh",
           objectFit: "cover",
           position: "absolute",
           top: 0,
