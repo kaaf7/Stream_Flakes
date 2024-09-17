@@ -50,7 +50,7 @@ export const LandingSection = () => {
             zIndex: 2
           }}>
           <Typography variant={mobile ? "h4" : desktop ? "h2" : "h3"} sx={{ fontWeight: "bold" }}>
-            Your Favorite Shows in <br></br>
+            Your Favorite Shows in <br />
             <span style={{ color: "#c70c0c" }}>One Place</span>
           </Typography>
           <Typography variant={mobile ? "body2" : "h6"}>
@@ -115,49 +115,55 @@ export const LandingSection = () => {
           </Grid>
         </Box>
       </Grid>
-      <img
-        src={movies}
-        alt="Movies"
-        loading="lazy"
-        style={{
-          width: "100%",
-          height: "100vh",
-          minHeight: "100vh",
-          maxHeight: "100vh",
-          minWidth: "100vw",
-          maxWidth: "100vw",
-          display: "block",
-          objectPosition: "center center",
-          objectFit: "cover",
+
+      <Box
+        sx={{
           position: "absolute",
           top: 0,
           left: 0,
-          filter: "blur(2px) brightness(15%)"
-        }}
-      />
+          width: "100%",
+          height: "100vh",
+          overflow: "hidden",
+          filter: "blur(2px) brightness(15%)",
+          transition: "transform 0.5s ease",
+          zIndex: 1,
+          "& img": {
+            width: "100%",
+            height: "100vh",
+            objectPosition: "center center",
+            objectFit: "cover",
+            position: "absolute",
+            top: 0,
+            left: 0
+          }
+        }}>
+        <img src={movies} alt="Movies" loading="lazy" />
+      </Box>
 
-      <div
-        style={{
+      <Box
+        sx={{
           width: "100%",
           height: "100vh",
           position: "absolute",
           background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)",
           top: 0,
-          left: 0
+          left: 0,
+          zIndex: 2
         }}
       />
-      <div
-        style={{
+      <Box
+        sx={{
           width: "100%",
           height: "100vh",
           position: "absolute",
           background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)",
           top: 0,
-          left: 0
+          left: 0,
+          zIndex: 2
         }}
       />
-      <div
-        style={{
+      <Box
+        sx={{
           width: "100%",
           height: "100vh",
           position: "absolute",
