@@ -2,7 +2,6 @@ import {
   FAVORITES_PATH,
   LOGIN_PATH,
   MAIN_PATH,
-  MainColor,
   MEDIA_PATH,
   SHOWS_PATH,
   SIGN_UP_PATH
@@ -41,7 +40,12 @@ export const PageSuspense = () => {
         textAlign: "center"
       }}>
       <div style={{ width: "100%" }}>
-        <LinearProgress sx={{ width: "100%" }} color={MainColor.PRIMARY} />
+        <LinearProgress
+          sx={{
+            width: "100%",
+            height: "2px"
+          }}
+        />
       </div>
     </div>
   )
