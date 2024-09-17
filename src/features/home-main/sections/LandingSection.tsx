@@ -122,6 +122,8 @@ export const LandingSection = () => {
         style={{
           width: "100%",
           height: "100vh",
+          minHeight: "100vh",
+          maxHeight: "100vh",
           minWidth: "100vw",
           maxWidth: "100vw",
           display: "block",
