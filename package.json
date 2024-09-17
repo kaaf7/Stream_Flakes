@@ -39,7 +39,8 @@
     "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.23.1",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vite-plugin-dynamic-import": "^1.6.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
