@@ -8,7 +8,7 @@ import {
 } from "@/constants/constants"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
 import { LinearProgress } from "@mui/material"
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 
@@ -27,6 +27,16 @@ const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMe
 const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
 
 export const PageSuspense = () => {
+  const [progress, setProgress] = useState(10)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10))
+    }, 200)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
   return (
     <div
       style={{
@@ -41,6 +51,8 @@ export const PageSuspense = () => {
       }}>
       <div style={{ width: "100%" }}>
         <LinearProgress
+          variant="determinate"
+          value={progress}
           color={"error"}
           sx={{
             width: "100%",
