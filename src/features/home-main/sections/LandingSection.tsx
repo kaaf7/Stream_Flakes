@@ -127,9 +127,9 @@ export const LandingSection = () => {
       <Box
         sx={{
           width: "100%",
+          minWidth: "100%",
           height: "100vh",
           minHeight: "100vh",
-          objectFit: "cover",
           position: "absolute",
           filter: "blur(2px) brightness(15%)",
           transition: "width 0.6s ease-in-out"
@@ -140,7 +140,9 @@ export const LandingSection = () => {
           loading="lazy"
           style={{
             width: "100%",
+            minWidth: "100%",
             height: "100vh",
+            minHeight: "100vh",
             objectFit: "cover"
           }}
         />
