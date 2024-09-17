@@ -29,8 +29,8 @@ export const LandingSection = () => {
         container
         direction="column"
         sx={{
-          height: "100%",
           width: "100%",
+          height: "100vh",
           zIndex: 2,
           color: "white",
           justifyContent: "center",
@@ -134,32 +134,32 @@ export const LandingSection = () => {
 
       <div
         style={{
+          width: "100%",
+          height: "100vh",
           position: "absolute",
           background: "linear-gradient(to right, rgba(17,17,17,1) 3%, rgba(0,0,0,0) 30%)",
           top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%"
+          left: 0
         }}
       />
       <div
         style={{
+          width: "100%",
+          height: "100vh",
           position: "absolute",
           background: "linear-gradient(to left, rgba(17,17,17,1) 2%, rgba(0,0,0,0) 30%)",
           top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%"
+          left: 0
         }}
       />
       <div
         style={{
+          width: "100%",
+          height: "100vh",
           position: "absolute",
           background: "linear-gradient(to top, rgba(17,17,17,1) 4%, rgba(0,0,0,0) 30%)",
           top: 0,
           left: 0,
-          width: "100%",
-          height: "100%",
           zIndex: 1
         }}
       />
