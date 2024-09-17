@@ -121,7 +121,9 @@ export const LandingSection = () => {
         loading="lazy"
         style={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
+          minWidth: "100vw",
+          maxWidth: "100vw",
           display: "block",
           objectPosition: "center center",
           objectFit: "cover",
