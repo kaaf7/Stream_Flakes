@@ -18,6 +18,7 @@ export const LandingSection = () => {
       sx={{
         width: "100%",
         height: "100vh",
+        minHeight: "100vh",
         position: "relative",
         display: "flex",
         flexDirection: "column",
@@ -120,8 +121,7 @@ export const LandingSection = () => {
         loading="lazy"
         style={{
           width: "100%",
-          height: "100vh",
-          minWidth: "100vw",
+          height: "100%",
           display: "block",
           objectPosition: "center center",
           objectFit: "cover",
