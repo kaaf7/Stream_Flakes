@@ -128,7 +128,8 @@ export const LandingSection = () => {
         alt="Movies"
         loading="lazy"
         style={{
-          width: imageLoaded ? "100vw" : "90vw",
+          width: "90vw",
+          minWidth: "90vw",
           height: "100vh",
           objectPosition: "center center",
           objectFit: "cover",
@@ -136,7 +137,7 @@ export const LandingSection = () => {
           top: 0,
           left: 0,
           filter: "blur(2px) brightness(15%)",
-          transition: "width 0.6s ease-in-out" // Smooth horizontal expansion
+          transition: "width 0.6s ease-in-out"
         }}
       />
 
