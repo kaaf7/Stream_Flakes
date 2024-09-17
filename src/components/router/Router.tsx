@@ -6,8 +6,10 @@ import {
   SHOWS_PATH,
   SIGN_UP_PATH
 } from "@/constants/constants"
+import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
 import CircularProgress from "@mui/material/CircularProgress"
 import { lazy, Suspense } from "react"
+import { ErrorBoundary } from "react-error-boundary"
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 
 import { MainLayout } from "../ui/main-layout"
@@ -38,6 +40,28 @@ export const PageSuspense = () => {
         textAlign: "center"
       }}>
       <CircularProgress />
+    </div>
+  )
+}
+
+export const ErrorFallBack = () => {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        justifyItems: "center",
+        alignItems: "center",
+        textAlign: "center"
+      }}>
+      <SentimentDissatisfiedIcon
+        color={"disabled"}
+        sx={{ width: "5rem", height: "5rem" }}
+        fontSize={"large"}
+      />
     </div>
   )
 }
@@ -104,8 +128,10 @@ export const Router = ({ isLoggedIn }: RouterProps) => {
   const router = createBrowserRouter(routes(isLoggedIn))
 
   return (
-    <Suspense fallback={<PageSuspense />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <ErrorBoundary fallback={<ErrorFallBack />}>
+      <Suspense fallback={<PageSuspense />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ErrorBoundary>
   )
 }
