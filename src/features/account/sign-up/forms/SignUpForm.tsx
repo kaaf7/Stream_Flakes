@@ -236,14 +236,11 @@ export const SignUpForm = () => {
       </Container>
       <Box
         sx={{
-          width: "90vw",
-          minWidth: "90vw",
+          width: "100%",
           height: "100vh",
           minHeight: "100vh",
-          objectPosition: "center center",
           objectFit: "cover",
           position: "absolute",
-          bottom: 0,
           filter: "blur(2px) brightness(15%)",
           transition: "width 0.6s ease-in-out"
         }}>
@@ -252,8 +249,7 @@ export const SignUpForm = () => {
           alt="Movies"
           loading="lazy"
           style={{
-            width: "100%",
-            minWidth: "100%"
+            width: "100%"
           }}
         />
       </Box>
