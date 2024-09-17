@@ -124,11 +124,8 @@ export const LandingSection = () => {
           </Grid>
         </Box>
       </Grid>
-      <img
-        src={movies}
-        alt="Movies"
-        loading="lazy"
-        style={{
+      <Box
+        sx={{
           width: "90vw",
           minWidth: "90vw",
           height: "100vh",
@@ -136,12 +133,20 @@ export const LandingSection = () => {
           objectPosition: "center center",
           objectFit: "cover",
           position: "absolute",
+          bottom: 0,
           filter: "blur(2px) brightness(15%)",
           transition: "width 0.6s ease-in-out"
-        }}
-      />
-
-      {/* Gradient overlays */}
+        }}>
+        <img
+          src={movies}
+          alt="Movies"
+          loading="lazy"
+          style={{
+            width: "100%",
+            minWidth: "100%"
+          }}
+        />
+      </Box>
       <div
         style={{
           width: "100%",
