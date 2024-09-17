@@ -8,18 +8,19 @@ import { BRAND_ICONS } from "@/features/home-main"
 import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 import { Add } from "@mui/icons-material"
 import { Box, Grid, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 export const LandingSection = () => {
   const { mobile, desktop } = useResponsive()
-  const [imageLoaded, setImageLoaded] = useState(false)
+  /*
+    const [imageLoaded, setImageLoaded] = useState(false)
 
-  useEffect(() => {
-    const img = new Image()
-    img.src = movies
-    img.onload = () => setImageLoaded(true)
-  }, [])
+    useEffect(() => {
+      const img = new Image()
+      img.src = movies
+      img.onload = () => setImageLoaded(true)
+    }, [])
+  */
 
   return (
     <Box
