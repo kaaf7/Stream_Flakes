@@ -41,6 +41,7 @@ export const PageSuspense = () => {
       }}>
       <div style={{ width: "100%" }}>
         <LinearProgress
+          color={"error"}
           sx={{
             width: "100%",
             height: "2px"
