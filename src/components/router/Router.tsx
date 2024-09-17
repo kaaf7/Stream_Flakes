@@ -2,12 +2,13 @@ import {
   FAVORITES_PATH,
   LOGIN_PATH,
   MAIN_PATH,
+  MainColor,
   MEDIA_PATH,
   SHOWS_PATH,
   SIGN_UP_PATH
 } from "@/constants/constants"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
-import { LinearProgress, Stack } from "@mui/material"
+import { LinearProgress } from "@mui/material"
 import { lazy, Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
@@ -34,15 +35,14 @@ export const PageSuspense = () => {
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         justifyItems: "center",
         alignItems: "center",
-        textAlign: "center",
-        gap: 5
+        textAlign: "center"
       }}>
-      <Stack sx={{ width: "10%" }} spacing={2}>
-        <LinearProgress color={"primary"} />
-      </Stack>
+      <div style={{ width: "100%" }}>
+        <LinearProgress sx={{ width: "100%" }} color={MainColor.PRIMARY} />
+      </div>
     </div>
   )
 }
