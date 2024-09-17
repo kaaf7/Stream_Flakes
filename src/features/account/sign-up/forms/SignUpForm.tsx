@@ -234,23 +234,29 @@ export const SignUpForm = () => {
           </Typography>
         </Box>
       </Container>
-      <img
-        src={movies}
-        alt="Movies"
-        loading="lazy"
-        style={{
-          width: "100%",
+      <Box
+        sx={{
+          width: "90vw",
+          minWidth: "90vw",
           height: "100vh",
-          minWidth: "100vw",
-          display: "block",
+          minHeight: "100vh",
           objectPosition: "center center",
           objectFit: "cover",
           position: "absolute",
-          top: 0,
-          left: 0,
-          filter: "blur(2px) brightness(15%)"
-        }}
-      />
+          bottom: 0,
+          filter: "blur(2px) brightness(15%)",
+          transition: "width 0.6s ease-in-out"
+        }}>
+        <img
+          src={movies}
+          alt="Movies"
+          loading="lazy"
+          style={{
+            width: "100%",
+            minWidth: "100%"
+          }}
+        />
+      </Box>
       <div
         style={{
           position: "absolute",
