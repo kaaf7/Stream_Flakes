@@ -126,8 +126,8 @@ export const LandingSection = () => {
       </Grid>
       <Box
         sx={{
-          width: "100%",
-          minWidth: "100%",
+          width: "85rem",
+          minWidth: "85rem",
           height: "100vh",
           minHeight: "100vh",
           position: "absolute",
@@ -140,7 +140,7 @@ export const LandingSection = () => {
           loading="lazy"
           style={{
             width: "100%",
-            minWidth: "100%",
+
             height: "100vh",
             minHeight: "100vh",
             objectFit: "cover"
