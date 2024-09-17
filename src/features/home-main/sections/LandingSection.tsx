@@ -139,8 +139,8 @@ export const LandingSection = () => {
           alt="Movies"
           loading="lazy"
           style={{
-            width: "100%",
-
+            width: "85rem",
+            minWidth: "85rem",
             height: "100vh",
             minHeight: "100vh",
             objectFit: "cover"
