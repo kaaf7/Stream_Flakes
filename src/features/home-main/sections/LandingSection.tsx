@@ -121,8 +121,10 @@ export const LandingSection = () => {
         style={{
           width: "100%",
           height: "100vh",
-          minWidth: "100vw",
           minHeight: "100vh",
+          minWidth: "100vw",
+          display: "block",
+          objectPosition: "center center",
           objectFit: "cover",
           position: "absolute",
           top: 0,
