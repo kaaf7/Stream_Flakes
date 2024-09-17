@@ -130,6 +130,7 @@ export const LandingSection = () => {
           minWidth: "85rem",
           height: "100vh",
           minHeight: "100vh",
+          bottom: 0,
           position: "absolute",
           filter: "blur(2px) brightness(15%)",
           transition: "width 0.6s ease-in-out"
