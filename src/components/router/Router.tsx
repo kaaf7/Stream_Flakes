@@ -6,7 +6,6 @@ import {
   SHOWS_PATH,
   SIGN_UP_PATH
 } from "@/constants/constants"
-import Home from "@/pages/home/Home.tsx"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
 import { LinearProgress } from "@mui/material"
 import { lazy, Suspense, useEffect, useState } from "react"
@@ -24,6 +23,8 @@ const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
 const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMediasOverview"))
 
 const MediaDetailView = lazy(() => import("@/pages/media-view/MediaView"))
+
+const Home = lazy(() => import("@/pages/home/Home"))
 
 export const PageSuspense = () => {
   const [progress, setProgress] = useState(10)
