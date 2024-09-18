@@ -50,7 +50,9 @@ export const LoginForm = () => {
       if (user) {
         handleUserLogin(user)
         enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "default" })
-        navigate(MAIN_PATH)
+        setTimeout(() => {
+          navigate(MAIN_PATH)
+        }, 500)
       }
     } catch (error) {
       enqueueSnackbar(t("error.loginError"), { variant: "error" })

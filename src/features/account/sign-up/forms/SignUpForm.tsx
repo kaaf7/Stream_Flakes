@@ -51,10 +51,13 @@ export const SignUpForm = () => {
     try {
       const res = await submitLogin({ username, password })
       const user = await formatResponse(res)
+
       if (user) {
         handleUserLogin(user)
-        enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "default" })
-        navigate(MAIN_PATH)
+        setTimeout(() => {
+          enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "default" })
+          navigate(MAIN_PATH)
+        }, 500)
       }
     } catch (error) {
       enqueueSnackbar(t("error.loginError"), { variant: "error" })
@@ -96,7 +99,10 @@ export const SignUpForm = () => {
         enqueueSnackbar(t("error.signUpError"), { variant: "error" })
         return
       }
-      await handleLogin_(event, username, password)
+      enqueueSnackbar(t("success.signUpSuccessMessage"), { variant: "success" })
+      setTimeout(() => {
+        handleLogin_(event, username, password)
+      }, 500)
     } catch (error) {
       enqueueSnackbar(t("error.signUpError"), { variant: "error" })
     } finally {
