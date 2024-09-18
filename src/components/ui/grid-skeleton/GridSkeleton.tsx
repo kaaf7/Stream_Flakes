@@ -1,3 +1,4 @@
+import movies from "@//assets/images/movies.jpg"
 import { Skeleton } from "@mui/material"
 
 interface GidSkeletonProps {
@@ -16,22 +17,21 @@ export const GidSkeleton = ({
       key={index}
       variant="rectangular"
       sx={{
-        width: "100%",
-        height: "100%",
-        borderRadius: "1rem"
+        width: skeletonWidth,
+        height: skeletonHeight,
+        borderRadius: "1rem",
+        objectFit: "cover"
       }}>
       <img
         alt="shows-skeletons"
         aria-label="shows-skeletons"
         loading="lazy"
         style={{
-          width: skeletonWidth,
-          height: skeletonHeight,
-          objectFit: "contain"
+          width: "100%",
+          height: "100%",
+          objectFit: "cover"
         }}
-        src={
-          "https://posters.movieposterdb.com/24_05/2024/21454134/l_the-bikeriders-movie-poster_95cd633e.jpg"
-        }
+        src={movies}
       />
     </Skeleton>
   ))
