@@ -128,38 +128,52 @@ export const MediaSlider = ({
         onTouchEnd={handleTouchEnd}>
         {isLoading ? (
           <GidSkeleton
+            isPortrait={isPortrait}
             gridLength={cardCount}
             skeletonWidth={cardWidth}
             skeletonHeight={containerHeight as string}
           />
         ) : (
           medias?.map((media: MediaInterface) => (
-            <img
-              id={media.id}
-              alt={media.title}
-              onClick={(event: SyntheticEvent) => {
-                event.preventDefault()
-                navigate(createMediaPath(media.imdb_id as string))
-                window.scrollTo(0, 0)
-              }}
-              src={
-                isPortrait
-                  ? media?.poster_path?.replace(TmdbImageSizes.POSTER_ORIGINAL, imageSize)
-                  : createBackDropBack(media.backdrop_path as string).replace(
-                      TmdbImageSizes.POSTER_ORIGINAL,
-                      imageSize
-                    )
-              }
-              key={media.id}
+            <Box
               style={{
                 width: cardWidth,
                 height: containerHeight,
                 borderRadius: "1rem",
                 flexShrink: 0,
-                objectFit: "cover",
-                cursor: "pointer"
+                cursor: "pointer",
+                transition: "opacity 0.3s ease"
               }}
-            />
+              onClick={(event: SyntheticEvent) => {
+                event.preventDefault()
+                navigate(createMediaPath(media.imdb_id as string))
+                window.scrollTo(0, 0)
+              }}
+              sx={{
+                "&:hover": {
+                  opacity: 0.65
+                }
+              }}>
+              <img
+                style={{
+                  borderRadius: "1rem",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+                id={media.id}
+                alt={media.title}
+                src={
+                  isPortrait
+                    ? media?.poster_path?.replace(TmdbImageSizes.POSTER_ORIGINAL, imageSize)
+                    : createBackDropBack(media.backdrop_path as string).replace(
+                        TmdbImageSizes.POSTER_ORIGINAL,
+                        imageSize
+                      )
+                }
+                key={media.id}
+              />
+            </Box>
           ))
         )}
       </Box>
