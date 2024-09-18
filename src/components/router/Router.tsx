@@ -6,6 +6,7 @@ import {
   SHOWS_PATH,
   SIGN_UP_PATH
 } from "@/constants/constants"
+import Home from "@/pages/home/Home.tsx"
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied"
 import { LinearProgress } from "@mui/material"
 import { lazy, Suspense, useEffect, useState } from "react"
@@ -19,8 +20,6 @@ const MediasOverview = lazy(() => import("@/pages/medias/MediasOverview"))
 const Login = lazy(() => import("@/pages/login/Login"))
 
 const SignUp = lazy(() => import("@/pages/sign-up/SignUp"))
-
-const Home = lazy(() => import("@/pages/home/Home"))
 
 const FavoritesMediasOverview = lazy(() => import("@/pages/favorites/FavoritesMediasOverview"))
 
