@@ -52,7 +52,7 @@ export const LoginForm = () => {
         enqueueSnackbar(t("success.loginSuccessMessage"), { variant: "default" })
         setTimeout(() => {
           navigate(MAIN_PATH)
-        }, 500)
+        }, 800)
       }
     } catch (error) {
       enqueueSnackbar(t("error.loginError"), { variant: "error" })
