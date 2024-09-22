@@ -55,7 +55,7 @@ export function MainLayout({ isLoggedIn }: MainLayoutProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 1200)
+    }, 500)
     return () => clearTimeout(timer)
   }, [])
 
