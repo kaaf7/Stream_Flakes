@@ -58,6 +58,7 @@ export const MediaCard = ({
           height: "100%",
           borderRadius: borderRadius,
           objectFit: "cover",
+          aspectRatio: "2 / 3",
           opacity: hover ? 0.6 : 1,
           cursor: hover ? "pointer" : "default",
           transition: "opacity 0.5s ease-in-out"

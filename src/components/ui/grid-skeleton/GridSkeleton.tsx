@@ -31,7 +31,8 @@ export const GidSkeleton = ({
         style={{
           width: skeletonWidth,
           height: skeletonHeight,
-          objectFit: "cover"
+          objectFit: "cover",
+          aspectRatio: "2 / 3"
         }}
         src={isPortrait ? Skeleton_Portrait : Skeleton_Landscape}
       />
