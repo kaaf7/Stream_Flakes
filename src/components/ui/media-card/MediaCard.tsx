@@ -51,7 +51,6 @@ export const MediaCard = ({
         src={imageUrl}
         alt={alt}
         aria-label={alt}
-        loading="lazy"
         onClick={onClick}
         style={{
           width: "100%",
