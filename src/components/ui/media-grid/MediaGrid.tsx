@@ -89,7 +89,7 @@ export const MediaGrid = ({
           flexWrap: "wrap"
         }}>
         {isLoading && currentPage === 0 ? (
-          <GidSkeleton gridLength={30} />
+          <GidSkeleton gridLength={18} />
         ) : (
           medias?.map((media: MediaInterface) => (
             <MediaCard
