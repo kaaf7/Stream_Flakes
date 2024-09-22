@@ -138,10 +138,13 @@ export const LandingSection = () => {
         <img
           src={movies}
           alt="Movies"
-          loading="lazy"
           style={{
             width: "100%",
-            minWidth: "100%"
+            height: "100vh",
+            minHeight: "100vh",
+            minWidth: "100%",
+            maxHeight: "100vh",
+            maxWidth: "90vw"
           }}
         />
       </Box>
