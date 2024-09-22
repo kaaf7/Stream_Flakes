@@ -1,4 +1,4 @@
-import movies from "@/assets/images/movies.jpg"
+import movies from "@/assets/images/movies.webp"
 import { User } from "@/components/Auth/AuthProvider.tsx"
 import { CustomButton } from "@/components/buttons/custom-button"
 import { LOGIN_PATH, MAIN_PATH } from "@/constants/constants"

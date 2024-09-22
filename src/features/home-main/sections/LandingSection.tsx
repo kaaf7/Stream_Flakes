@@ -1,4 +1,4 @@
-import movies from "@/assets/images/movies.jpg"
+import movies from "@/assets/images/movies.webp"
 import { CustomButton } from "@/components/buttons/custom-button"
 import { MediaCard } from "@/components/ui/media-card"
 import { SHOWS_PATH } from "@/constants/constants"
