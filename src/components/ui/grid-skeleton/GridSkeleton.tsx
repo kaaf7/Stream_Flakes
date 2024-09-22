@@ -1,5 +1,5 @@
-import Skeleton_Landscape from "@/assets/skeletons/Skeleton_Landscape.jpg"
-import Skeleton_Portrait from "@/assets/skeletons/Skeleton_Portrait.jpg"
+import Skeleton_Landscape from "@/assets/skeletons/Skeleton_Landscape.webp"
+import Skeleton_Portrait from "@/assets/skeletons/Skeleton_Portrait.webp"
 import { Skeleton } from "@mui/material"
 
 interface GidSkeletonProps {
