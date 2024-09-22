@@ -85,10 +85,10 @@ export const LandingSection = () => {
             ))}
             <CustomButton
               sx={{
-                width: { mobile: "20px", tablet: "64px", laptop: "64px", desktop: "64px" },
-                height: { mobile: "20px", tablet: "64px", laptop: "64px", desktop: "64px" }
+                width: { mobile: "64px", tablet: "64px", laptop: "64px", desktop: "64px" },
+                height: { mobile: "64px", tablet: "64px", laptop: "64px", desktop: "64px" }
               }}
-              variant={mobile ? "text" : "outlined"}
+              variant={"outlined"}
               component={Link}
               to={SHOWS_PATH}>
               <Add fontSize={"small"} />

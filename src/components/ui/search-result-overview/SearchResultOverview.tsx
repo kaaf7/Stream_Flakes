@@ -1,6 +1,7 @@
 import { ExploreShowsSearchDisplayApiConnector } from "@/features/explore-shows-search-display"
 
 import { UserSearchResultDisplay } from "@/features/user-search-display"
+import { useResponsive } from "@/hooks/responsive/useResponsive.ts"
 import { MediaInterface } from "@/interfaces/MediaInterface.ts"
 import { Card, useTheme } from "@mui/material"
 import { ReactNode } from "react"
@@ -19,10 +20,11 @@ export const SearchResultOverview = ({
   medias,
   setImdbId
 }: SearchResultDisplayProps) => {
+  const { laptop, desktop } = useResponsive()
   return (
     <SearchResultOverviewContainer resultBoxVisible={resultBoxVisible}>
       <UserSearchResultDisplay isLoading={isLoading} medias={medias} setImdbId={setImdbId} />
-      <ExploreShowsSearchDisplayApiConnector />
+      {laptop || (desktop && <ExploreShowsSearchDisplayApiConnector />)}
     </SearchResultOverviewContainer>
   )
 }

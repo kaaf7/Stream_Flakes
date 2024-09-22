@@ -44,7 +44,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       component: (
         <CustomButton
           title={"signUp"}
-          sx={{ height: "2rem", display: { mobile: "none", tablet: "block", desktop: "block" } }}
+          sx={{ height: "2rem", display: { mobile: "block", tablet: "block", desktop: "block" } }}
           variant={"outlined"}
           size={"small"}
           to={SIGN_UP_PATH}>
@@ -56,7 +56,7 @@ export const RightNavBarItems = ({ isLoggedIn }: RightNavBarItemsProps) => {
       component: (
         <CustomButton
           title={t("login")}
-          sx={{ height: "2rem", display: { mobile: "none", tablet: "block", desktop: "block" } }}
+          sx={{ height: "2rem", display: { mobile: "block", tablet: "block", desktop: "block" } }}
           variant={"outlined"}
           size={"small"}
           to={LOGIN_PATH}>

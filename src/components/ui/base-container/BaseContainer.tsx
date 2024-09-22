@@ -12,7 +12,7 @@ export const BaseContainer = ({ children, ...containerProps }: BaseContainerProp
       sx={{
         width: "100%",
         display: "flex",
-        minWidth: "300px",
+        minWidth: "182px",
         justifyContent: "center",
         padding: "0 0 0 0"
       }}>
